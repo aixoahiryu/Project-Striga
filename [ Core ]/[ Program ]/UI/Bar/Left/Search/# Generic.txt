@@ -7,6 +7,6 @@ ext:   filetype:
 before:2015
 
 
--shopping -shill
+-shill -shopping -company
 -album -facts -job -shill -product -brand -music -social -ads -mainstream -media
 -tiktok -instagram
