@@ -1,3 +1,0 @@
-html{
-        filter: invert(1) hue-rotate(180deg) !important;
-}
