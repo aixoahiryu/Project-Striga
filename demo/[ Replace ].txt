@@ -1,0 +1,6 @@
+BitmapImage
+PhotoImage
+
+folder.gif
+
+letters.xbm
