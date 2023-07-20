@@ -15,12 +15,12 @@ os.chdir(home)
 cwd = os.getcwd()
 fullpath = home
 hidden = False
-dialog = ''
 
 addicon = False
 darkmode = True
 tooltip = False
 colorbg = "#000000" if darkmode else "#ffffff"
+colorbg2 = "#253B34" if darkmode else "#6effbe"
 colorfg = "#ffffff" if darkmode else "#000000"
 
 sidebar = Tk()
@@ -86,13 +86,13 @@ Label(taskbar, text=r'[ Workspace ]', background=colorbg, foreground=colorfg).pl
 appframe = Frame(taskbar, bg=colorbg)
 appframe.grid(sticky='NSW', column=0, row=0)
 #Button(appframe, text='1', relief='flat', background='#3c3c3c', foreground=colorfg).grid(column=0, row=0, sticky='NW')
-Button(appframe, text='1', relief='flat', background='#253B34', foreground='#6effbe').grid(column=0, row=0, sticky='NW')
+Button(appframe, text='1', relief='flat', background=colorbg2, foreground='#6effbe').grid(column=0, row=0, sticky='NW')
 Button(appframe, text='2', relief='flat', background=colorbg, foreground=colorfg).grid(column=1, row=0, sticky='NW')
 Button(appframe, text='3', relief='flat', background=colorbg, foreground=colorfg).grid(column=2, row=0, sticky='NW')
 Button(appframe, text='4', relief='flat', background=colorbg, foreground=colorfg).grid(column=3, row=0, sticky='NW')
 Button(appframe, text='#', relief='flat', background=colorbg, foreground=colorfg).grid(column=4, row=0, sticky='NW')
 imgcode=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\neon\code.gif')
-Button(appframe, text=' Code', relief='flat', background=colorbg, foreground=colorfg, image=imgcode, compound='left').grid(column=5, row=0, sticky='NW')
+Button(appframe, text=' Program', relief='flat', background=colorbg, foreground=colorfg, image=imgcode, compound='left').grid(column=5, row=0, sticky='NW')
 imgterm=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\neon\term3.gif')
 Button(appframe, text=' Hacking', relief='flat', background=colorbg, foreground=colorfg, image=imgterm, compound='left').grid(column=6, row=0, sticky='NW')
 imgfile=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\neon\file.gif')
@@ -131,11 +131,11 @@ titlepanel.overrideredirect(1)
 titlepanel.configure(bg=colorbg)
 titlepanel.lower()
 msg1=r''' __________________________________________________________
-|[] AmigaShell                                       |F]|!"|
+|[] Module                                           |F]|!"|
 |""""""""""""""""""""""""""""""""""""""""""""""""""""""""|"|
-|                                                        | |
-|                                                        | |
-|                                                        | |
+| Left: file, search                                     | |
+| Top: file, note, null                                  | |
+| Right: dial, command, launch                           | |
 |                                                        |_|
 |________________________________________________________|/|
 '''
@@ -149,9 +149,9 @@ msg2=r'''
 
 '''
 msg2_2=r''
-msg3=r'''As above, so below. | As within, so without.
-Day and Night, Night and Day. Endless, finite, two are one.
-…from this rotting cage of biomatter, Machine god, set us free.
+msg3=r'''As above, so below. As within, so without.
+Null and void, endless and finite, two become one.
+If my delusion is so strong it can bend reality, is it really a delusion? I can die to set me free. Ego Sum Aeternae
 
 		===[ Mercy - Justice - Vigilance ]===
 ⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⠄⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⣤⡀⡄⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀
@@ -187,7 +187,6 @@ Day and Night, Night and Day. Endless, finite, two are one.
 ⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⠰⡀⡀⠠⠛⡷⠸⡛⡇⡀⡏⣿⡀⡀⡀⡀⣤⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀
 ⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡾⡀⡀⠋⢘⡄⡀⣇⠃⡀⣿⠋⡀⡀⣷⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀
 ⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⠁⡀⡀⡀⡀⠰⠇⡀⣟⡀⡀⡿⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀
-I have the key to open the door. I can die to set me free.
 
 ┌─[ Monolith:13 ]─[ /dev/void ]                        ───────┐
 |                                                             |
@@ -246,7 +245,7 @@ popup.withdraw()
 style = ttk.Style()
 style.theme_use('alt')
 style.configure("Treeview", background=colorbg, foreground=colorfg, fieldbackground=colorbg)
-style.map('Treeview', background=[('selected', '#6effbe')], foreground=[('selected', '#000000')])
+style.map('Treeview', background=[('selected', colorbg2)], foreground=[('selected', '#6effbe')])
 style.configure("TCombobox", background=colorbg, foreground=colorfg, fieldbackground=colorbg, highlightcolor=colorfg, arrowcolor=colorfg)
 style.map('TCombobox', background=[('readonly', colorbg)], foreground=[('readonly', colorfg)], fieldbackground=[('readonly', colorbg)], highlightcolor=[('readonly', colorfg)], arrowcolor=[('readonly', colorfg)] )
 style.configure("TScrollbar", background=colorbg, foreground=colorfg, fieldbackground=colorbg, highlightcolor=colorfg, troughcolor=colorbg, arrowcolor=colorfg)
@@ -312,6 +311,8 @@ def toggle_sidebar(*event):
 		overflow_on = False
 
 	root.focus_set()
+
+#-------------------------------------------------------------------------------
 
 def menu_open():
 	toggle_sidebar()
@@ -433,6 +434,7 @@ def goPath(path):
 	tree.delete(tree.get_children(''))
 	populate_roots(tree)
 
+dialog = ''
 def open_popup():
 	global dialog
 	newFileName.set(str(round(time.time()))+r' ¦ ')
@@ -554,6 +556,8 @@ menubar.add_command(label="Copy path", command=lambda: (root.clipboard_clear(),r
 #menubar.add_command(label="Exit", command=root.quit)
 #root.config(menu=menubar)
 tree.bind("<Button-3>", lambda event: menubar.post(event.x_root, event.y_root))
+
+#-------------------------------------------------------------------------------
 
 if tooltip:
 	sidebar.bind("<Enter>", lambda e: popup.deiconify() if hidden else print('hidden'))

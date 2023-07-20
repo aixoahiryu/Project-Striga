@@ -2,14 +2,17 @@ import subprocess
 import webbrowser
 import os
 
-import win32clipboard
+#import win32clipboard
 import tkinter
 import tkinter.messagebox
 
 
-win32clipboard.OpenClipboard()
-data = win32clipboard.GetClipboardData()
-win32clipboard.CloseClipboard()
+# win32clipboard.OpenClipboard()
+# data = win32clipboard.GetClipboardData()
+# win32clipboard.CloseClipboard()
+root = tkinter.Tk()
+root.withdraw()
+data = root.clipboard_get()
 os.chdir('C:\\Users\\Administrator\\Desktop')
 
 
