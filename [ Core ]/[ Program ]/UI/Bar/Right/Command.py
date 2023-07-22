@@ -68,9 +68,9 @@ searchbox = Entry(root, bg=colorbg, fg=colorfg)
 searchbox.grid(sticky='NSEW', column=1, row=0, ipady=0, ipadx=0)
 
 
-menubar = Menu(root)
-menubar.add_command(label="Exit", command=menu_clear)
+#menubar = Menu(root)
+#menubar.add_command(label="Exit", command=menu_clear)
 #menubar.add_command(label="[Exit]", command=root.quit)
-root.config(menu=menubar)
+#root.config(menu=menubar)
 
 sidebar.mainloop()
