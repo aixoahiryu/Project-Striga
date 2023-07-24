@@ -1,0 +1,9 @@
+Anonymous 07/23/23(Sun)06:36:28 No.94874706▶>>94875980
+>>94874599
+i haven't been up-to-date on the latest attack vector they use (left the community months ago) but they usually abuse older stuff like slowloris, xml-rpc pingback, arme, xerxes and that stuff.
+
+do note that they also use layer 4 attacks, like TCP and UDP floods. if they can't take your site down with HTTP floods they'll usually do that.
+
+afaik a good reverse proxy, with some good protections (rate limit, auto block tor or proxies, drop invalid packets etc) should shield you against most common skiddies.
+
+i could go on and list a shitload of possible attack vectors that are used, but i would be wasting a lot of my (and probably your) time lol
