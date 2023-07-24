@@ -1,0 +1,23 @@
+# https://lispcookbook.github.io/cl-cookbook/gui.html
+# https://en.wikipedia.org/wiki/List_of_widget_toolkits
+
+https://en.wikipedia.org/wiki/Human–computer_interaction#Methodologies
+
+https://en.wikipedia.org/wiki/Ontology_(information_science)
+https://en.wikipedia.org/wiki/Information_science
+https://en.wikipedia.org/wiki/Unconventional_computing
+https://en.wikipedia.org/wiki/Operating_system
+https://en.wikipedia.org/wiki/Kernel_(operating_system) https://en.wikipedia.org/wiki/Computer_architecture
+
+https://en.wikipedia.org/wiki/Zooming_user_interface
+https://en.wikipedia.org/wiki/Multimodal_interaction
+--------------------------------------------------------------
+
+
+Anonymous Thu 29 Jun 2023 20:37:10 No.94353953 ViewReport
+>>94352282
+GTK only serves GNOME these days which is a FOSS Desktop sabotage project financed by Microsoft.
+Qt is de-facto proprietar.
+Both are complete garbage and part of the reason the FOSS Desktop never took off.
+
+Tcl/Tk is the most underrated and should be used more

@@ -1,0 +1,4 @@
+: photo-video|image-polaroid
+: paw
+
+Journal: journal-whills

@@ -1,0 +1,5 @@
+Notepad:
+	Pattern
+	Dial?
+
+[Drag-dock]

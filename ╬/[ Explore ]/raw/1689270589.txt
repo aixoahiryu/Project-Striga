@@ -1,0 +1,41 @@
+https://rentry.org/good-sites
+
+https://nobulart.com/
+http://entityart.co.uk/
+
+https://theoldnet.com/
+Browse websites like they were in 1994 to 2010.
+It fetches several pages from the Internet Archive/Wayback Machine in order to make them less broken. Several more known ones have been manually fixed by contributors.
+
+https://retro.directory/
+Map of retro tech related stuff. Show where you can find shops, museums, events, repair shops, etc.
+
+https://wiby.me/
+Old and simple webpages.
+
+http://frogfind.com/
+Search engine for old computers. It strips the javascript/css and all that.
+
+https://dezoomify.ophir.dev/
+Download zoomable images from several websites like Google Arts
+
+http://rx.linkfanel.net/
+Map of amateur radios through the world. You can listen to radio live like you were there, so not digital radio.
+
+https://livingatlas.arcgis.com
+Like Google Maps, but you can look and compare maps across years.
+
+http://dotshare.it/
+Share and download dotfiles.
+
+http://textfiles.com/
+Loads of .txt files about everything you can imagine.
+
+https://app.justsketch.me/
+Posing model for artists.
+
+https://www.commandlinefu.com
+Command line commands.
+
+https://cheat.sh/
+Cheat sheet that can be used in terminal using curl or you download it and run it locally. Has entire tutorials for programming too

@@ -1,0 +1,7 @@
+There are different instances of scihub, they're not 
+all equal. sci-hub.se tends to work well, but sometimes 
+scihub.wikicn.top has articles that aren't in .se 
+(though usually it's the opposite).
+Google scholars never has and never will be about 
+giving you access to papers, it's supposed to be social 
+media profiles for academics

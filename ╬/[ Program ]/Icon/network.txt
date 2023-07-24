@@ -1,0 +1,39 @@
+Profile: id-card
+Social: passport
+Cluster: network-wired
+
+update: rss-square|newspaper
+
+Upload: paperclip
+
+: wifi | signal
+: waveform
+: wave-square
+
+: user-secret
+: user-robot
+: user-astronaut
+: user-alien
+: user
+
+: university
+
+: upload
+: task-alt
+
+: tags
+: tablet-android-alt
+
+: radio-alt
+: radar
+
+: poll-people
+: inbox | envelope
+
+: credit-card
+: cookie-bite
+
+: comment-alt
+
+: bug
+: bookmark

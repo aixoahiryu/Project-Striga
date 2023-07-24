@@ -1,0 +1,15 @@
+[Theme]: Null & Void
+
+F: Delta-F
+N: Core | Bar: N Core Void
+_: Panels
+
+IDE: button, sticky
+Search: network, panels | small>expand>panels
+
+Thesis : Antithesis : Synthesis
+As above, so below. As within, so without
+Critical thinking
+[Codex]
+
+Manager.py

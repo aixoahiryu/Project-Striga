@@ -1,0 +1,11 @@
+# Zettelkasten: https://neuron.zettel.page/zettelkasten
+
+Whiteboard: 	https://en.wikipedia.org/wiki/OpenBoard https://github.com/mbrlabs/Lorien
+Extension: 		https://github.com/WorldBrain/Memex
+Wiki:			https://github.com/archivy/archivy
+----------------
+Script: 		https://github.com/xwmx/nb
+C++:			https://github.com/nuttyartist/notes
+
+https://github.com/tomboy-notes/tomboy-ng/wiki/File-Sync-with-tomboy-ng
+https://github.com/usememos/memos

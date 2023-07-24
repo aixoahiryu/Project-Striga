@@ -1,0 +1,3 @@
+Do you not understand how GPT-3 works?
+It just randomly selects the next token from a probability distribution.
+There's all kinds of schizo stuff in the CommonCrawl

@@ -1,0 +1,29 @@
+Capslock: pynput https://pynput.readthedocs.io/en/latest/
+			Win http://wxpython.org/docs/api/wx.Window-class.html#RegisterHotKey
+				https://stackoverflow.com/questions/6023172/ending-a-program-mid-run/40177310#40177310
+			Linux http://python-xlib.sourceforge.net/
+				  https://stackoverflow.com/questions/11918999/key-listeners-in-python
+Tkinter https://libraries.io/pypi/bindglobal
+
+Menu: bookmark, note
+
+Block > Panel:
+Toggle: sticky
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Mouse position:

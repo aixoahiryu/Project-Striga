@@ -53,6 +53,7 @@ Emoji					https://boards.4chan.org/search#/grimes
 Rocket					https://archive.4plebs.org/pol/search/text/%22THE%20AMATEUR%20ROCKET%22
 ------------------------
 Desktop		https://boards.4channel.org/g/desktop
+			https://boards.4channel.org/g/thread/94887670#p94905522
 Retro		https://boards.4channel.org/vr/catalog
 RPG			https://boards.4channel.org/vrpg/catalog
 Strategy	https://boards.4channel.org/vst/catalog

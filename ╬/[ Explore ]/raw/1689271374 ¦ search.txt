@@ -1,0 +1,2 @@
+(zephyr|zyphr|zypher)
+(p2p|decentralized)

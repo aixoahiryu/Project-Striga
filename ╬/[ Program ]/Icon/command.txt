@@ -1,0 +1,16 @@
+Player: music
+
+: project-diagram
+: map | map-sign | landmark | gas-pump | campground | map-marker-alt|exclamation|check|question|times
+: cctv
+: male
+: globe-americas
+
+: code-branch
+: claw-marks
+[chess]
+
+: chart-pie|bar
+: chart-network
+
+: backpack|axe|atlas

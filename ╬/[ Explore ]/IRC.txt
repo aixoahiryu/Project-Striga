@@ -1,0 +1,107 @@
+[Watchlist - Chat]
+
+.::[IRC]::.
+https://www.furnet.org/wiki/index.php/Common_Tasks
+/msg nickserv register [password] [email]
+/msg nickserv identify [password]
+/msg nickserv group original_nick original_password
+/ctcp user time|ping|version
+----------------
+freenode [irc.freenode.net]
+	#asm
+	#c++
+	#linux
+	#networking
+	#windows
+	#politics
+	archlinux
+	bash
+	ipfs
+	mpv
+	youtube-dl
+Rizon [irc.rizon.net]
+	#8chan
+	elite-chat
+	chat
+	/g/
+	/g/tv
+	/tech/
+	8chan
+	homescreen
+	kings
+	ripirc
+	truth
+	war
+EFnet [irc.underworld.no]
+	computers
+	political
+Furnet [irc.furnet.org]
+Anthrochat [irc.anthrochat.net]
+
+.::[Discord]::.
+https://disboard.org/
+___________________
+r/Lockpicking https://discordapp.com/invite/sJpc89A
+r/startups https://discord.gg/yjMZU8g
+DragonSCP https://discordapp.com/invite/NUCDjPn
+madcat28651 https://discord.gg/eYEYCfY
+freemediaheckyeah
+
+Hacking
+	Bugcrowd
+	/r/ControllableWebcam https://discord.gg/qcZUMgq
+	DataStream Cowboy https://discord.gg/dMGwQWq
+	HF https://discord.gg/Ebwy3FV
+
+Coding
+	/dpt/ https://discord.gg/4TuhPhr
+	Functional Programming https://discord.gg/K6XHBSh
+	Data & DevOp https://discord.gg/JUj5FNQ
+	Programming https://discord.gg/010z0Kw1A9ql5c1Qe
+	System https://discord.gg/5ssDFZS
+	Python https://discord.gg/2B963hn
+	Programmer's Hangout https://discord.gg/programming
+	/wdg/ https://discord.gg/28exWeh
+
+Tech
+	/g/ https://discord.gg/wXGrJ7q
+	/g/ Fur https://discord.gg/jHZxsd9
+	/tpg/ https://discord.gg/RbEHPqM
+	Discord Linux https://discord.gg/discord-linux
+	Home Server https://discord.gg/BJXJj8c
+	Hydrus https://discord.gg/HcufnC9
+
+Furry
+	Flexible Survival
+	Digby
+	Carpetwurm https://discord.gg/x35e55Dx9p
+	Shin FVN
+	TheVale
+	Password
+	Cyberia
+	/trash/ Pokeverse
+	Triple R
+	r/FurryVisualNovels
+	Checkup
+	Cansure https://discord.gg/RFKNasx
+	/Clop Dump/ https://discord.gg/AAKSsQ3
+	/mg\ https://discord.gg/mqeHhbh
+	Barachan https://discord.gg/ZsbAVHJ
+	BetaEtaDelota https://discord.gg/V4zJ7yg
+	Dreamer-land https://discord.gg/xAdHxP4
+	e621 https://e621.net/static/discord
+	Fur Plaza https://discord.gg/kgwdm9f
+	Furry Realm https://discord.gg/4vhqsDz
+	Furry Joint https://discord.gg/65cQ3YZ
+	Furry Concord https://discord.gg/77busy4
+	furry_irl https://discord.gg/SEn6MWq
+	Mythic Sanctuary https://discord.gg/A6cyctP
+	Mythic Den https://discord.gg/dvBcpY9
+	Sileo https://discord.gg/NeHkT64RzB
+	The fox den https://discord.gg/AYMeucD
+	The furry room https://discord.gg/JatEWST
+	Top Furs https://discord.gg/7ZNvYB5
+	U-18chan http://discord.gg/qWwmrn7
+
+Finance
+	r/Decentralization https://discord.gg/ZdXhwB4

@@ -1,0 +1,2 @@
+https://stackoverflow.com/questions/7253448/how-to-embed-a-terminal-in-a-tkinter-application
+https://old.reddit.com/r/Tkinter/comments/nmx0ir/how_to_show_terminal_output_in_gui/

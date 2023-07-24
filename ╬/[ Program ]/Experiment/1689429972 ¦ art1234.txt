@@ -1,0 +1,23 @@
+>>> import tkinter
+# create: 
+>>> a = tkinter.Tk()
+>>> for i in range(10):
+...    label = tkinter.Label(a, text=str(i))
+...    label.grid(column=0, row=i)
+# remove from screen:
+>>> for label in a.grid_slaves():
+...    if int(label.grid_info()["row"]) > 6:
+...       label.grid_forget()
+
+
+def hide(self):
+		if self.hidden == 0:
+			self.frame1.destroy()
+			self.hidden = 1
+			print("Hidden", self.hidden)
+		else:
+			self.frame2.destroy()
+			self.menu()
+			self.text()
+			self.hidden = 0
+			print("Hidden", self.hidden)

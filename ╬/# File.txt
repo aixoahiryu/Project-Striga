@@ -1,0 +1,16 @@
+Time TXT
+
+Note | Core
+
+custom widget
+	[]   []
+	upstream
+	cmd
+	alphabet
+	
+	home setting file
+	change [home]
+
+
+Detach
+Terminal

@@ -1,0 +1,23 @@
+Search
+Notepad: tab[ dial, journal ]
+
+Main: 	browser, book, social, strategy, knowledge
+		[Case], File, Directory
+		E, F, Scraps
+Peripheral: note, media, cmd, image
+Transient: sticky, whiteboard, test, debug
+
+[Start] > lounge
+	UI:	Hollow knight https://gameuidatabase.com/gameData.php?id=113 https://interfaceingame.com/games/hollow-knight/
+		military style
+		Escape from Tarkov
+		Armello https://interfaceingame.com/games/armello/
+		https://gameuidatabase.com/index.php?scrn=71
+
+
+Notepad:
+	?Dial?: Sephiroth, SNOW-13
+	Journal | Directory
+		Core
+		Scraps
+	Zoom UI

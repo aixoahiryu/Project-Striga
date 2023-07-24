@@ -1,0 +1,60 @@
+File: hdd
+Folder: folder-tree
+
+cmd: terminal
+debug: toolbox
+manager: window
+
+sticky: sticky-note | receipt
+grid: ruler-combined
+
+Idea: lamp-desk
+
+Airlock: coffin-cross
+
+: code
+
+: recycle
+: wrench
+: line-columns
+: layer-group
+: leaf-maple
+
+: usb-drive
+: unlock-alt
+
+: trash-alt
+: treasure-chest
+
+: tombstone
+
+: toggle-on|off
+: tint
+
+: thumbtack
+: ticket-alt
+
+: monitor-heart-rate
+: location
+: magnet
+: mailbox
+
+: jack-o-latern
+: inventory
+: hourglass-half
+: heartbeat
+: flux-capacitor
+: fingerprint
+: expand|-wide
+: eye
+[dice]
+
+: database
+
+: closed-captioning
+: book
+
+: biohazard
+: battery-half
+
+: barcode-read

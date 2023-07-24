@@ -1,0 +1,10 @@
+# https://www.emacswiki.org/emacs/StarterKits
+--------------------------------------------------------------
+
+https://github.com/doomemacs/doomemacs
+https://wiki.archlinux.org/title/Spacemacs https://en.wikipedia.org/wiki/Spacemacs
+https://github.com/rdallasgray/graphene
+
+--------------------------------------------------------------
+yed
+SpaceVim https://m.youtube.com/watch?v=iXPS_NHLj9k

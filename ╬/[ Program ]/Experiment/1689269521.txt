@@ -1,0 +1,23 @@
+===[ Dial ]===
+File: UI
+ASCII
+
+Scraps 	auto-cliboard
+		auto: connection, category, tag
+
+MDI magenta key
+
+
+
+===[ Sticky ]===
+
+
+===[ Command ]===
+Tab: Sephiroth, SNOW-13
+--------------------------------------------------------------
+
+
+N:
+	Bookmark
+
+Custom sector viewer

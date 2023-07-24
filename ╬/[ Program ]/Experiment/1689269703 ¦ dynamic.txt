@@ -1,0 +1,29 @@
+HTML
+SVG
+
+Sidebar: vivaldi, mozilla, opera
+		Python sidebar
+		Chat
+		Light/mobile pages | API
+		https://caml.inria.fr/resources/mozilla-sidebar.en.html
+		http://kb.mozillazine.org/Viewing_the_browsing_history_-_Firefox
+		https://www-archive.mozilla.org/projects/ui/communicator/framework/sidebar/machv/
+		Mockup https://wiki.mozilla.org/Talk:Firefox/4.0_Windows_Theme_Mockups
+		RSS https://commons.wikimedia.org/wiki/File:Bookmarks_sidebar_in_Firefox_3.0.png
+		https://edmullen.net/mozilla/moz_sidebar.php
+		https://addons.mozilla.org/en-US/firefox/addon/sticky-notes/
+		http://rsusu1.rnd.runnet.ru/linux/rhl-gsg-en-9/ch-browsers.html
+		! https://www.w3.org/2005/Talks/0512-semweb-dwood/slide11-0.html
+		Search http://simile.mit.edu/piggy-bank/images/combo-screenshot.png
+		https://www.edgewall.org/python-sidebar/
+		https://addons.thunderbird.net/en-us/firefox/addon/cannafox-marijuana-add-on/?src=search
+		Research: http://publications.csail.mit.edu/abstracts/abstracts06/rcm/rcm.html
+		[Spec] https://www-archive.mozilla.org/projects/ui/netscape/sidebar/
+		RAD http://www.ariadne.ac.uk/issue/42/lauke/
+		
+		
+		
+		
+		
+		https://lists.w3.org/Archives/Public/www-dom/2000JulSep/0070.html
+		Netscape Navigator https://www.softpedia.com/get/Internet/Browsers/Netscape-Browser.shtml

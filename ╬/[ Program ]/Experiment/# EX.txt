@@ -1,0 +1,14 @@
+[The Eye]
+yed
+
+[Workspace] base | template
+	background: eye, terminal, cluster
+	opposite groups
+	Optionmenu
+
+Manager.py
+Time.py
+--------------------------------------------------------------
+
+import from absolute path
+PyAutoInstaller

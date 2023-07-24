@@ -1,0 +1,22 @@
+TOP:
+	Orb [Knowledge]  [Note]
+
+LEFT:
+	Side button: Δ Ω
+	Wallpaper button
+	top F
+
+RIGHT:
+	Launch: right-click upstream
+	Monolith: meta[world, calibrate, interface], sephiroth, Snow-13
+	Repurpose: √ ≡ ▷
+	Layer: 0-7 | Multi-UI
+
+HUD: capslock
+	Top: [0-9] [Workspace name]
+	Bottom: launcher
+	Dock-grid:
+	Wallpaper engine: sticky-note
+
+
+Button-state: color, relief[flat, sunken]

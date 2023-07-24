@@ -1,0 +1,4 @@
+Tab | Sidebar+Toolbar | Resoph
+Workspace
+
+Custom parser

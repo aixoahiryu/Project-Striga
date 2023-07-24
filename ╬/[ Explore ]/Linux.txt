@@ -1,0 +1,13 @@
+https://github.com/luong-komorebi/Awesome-Linux-Software
+
+TUI: https://m.youtube.com/playlist?list=PL5--8gKSku160eJGeY2EsWQ9C5fEZw5WC
+GUI: https://m.youtube.com/playlist?list=PL5--8gKSku14oJ3sn9D5zpvSLVG0y2Nss
+Command line: https://m.youtube.com/playlist?list=PL5--8gKSku174EnRTbP4DzU2W80Q1vqtm
+Suckless: https://m.youtube.com/playlist?list=PL5--8gKSku17F4dCt-lL7dHRC7R7GZZ_p
+Customize: https://m.youtube.com/playlist?list=PL5--8gKSku161_sqWcKCc2USL4LcSJ_kq
+
+
+===[ Interface ]===
+https://github.com/M7S/dockbarx
+https://github.com/KDE/latte-dock
+https://i3wm.org/screenshots/

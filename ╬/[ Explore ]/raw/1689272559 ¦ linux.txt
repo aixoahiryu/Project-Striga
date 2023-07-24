@@ -1,0 +1,12 @@
+https://nostarch.com/howlinuxworks3
+https://linuxcommand.org/tlcl.php
+
+
+
+mega list:
+https://github.com/sindresorhus/awesome#contents
+
+lists from that list:
+https://github.com/alebcay/awesome-shell 
+https://github.com/agarrharr/awesome-cli-apps 
+https://github.com/chubin/awesome-console-services

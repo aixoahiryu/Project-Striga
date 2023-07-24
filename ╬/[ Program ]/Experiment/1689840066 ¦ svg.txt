@@ -1,0 +1,2 @@
+Dial > browser
+Command > display

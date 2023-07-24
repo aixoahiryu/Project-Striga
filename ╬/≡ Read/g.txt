@@ -1,0 +1,59 @@
+https://libera.chat/ (major free software network, haunt for hackers.)
+https://news.ycombinatorcom/ (SV sillyness and fad-following, worth watching so you know what the fads are and whats going on in SV bubble)
+https://lainchanorg/ (like /g/ but faggier, the flip side is that people actually do computers there instead of arguing about trannies)
+http://www.catborg/~esr/faqs/ (computer equivalent of reading the greeks, some basic background in the history of hacking)
+http://doc.cat-vorg/ (same but bell labs and plan9 simping, sysop is less cool than catb)
+https://www.eternal-septemberorg/ (comp.unix.*, comp.lang.$foo, linux.debian.announce.* linux.debian.user)
+https://gemini.circumlunarspace/ (a communication protocol lots of tech nerds are using to blog, easy to explore, only hackers, no commercial interests or ads. I like amfora client, but av-98 is good and python so it works anywhere including windows)
+https://nixers.net/newsletter/entriesphp (unix user/sysop targetted newsletter)
+https://pocorgtfo.hackers/ (hacker journal)
+https://www.2600com/ (hacker magazine)
+https://www.efforg/ (law, regulation, digital rights)
+https://www.fsforg/ (gnu/law, gnu/regulation, gnu/digital rights)
+http://www.phrackorg/ (hacker journal)
+https://www.rfc-editororg/rfc-index.html (web/internet standards)
+https://sdforg/ (ancient unix shell service, was more relevant in the 80s and 90s to give owners of cheap appliance micros a place to get a real MMU equipped multi-user, multi-tasking unix programming environment, but its still a hangout and you can find cool people)
+>TLD '.' removed because of spam filter.
+
+http://www.catborg/esr/faqs/hacker-howto.html is a good start, its not lates catt developments, more like reading plato so you have a background to build on. Once you're comfortable and made touch with a few friends and have a help network, dive in, install a *BSD or Linux distribution, remember to read the manpages and docs, and have fun.
+
+
+https://desuarchive.org/g/thread/79403114/
+
+
+/mg/ - minimalism general Anonymous Tue 16 May 2023 04:43:54 No.93452226 ViewReport
+This is a general to discuss software minimalism and hardware minimalism.
+Users of all levels are welcome to ask questions about software minimalism and share their experiences.
+
+>What is software minimalism?
+suckless.org/philosophy
+wikipedia.org/wiki/Software_bloat
+wikipedia.org/wiki/Lightweight_software
+wikipedia.org/wiki/Source_lines_of_code
+
+>Why software minimalism?
+- Fewer bugs
+- Better performance
+- Lower memory footprint
+- Better maintainability
+- Longer software lifetime
+- Smaller attack surface
+
+>Useful links
+suckless.org/rocks
+harmful.cat-v.org/software
+wiki.installgentoo.com/index.php/Software_minimalism
+gh.vern.cc/173duprot/harm-less
+
+>Recommended Operating Systems
+(Kiss|Void|Gentoo|Alpine) Linux, (Free|Open|Net)BSD, Plan9(front)
+
+>Recommended Wayland Compositors
+Sway (borderline bloat), dwl (better), velox (best)
+
+>Website development
+learnbchs.org
+simple-web.org
+liteweb.neocities.org
+suckless.org/sucks/web
+tools.suckless.org/quark

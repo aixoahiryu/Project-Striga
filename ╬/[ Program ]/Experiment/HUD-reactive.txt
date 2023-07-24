@@ -1,0 +1,5 @@
+Notepad: save, read-only, position
+
+watch window
+	pywinauto https://stackoverflow.com/questions/53640097/how-to-control-windows-in-windows-10-with-python3
+	xdotool https://stackoverflow.com/questions/9681959/how-can-i-use-xdotool-from-within-a-python-module-script

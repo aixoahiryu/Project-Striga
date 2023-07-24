@@ -1,0 +1,5 @@
+4 pivotal
+multi-color
+popup: window list
+
+cross-process

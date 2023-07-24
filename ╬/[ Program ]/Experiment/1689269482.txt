@@ -1,0 +1,4 @@
+scite
+menu: 	file: edit, notepad++, sublime
+		folder: open, sublime
+icon:	cmd

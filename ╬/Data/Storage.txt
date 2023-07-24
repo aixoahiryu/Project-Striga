@@ -1,0 +1,7 @@
+https://old.reddit.com/r/storage/
+
+https://old.reddit.com/r/datarecovery/wiki/software/
+	Flowchart https://www.data-medics.com/recovery/wp-content/uploads/2016/03/Data-Recovery-Procedure.png
+	Triage https://www.recoveryforce.com/how-to-triage-a-hard-drive-guide-for-technicians/
+	ddrescue https://www.data-medics.com/forum/threads/how-to-clone-a-hard-drive-with-bad-sectors-using-ddrescue.133/
+	FTK Imager

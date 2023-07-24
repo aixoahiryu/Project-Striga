@@ -1,0 +1,20 @@
+MDI/Tab
+
+Microsoft Bookshelf
+
+--------------------------------------------------------------
+
+CORE | Note
+
+Pivotal 4:
+	/x/		/pol/		/g/		/k/
+	Paranormal	Politics	Technology	Physical
+	Anomaly		Philosophy	Research	Strategy
+	Coding 		Hacking 	Forensics	RE
+
+1
+2
+3
+4
+
+Automatic|Dynamic menu

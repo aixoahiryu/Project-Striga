@@ -1,0 +1,2 @@
+>>> os.path.split(r'C:\Users\Administrator\desktop\favicon.py')
+('C:\\Users\\Administrator\\desktop', 'favicon.py')

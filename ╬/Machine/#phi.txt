@@ -1,0 +1,2 @@
+TempleOS philosophy
+Lisp evolution

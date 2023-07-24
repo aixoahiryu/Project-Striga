@@ -1,0 +1,8 @@
+Webserver: 	https://hackr.io/blog/how-to-create-a-python-web-server
+			https://pythonbasics.org/webserver/
+			https://wiki.python.org/moin/WebServers
+			https://docs.python.org/3/library/http.server.html
+			https://aosabook.org/en/500L/a-simple-web-server.html
+			https://www.fullstackpython.com/web-servers.html
+			POST https://stackoverflow.com/questions/13146064/simple-python-webserver-to-save-file
+Ext: https://stackoverflow.com/questions/25107774/how-do-i-send-an-http-request-from-a-chrome-extension

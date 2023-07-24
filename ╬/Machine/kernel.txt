@@ -1,0 +1,9 @@
+operating system rings -shill -shopping -company before:2012
+Linux Architecture 2⧸5： Kernel⧸Security⧸and more! [85eINAowuMc]
+
+System Call interface:
+	Windows: 	https://www.codeguru.com/windows/how-do-windows-nt-system-calls-really-work/
+				https://web.archive.org/web/20100205094621/https://www.codeguru.com/cpp/w-p/system/devicedriverdevelopment/article.php/c8035
+				https://j00ru.vexillium.org/2011/11/refreshed-windows-system-call-table-released/
+				https://www.cs.uaf.edu/2008/fall/cs301/lecture/12_03_operating_system.html
+	Interupt:	Software | Hardware

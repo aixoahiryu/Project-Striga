@@ -1,0 +1,53 @@
+Cryptome http://cryptocomb.org/
+https://nitter.snopyta.org/disclosetv/with_replies/rss
+https://github.com/ccd0/imageboards.json/commits/gh-pages.atom
+
+https://peelopaalu.neocities.org/
+https://melonland.net/surf-club
+https://theforest.link/
+
+- neocities.org
+- tildeverse.org
+
+https://tinfoil-hat.net/categories/webring.html
+
+lemmy/fediverse	https://gist.github.com/yetzt/32c754fbe87009f8c161f40541147c70
+				https://fediblock.org/blocklist https://fediblock.neocities.org/
+				
+https://incels.is/
+https://wizchan.org/
+https://www.akiba-online.com/
+
+offerup and craigslist
+
+--------------------------------------------------------------
+
+https://github.com/ccd0/imageboards.json
+A list of image/textboards spanning multiple languages. It conveniently links to more lists should it prove insufficient.
+https://zombo.com
+You can do anything at ZOMBO.com. The only limit is yourself.
+https://gunbai-militaryhistory.blogspot.com/
+One of the best Western blogs on premodern Japanese military arms and armor.
+https://archive.org/
+The de facto archive of web content.
+https://archive.4plebs.org/_/articles/credits/
+An archive of 4chan content primarily focused on /pol/ that itself links to more 4chan archives.
+https://ucmp.berkeley.edu/arthropoda/crustacea/malacostraca/eumalacostraca/royslist/
+Roy Caldwell's list of stomatopods (mantis shrimp) suitable for aquarium life.
+http://palaeos.com/
+An excellent site exploring the phylogeny and evolution of the various lifeforms on Earth. The site has been stuck in a reconstruction phase for several years now and has many broken links, though what remains is invaluable.
+https://virtualcustoms.net/
+A forum focused on personalizing one's user experience on their computer.
+https://www.steamgifts.com/
+https://www.indiegala.com/
+Sites where one can legally obtain Steam games for free. I've won several games myself.
+https://patriots.win/
+Bunker for TD refugees. Used to be called thedonald.win
+https://alternativeto.net/
+An excellent source of software recommendations/alternatives. You can even submit entries yourself.
+https://ps2.fisu.pw/
+A tracker for various statistics concerning the Planetside 2 game developed by SOE and DG.
+https://biomediaproject.com
+If you're a fan of the Lego Bionicle toyline and associated multimedia then this fansite is for you.
+https://consolevariations.com/
+With so many console variations to choose from it is only natural a repository to track them exists.
