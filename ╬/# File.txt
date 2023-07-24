@@ -12,5 +12,3 @@ custom widget
 	change [home]
 
 
-Detach
-Terminal
