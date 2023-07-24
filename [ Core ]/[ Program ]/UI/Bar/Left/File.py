@@ -317,7 +317,8 @@ def toggle_sidebar(*event):
 def menu_open():
 	toggle_sidebar()
 	#subprocess.Popen(r'explorer /select,"C:\xampp"')
-	subprocess.Popen(r'explorer '+fullpath)
+	#subprocess.Popen(r'explorer '+fullpath)
+	os.startfile(fullpath)
 
 def menu_edit():
 	toggle_sidebar()
@@ -437,17 +438,28 @@ def goPath(path):
 dialog = ''
 def open_popup():
 	global dialog
-	newFileName.set(str(round(time.time()))+r' ¦ ')
-
+	newFileName.set('')
+	
 	dialog = Toplevel(root)
-	dialog.geometry("250x100+333+25")
+	dialog.geometry("+333+25")
 	dialog.resizable(False, False)
-	dialog.title("Child Window")
+	dialog.title("New")
 	dialog.transient(root)
 	dialog.columnconfigure(0, weight=1)
 	Label(dialog, text='Enter File or Folder name').grid()
-	Entry(dialog, textvariable=newFileName).grid(column=0, pady=10, sticky='NSEW')
-	Button(dialog, text="Create", command=newFileOrFolder).grid(pady=10, sticky='NSEW')
+	Entry(dialog, textvariable=newFileName).grid(column=0, sticky='NSEW')
+	btnframe = Frame(dialog)
+	btnframe.grid(column=0, sticky='NSEW')
+	Button(btnframe, text="Time", command=lambda: newFileName.set( str(round(time.time())) )).pack(side=LEFT)
+	Button(btnframe, text="TXT", command=lambda: newFileName.set(newFileName.get()+'.txt')).pack(side=LEFT)
+	Button(btnframe, text=" ¦ ", command=lambda: newFileName.set(newFileName.get()+r' ¦ ')).pack(side=LEFT)
+	Button(btnframe, text=" √ ", command=lambda: newFileName.set(r'√ ')).pack(side=LEFT)
+	Button(btnframe, text=" ≡ ", command=lambda: newFileName.set(r'≡ ')).pack(side=LEFT)
+	Button(btnframe, text=" ▷ ", command=lambda: newFileName.set(r'▷ ')).pack(side=LEFT)
+	Button(btnframe, text=" Δ ", command=lambda: newFileName.set(r'Δ[ '+newFileName.get()+r' ]')).pack(side=LEFT)
+	Button(btnframe, text=" Σ ", command=lambda: newFileName.set(r'Σ[ '+newFileName.get()+r' ]')).pack(side=LEFT)
+	Button(btnframe, text=" Ω ", command=lambda: newFileName.set(r'Ω[ '+newFileName.get()+r' ]')).pack(side=LEFT)
+	Button(btnframe, text="Create", command=newFileOrFolder).pack(side=LEFT)
 
 def newFileOrFolder():
 	if os.path.isdir(fullpath): fullpath2 = fullpath
@@ -552,6 +564,8 @@ menubar.add_command(label="Edit", command=menu_edit)
 menubar.add_command(label="Select", command=menu_select)
 menubar.add_separator()
 menubar.add_command(label="Copy path", command=lambda: (root.clipboard_clear(),root.clipboard_append(fullpath),root.update()))
+menubar.add_command(label="Terminal", command=lambda: subprocess.Popen(r'cmd /k cd /d '+fullpath))
+menubar.add_command(label="Detach", command=menu_select)
 #menubar.add_command(label="Exit", command=menu_clear)
 #menubar.add_command(label="Exit", command=root.quit)
 #root.config(menu=menubar)

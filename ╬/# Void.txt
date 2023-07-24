@@ -1,12 +1,10 @@
-Time TXT
-
-Note | Core
+Right-bar
 
 custom widget
 	[]   []
 	upstream
 	cmd
-	alphabet
+	alphabet-button
 	
 	home setting file
 	change [home]

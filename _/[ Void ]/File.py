@@ -317,7 +317,8 @@ def toggle_sidebar(*event):
 def menu_open():
 	toggle_sidebar()
 	#subprocess.Popen(r'explorer /select,"C:\xampp"')
-	subprocess.Popen(r'explorer '+fullpath)
+	#subprocess.Popen(r'explorer '+fullpath)
+	os.startfile(fullpath)
 
 def menu_edit():
 	toggle_sidebar()
