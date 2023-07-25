@@ -10,10 +10,10 @@ Menu: bookmark, note
 Block > Panel:
 Toggle: sticky
 
+Bar: Top | 1234567890 [Name1] [Name2]
+Bat: Bottom | zxcv [icon]
 
-
-
-
+Reactive sidebar: drawer
 
 
 

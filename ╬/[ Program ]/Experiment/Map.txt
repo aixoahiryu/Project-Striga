@@ -1,0 +1,11 @@
+Local|Vector
+Vertical
+Layer | Abstract | Philosophy
+
+Factions
+Alignment
+Time | Motion
+
+Unit:
+	chess
+	advance wars
