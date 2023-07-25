@@ -4,6 +4,7 @@ Capslock: pynput https://pynput.readthedocs.io/en/latest/
 			Linux http://python-xlib.sourceforge.net/
 				  https://stackoverflow.com/questions/11918999/key-listeners-in-python
 Tkinter https://libraries.io/pypi/bindglobal
+Fallback: focus-line + taskbar
 
 Menu: bookmark, note
 
@@ -11,10 +12,9 @@ Block > Panel:
 Toggle: sticky
 
 Bar: Top | 1234567890 [Name1] [Name2]
-Bat: Bottom | zxcv [icon]
+Bar: Bottom | zxcv [Sticky] [icon]
 
 Reactive sidebar: drawer
-
 
 
 

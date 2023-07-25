@@ -5,12 +5,14 @@ LEFT:
 	Side button: Δ Ω
 	Wallpaper button
 	top F
+	Activation zone: F, Network, []
 
 RIGHT:
-	Launch: right-click upstream
+	Launch: Dynamic menu
 	Monolith: meta[world, calibrate, interface], sephiroth, Snow-13
 	Repurpose: √ ≡ ▷
 	Layer: 0-7 | Multi-UI
+	Activation zone: _, Monolith
 
 HUD: capslock
 	Top: [0-9] [Workspace name]
@@ -20,3 +22,6 @@ HUD: capslock
 
 
 Button-state: color, relief[flat, sunken]
+
+Activation zone: 50px, left-stack, top
+Sticky combo
