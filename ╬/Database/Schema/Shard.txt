@@ -1,0 +1,29 @@
+https://www.mongodb.com/features/database-sharding-explained
+https://www.infoworld.com/article/3623388/the-problem-with-sharding.html
+http://highscalability.com/blog/2010/10/15/troubles-with-sharding-what-can-we-learn-from-the-foursquare.html
+
+- Ranged/dynamic sharding
+- Algorithmic/hashed sharding
+- Entity-/relationship-based sharding
+- Geography-based sharding
+
+Increased read/write throughput - within single shard
+Increased storage capacity
+High availability
+
+Query overhead - Each sharded database must have a separate machine or service which understands how to route a querying operation to the appropriate shard
+Complexity of administration - additional service nodes to maintain
+Increased infrastructure costs - The cost of a distributed database system, especially if it is missing the proper optimization, can be significant
+
+Node Exhaustion
+Shard Exhaustion
+Shard Allocation Imbalance
+Hot Key
+Small Shard Set
+Slow recovery operations
+Cloudbursting - load spike
+Fragmentation - Effective available memory becomes significantly less that total available memory
+
+
+=>	Large-scale cross-shard
+	Hot key converging

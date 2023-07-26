@@ -6,8 +6,10 @@ LEFT:
 	Wallpaper button
 	top F
 	Activation zone: F, Network, []
+	Lounge
 
 RIGHT:
+	Search: auto-focus
 	Launch: Dynamic menu
 	Monolith: meta[world, calibrate, interface], sephiroth, Snow-13
 	Repurpose: √ ≡ ▷
@@ -25,3 +27,6 @@ Button-state: color, relief[flat, sunken]
 
 Activation zone: 50px, left-stack, top
 Sticky combo
+
+[Left]: button-stack
+[Right]: window-stack

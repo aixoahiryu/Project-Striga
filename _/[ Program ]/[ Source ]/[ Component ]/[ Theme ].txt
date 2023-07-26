@@ -1,0 +1,3 @@
+style.theme_use('forest-light')
+
+top.tk.call('source', 'theme/Forest/forest-light.tcl')

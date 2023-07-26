@@ -1,2 +1,7 @@
+RAM disk
 7 Database Paradigms [W2Z7fbCLSTw]
 Recommendation engine
+
+Memgraph 
+MindsDB 
+

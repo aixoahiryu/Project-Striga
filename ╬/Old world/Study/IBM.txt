@@ -1,0 +1,4 @@
+IBM research laboratory
+
+Ted Codd
+Relational database | https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf
