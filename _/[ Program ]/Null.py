@@ -163,7 +163,7 @@ def tooltip_show(x, y):
 	if hidden:
 		if (y<=50 and x==0): (popupmsg.configure(text='Monolith'),popup.geometry('-10+10'),popup.deiconify())
 		elif x>=1: (popupmsg.configure(text='_'),popup.geometry('-10+10'),popup.deiconify())
-		elif y>=468: (popupmsg.configure(text='Launch'),popup.geometry('-10-50'),popup.deiconify())
+		elif y>=468: (popupmsg.configure(text='Launch'),popup.geometry('-10-40'),popup.deiconify())
 		else: (popupmsg.configure(text='Command'),popup.withdraw())
 
 def tooltip_hide():

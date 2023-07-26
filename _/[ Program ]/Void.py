@@ -325,7 +325,7 @@ def tooltip_show(x, y):
 	if hidden:
 		if (y<=50 and x==0): (popupmsg.configure(text='Network'),popup.geometry('+10+10'),popup.deiconify())
 		elif x>=1: (popupmsg.configure(text='F'),popup.geometry('+10+10'),popup.deiconify())
-		elif y>=700: (popupmsg.configure(text='Lounge'),popup.geometry('+10-50'),popup.deiconify())
+		elif y>=700: (popupmsg.configure(text='Lounge'),popup.geometry('+10-40'),popup.deiconify())
 		else: (popupmsg.configure(text='File'),popup.withdraw())
 
 def tooltip_hide():

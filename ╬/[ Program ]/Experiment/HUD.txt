@@ -23,7 +23,7 @@ Reactive sidebar: drawer
 
 
 
-
+Grid:
 OpenCV: 
 Noita: 
 Mouse position:
