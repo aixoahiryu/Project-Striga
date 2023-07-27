@@ -1,0 +1,44 @@
+Knowledge Note				Core Study Network Interface [Docs]
+
+
+Note: 	[Explore] > Vector
+		#Meta > [World]
+		[Tools]
+
+[Core]: Coding Hacking Forensics RE
+	Coding: [Internal], Documentation, Forums
+	Hacking: Harvest, Recon, Protocol, [Internal]
+	Forensics: [Case], Document, Database
+	RE: Decompiler, Disassembler, Resource editor, Debugger, Unpacker
+Study: Scholar, Physical, Politics, Paranormal
+
+
+Interface: ./Interface.txt
+
+
+
+
+
+
+
+
+
+
+
+
+										Board Journal Sticky
+--------------------------------------------------------------
+Mode:
+	IDE
+	Float
+	Flow: canvas, whiteboard drag-frame
+	Embed: subclass
+	
+	Cornell
+	Analysis table
+	Zooming interface: panel | frame
+https://www.craftyourcontent.com/best-methods-for-taking-notes/
+http://blogs.brad.ac.uk/bradford-life/5-note-taking-methods-all-students-should-know/
+--------------------------------------------------------------
+
+Detachable note

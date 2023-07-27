@@ -9,9 +9,7 @@ from natsort import os_sorted
 ZLCORE = os.environ['ZLCORE']
 hidden = False
 
-addicon = False
 darkmode = False
-tooltip = True
 colorbg = "#000000" if darkmode else "#ffffff"
 colorbg2 = "#253B34" if darkmode else "#6effbe"
 colorfg = "#ffffff" if darkmode else "#000000"
@@ -20,23 +18,15 @@ sidebar = Tk()
 sidebar.attributes('-topmost', True)
 sidebar.attributes('-alpha', 0.1)
 sidebar.title('1px')
-sidebar.geometry("1x740-0+0")
+sidebar.geometry("1x270+1365+468")
 sidebar.overrideredirect(1)
 sidebar.configure(bg=colorbg)
-
-sidebarext = Toplevel(sidebar)
-sidebarext.attributes('-topmost', True)
-sidebarext.attributes('-alpha', 0.1)
-sidebarext.title('1ext')
-sidebarext.geometry("100x1-0+0")
-sidebarext.overrideredirect(1)
-sidebarext.configure(bg=colorbg)
 
 #root = Tk()
 root = Toplevel(sidebar)
 root.title('===[ Sidebar: File ]===')
 root.attributes('-topmost', True)
-root.geometry("443x270-1-30")
+root.geometry("443x270+922+468")
 root.overrideredirect(1)
 root.grid_columnconfigure(1, weight=1)
 root.grid_rowconfigure(1, weight=1)
@@ -128,17 +118,6 @@ Button(trayframe, text=' ', relief='flat', background=colorbg, foreground=colorf
 #taskbar.bind("<Button-1>", lambda event: (root.withdraw(), sidebar.geometry("1366x1+0+0"), taskbar.geometry("1366x24+0+1")))
 taskbar.bind("<Button-1>", lambda event: root.withdraw())
 
-popup = Toplevel(sidebar)
-popup.title('Popup')
-popup.geometry("+10+350")
-popup.overrideredirect(1)
-popup.attributes('-alpha', 0.77)
-popup.configure(bg=colorbg)
-popup.attributes('-topmost', True)
-popupmsg = Message(popup, text='[File] Workspace', bg=colorbg, fg=colorfg, font=("Consolas", 8, "normal"), aspect=500)
-popupmsg.grid(sticky='NWES')
-popup.withdraw()
-
 ttk.Style().theme_use('alt')
 
 def toggle_sidebar(*event):
@@ -150,7 +129,6 @@ def toggle_sidebar(*event):
 	else:
 		root.deiconify()
 		taskbar.deiconify()
-		popup.withdraw()
 	hidden = not hidden
 	if overflow_on:
 		overflow.withdraw()
@@ -158,23 +136,11 @@ def toggle_sidebar(*event):
 
 	root.focus_set()
 
-def tooltip_show(x, y):
-	#popup.deiconify() if hidden else print(e)
-	if hidden:
-		if (y<=50 and x==0): (popupmsg.configure(text='Monolith'),popup.geometry('-10+10'),popup.deiconify())
-		elif x>=1: (popupmsg.configure(text='_'),popup.geometry('-10+10'),popup.deiconify())
-		elif y>=468: (popupmsg.configure(text='Launch'),popup.geometry('-10-40'),popup.deiconify())
-		else: (popupmsg.configure(text='Command'),popup.withdraw())
-
-def tooltip_hide():
-	popup.withdraw() if hidden else print('hidden')
-
-#-------------------------------------------------------------------------------
-
 def menu_clear():
 	#os.execv(sys.argv[0], sys.argv)
 	os.execv(sys.executable, ['python'] + sys.argv)
 
+sidebar.bind("<Button-1>", toggle_sidebar)
 top = ''
 
 frame0 = Frame(root, bg=colorbg)
@@ -220,18 +186,6 @@ linkbtn.configure(font="-family {Courier New} -size 20")
 linkbtn.place(relx=0.284, rely=0.369, height=74, width=167)
 linkbtn.bind("<Button-3>", lambda e: subprocess.Popen(["C:\\Program Files\\Notepad++\\notepad++.exe", "-ro", ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\Link.py'], start_new_session=True))
 
-#-------------------------------------------------------------------------------
 
-sidebar.bind("<Button-1>", toggle_sidebar)
-sidebarext.bind("<Button-1>", toggle_sidebar)
-#taskbar.bind("<Enter>", lambda e: root.withdraw())
-
-if tooltip:
-	sidebar.bind("<Enter>", lambda e: tooltip_show(e.x, e.y))
-	sidebar.bind("<Leave>", lambda e: tooltip_hide())
-	sidebar.bind('<Motion>', lambda e: tooltip_show(e.x, e.y))
-	sidebarext.bind("<Enter>", lambda e: tooltip_show(e.x, e.y))
-	sidebarext.bind("<Leave>", lambda e: tooltip_hide())
-	sidebarext.bind('<Motion>', lambda e: tooltip_show(e.x, e.y))
-
+taskbar.bind("<Enter>", lambda e: root.withdraw())
 sidebar.mainloop()

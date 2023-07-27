@@ -1,0 +1,9 @@
+Packet:	Wireshark
+
+Web:	[Proxy]
+		links2 | w3m dump
+		[Scraping]
+
+Media:	youtube-dl | twitch-dl | gallery-dl
+
+Scholar: study, etymology

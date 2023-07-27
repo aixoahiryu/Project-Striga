@@ -19,7 +19,7 @@ hidden = False
 
 addicon = False
 darkmode = True
-tooltip = True
+tooltip = False
 colorbg = "#000000" if darkmode else "#ffffff"
 colorbg2 = "#253B34" if darkmode else "#6effbe"
 colorfg = "#ffffff" if darkmode else "#000000"
@@ -28,17 +28,9 @@ sidebar = Tk()
 sidebar.attributes('-topmost', True)
 sidebar.attributes('-alpha', 0.1)
 sidebar.title('1px')
-sidebar.geometry("1x740+0+0")
+sidebar.geometry("1x690+0+50")
 sidebar.overrideredirect(1)
 sidebar.configure(bg=colorbg)
-
-sidebarext = Toplevel(sidebar)
-sidebarext.attributes('-topmost', True)
-sidebarext.attributes('-alpha', 0.1)
-sidebarext.title('1ext')
-sidebarext.geometry("100x1+1+0")
-sidebarext.overrideredirect(1)
-sidebarext.configure(bg=colorbg)
 
 #root = Tk()
 root = Toplevel(sidebar)
@@ -244,8 +236,10 @@ popup.overrideredirect(1)
 popup.attributes('-alpha', 0.77)
 popup.configure(bg=colorbg)
 popup.attributes('-topmost', True)
-popupmsg = Message(popup, text='[File] Workspace', bg=colorbg, fg=colorfg, font=("Consolas", 8, "normal"), aspect=500)
-popupmsg.grid(sticky='NWES')
+popupmsg='''
+File workspace
+'''
+Message(popup, text=popupmsg, bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal")).grid(row=0, column=0, sticky='NW')
 popup.withdraw()
 
 #root.tk.call("source", r"C:\Users\Administrator\Desktop\tcl\theme\Forest\void.tcl")
@@ -304,14 +298,13 @@ def toggle_sidebar(*event):
 		taskbar.withdraw()
 		titlepanel.withdraw()
 		sidebar.attributes('-alpha', 0.1)
-		#sidebar.geometry("1x690+0+50")
+		sidebar.geometry("1x690+0+50")
 	else:
 		root.deiconify()
 		taskbar.deiconify()
 		titlepanel.deiconify()
 		sidebar.attributes('-alpha', 1.0)
-		#sidebar.geometry("1x740+0+0")
-		popup.withdraw()
+		sidebar.geometry("1x740+0+0")
 		preview_clipboard()
 	hidden = not hidden
 	if overflow_on:
@@ -319,17 +312,6 @@ def toggle_sidebar(*event):
 		overflow_on = False
 
 	root.focus_set()
-
-def tooltip_show(x, y):
-	#popup.deiconify() if hidden else print(e)
-	if hidden:
-		if (y<=50 and x==0): (popupmsg.configure(text='Network'),popup.geometry('+10+10'),popup.deiconify())
-		elif x>=1: (popupmsg.configure(text='F'),popup.geometry('+10+10'),popup.deiconify())
-		elif y>=700: (popupmsg.configure(text='Lounge'),popup.geometry('+10-40'),popup.deiconify())
-		else: (popupmsg.configure(text='File'),popup.withdraw())
-
-def tooltip_hide():
-	popup.withdraw() if hidden else print('hidden')
 
 #-------------------------------------------------------------------------------
 
@@ -513,6 +495,10 @@ def workspace_select():
 		populate_roots(tree)
 
 
+sidebar.bind("<Button-1>", toggle_sidebar)
+root.bind("<Alt-Up>", goBack)
+#root.bind("<FocusOut>", exit)
+
 Button(root, text='≡', command=goHome, bg=colorbg, fg=colorfg).grid(sticky='NSEW', column=0, row=0)
 
 frame1 = Frame(root, bg=colorbg)
@@ -589,16 +575,7 @@ tree.bind("<Button-3>", lambda event: menubar.post(event.x_root, event.y_root))
 
 #-------------------------------------------------------------------------------
 
-sidebar.bind("<Button-1>", toggle_sidebar)
-sidebarext.bind("<Button-1>", toggle_sidebar)
-root.bind("<Alt-Up>", goBack)
-#root.bind("<FocusOut>", exit)
-
 if tooltip:
-	sidebar.bind("<Enter>", lambda e: tooltip_show(e.x, e.y))
-	sidebar.bind("<Leave>", lambda e: tooltip_hide())
-	sidebar.bind('<Motion>', lambda e: tooltip_show(e.x, e.y))
-	sidebarext.bind("<Enter>", lambda e: tooltip_show(e.x, e.y))
-	sidebarext.bind("<Leave>", lambda e: tooltip_hide())
-	sidebarext.bind('<Motion>', lambda e: tooltip_show(e.x, e.y))
+	sidebar.bind("<Enter>", lambda e: popup.deiconify() if hidden else print('hidden'))
+	sidebar.bind("<Leave>", lambda e: popup.withdraw() if hidden else print('hidden'))
 sidebar.mainloop()

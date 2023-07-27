@@ -1,4 +1,8 @@
-Right-bar
+Right-bar:
+	Stack:	panel
+			alphabet
+			button
+			image
 
 custom widget
 	[]   []
@@ -10,3 +14,5 @@ custom widget
 	change [home]
 
 
+Wallpaper engine:
+	mpv focus
