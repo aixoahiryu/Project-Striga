@@ -1,0 +1,1 @@
+ctype https://stackoverflow.com/questions/54404324/how-can-i-embed-an-sdl2-window-in-my-tkinter-gui-application
