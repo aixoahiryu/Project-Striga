@@ -1,3 +1,5 @@
+cd D:\
+
 del ZL-Core.rar
 rd /Q /S ZL-Core
 del C:\cygwin64\home\Administrator\.bash_history

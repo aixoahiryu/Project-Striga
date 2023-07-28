@@ -244,7 +244,7 @@ popup.overrideredirect(1)
 popup.attributes('-alpha', 0.77)
 popup.configure(bg=colorbg)
 popup.attributes('-topmost', True)
-popupmsg = Message(popup, text='[File] Workspace', bg=colorbg, fg=colorfg, font=("Consolas", 8, "normal"), aspect=500)
+popupmsg = Message(popup, text='[File] Workspace', bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal"), aspect=500)
 popupmsg.grid(sticky='NWES')
 popup.withdraw()
 
