@@ -3,6 +3,9 @@ Right-bar:
 			alphabet
 			button
 			image
+	Drawer:	tab
+			file
+			window
 
 custom widget
 	[]   []
@@ -16,3 +19,9 @@ custom widget
 
 Wallpaper engine:
 	mpv focus
+
+
+[ Active ]:	file, image
+	Path
+	Link
+	> F/Airlock

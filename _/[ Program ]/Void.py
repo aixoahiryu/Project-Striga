@@ -541,7 +541,7 @@ Button(frame3_1, text='Scraps', bg=colorbg, fg=colorfg, command=lambda: goPath('
 frame3_2 = Frame(frame3, bg=colorbg)
 frame3_2.grid(sticky='E', row=0, column=1)
 frame3.grid_columnconfigure(1, weight=1)
-combo1 = ttk.Combobox(frame3_2, state="readonly", values=['--------------'], width=1)
+combo1 = ttk.Combobox(frame3_2, state="readonly", values=['--------------'], width=10)
 combo1.grid(sticky='E', row=0, column=0)
 combo1.bind('<Button-3>', lambda e: combo1.configure(state="normal"))
 combo1.bind('<Button-1>', lambda e: workspace_select())

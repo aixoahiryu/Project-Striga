@@ -15,3 +15,8 @@ split: :
 
 
 Preview [lines]
+
+
+Chaos: 	Mathemagic table
+		Probabilistic algorithm
+
