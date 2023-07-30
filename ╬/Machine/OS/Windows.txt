@@ -3,3 +3,4 @@ ShutUp10++
 Windows update blocker
 --------------------------------------------------------------
 
+Kill dwm.exe: https://news.ycombinator.com/item?id=36899029

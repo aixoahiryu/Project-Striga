@@ -1,0 +1,1 @@
+RISC-V fast barrier https://semiengineering.com/implementing-fast-barriers-for-a-shared-memory-cluster-of-1024-risc-v-cores/

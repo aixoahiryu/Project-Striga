@@ -19,9 +19,12 @@ custom widget
 
 Wallpaper engine:
 	mpv focus
+Reactive file name
 
 
 [ Active ]:	file, image
 	Path
 	Link
 	> F/Airlock
+
+Workspace creator
