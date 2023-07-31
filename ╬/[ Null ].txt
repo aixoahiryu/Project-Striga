@@ -17,6 +17,8 @@ Transient: sticky, whiteboard, test, debug
 
 Notepad:
 	?Dial?: Sephiroth, SNOW-13
+			4chan archive[image] https://desuarchive.org/g/search/filename/X.png/ 1660801647264443.png
+			Archive: org today cache freeze via perma
 	Journal | Directory
 		Core
 		Scraps

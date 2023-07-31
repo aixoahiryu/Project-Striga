@@ -12,6 +12,8 @@ data = win32clipboard.GetClipboardData()
 win32clipboard.CloseClipboard()
 os.chdir('C:\\Users\\Administrator\\Desktop')
 
+exit()
+
 data=data.replace('sample_','')
 data2='https://hypnohub.net/index.php?page=post&s=list&tags=md5%3a'
 #data2='https://hypnohub.net/index.php?page=post&s=view&id='
