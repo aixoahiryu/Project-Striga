@@ -1,0 +1,2 @@
+Window decoration: https://vermaden.wordpress.com/2018/06/15/freebsd-desktop-part-4-key-components-window-manager/
+BSD: https://forums.freebsd.org/threads/freebsd-screen-shots.8877/page-70
