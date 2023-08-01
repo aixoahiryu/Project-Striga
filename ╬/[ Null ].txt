@@ -23,3 +23,7 @@ Notepad:
 		Core
 		Scraps
 	Zoom UI
+
+Clipboard:
+	[Browser]
+	Multi-link

@@ -1,0 +1,11 @@
+https://old.reddit.com/r/programming/comments/1k6zg2/why_store_in_disk_when_you_have_%CF%80_%CF%80fs_the/
+https://en.wikipedia.org/wiki/Randomized_algorithm
+https://en.wikipedia.org/wiki/Illegal_number
+https://en.wikipedia.org/wiki/The_Library_of_Babel_(website)
+--------------------------------------------------------------
+
+πfs https://github.com/philipl/pifs
+y-cruncher http://www.numberworld.org/y-cruncher/
+256 element lookup table
+
+Bogosearch algorithm

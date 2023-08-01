@@ -36,7 +36,7 @@ sidebarext = Toplevel(sidebar)
 sidebarext.attributes('-topmost', True)
 sidebarext.attributes('-alpha', 0.1)
 sidebarext.title('1ext')
-sidebarext.geometry("250x1+1+0")
+sidebarext.geometry("100x1+1+0")
 sidebarext.overrideredirect(1)
 sidebarext.configure(bg=colorbg)
 
