@@ -1,3 +1,8 @@
+Reddit | Lemmy
+HN
+OSdev | Metafilter
+--------------------------------------------------------------
+
 Dark mode
 Tiling
 Project Striga
