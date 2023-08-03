@@ -1,0 +1,11 @@
+https://stackoverflow.com/questions/53242923/python-and-tkinter-event-handling-inside-class
+https://stackoverflow.com/questions/39189893/how-to-subclass-list-and-trigger-an-event-whenever-the-data-change
+https://stackoverflow.com/questions/22785949/subclassing-with-tkinter
+winfo_children https://stackoverflow.com/questions/34667710/pattern-matching-tkinter-child-widgets-winfo-children-to-determine-type
+for widget in root.winfo_children():
+    if isinstance(widget, Tkinter.Entry):
+        widget.delete(0, "end")
+
+
+
+Callback: https://stackoverflow.com/questions/55138444/tkinter-passing-callback-function-result-to-another-class

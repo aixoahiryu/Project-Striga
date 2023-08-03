@@ -1,0 +1,13 @@
+2-bar
+
+Rainbow:
+	void: note, sticky
+	red: youtube
+	orange: HN
+	yellow: 
+	green: chan
+	blue: 
+	purple: twitch, discord, telegram
+	null: tab, bookmark
+
+[Alt]: 

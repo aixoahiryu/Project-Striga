@@ -346,10 +346,12 @@ def menu_edit():
 	subprocess.Popen(['C:\Program Files\Sublime Text 3\sublime_text.exe', fullpath], start_new_session=True)
 	#os.startfile(r'C:\Program Files\Sublime Text 3\sublime_text.exe '+fullpath)
 
-def menu_select():
+def menu_select(path=''):
 	node = tree.focus()
 	if tree.parent(node):
 		global fullpath
+		print(path)
+		if path!='': fullpath = path
 		if os.path.isfile(fullpath): fullpath = os.path.split(fullpath)[0]
 		os.chdir(fullpath)
 		tree.delete(tree.get_children(''))
@@ -590,6 +592,7 @@ menubar.add_command(label="Edit", command=menu_edit)
 menubar.add_command(label="Select", command=menu_select)
 menubar.add_separator()
 menubar.add_command(label="Copy path", command=lambda: (root.clipboard_clear(),root.clipboard_append(fullpath),root.update()))
+menubar.add_command(label="Go to path", command=lambda: menu_select(root.clipboard_get()))
 menubar.add_command(label="Terminal", command=menu_terminal)
 menubar.add_command(label="Detach", command=menu_select)
 #menubar.add_command(label="Exit", command=menu_clear)

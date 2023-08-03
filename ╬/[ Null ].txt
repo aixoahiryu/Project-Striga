@@ -27,3 +27,6 @@ Notepad:
 Clipboard:
 	[Browser]
 	Multi-link
+
+
+[Alt]:
