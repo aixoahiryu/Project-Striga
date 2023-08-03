@@ -8,4 +8,6 @@ t1 = Text(frame1, width=40, height=10)
 t1.pack(side="top", fill="both", expand=True)
 Example(frame1).pack(side="top")
 
+frame1.window.transient(test)
+
 test.mainloop()
