@@ -1,55 +1,34 @@
 from tkinter import *
+from Toplevel2 import Toplevel2
 from Frame.Corner import CornerFrame
 from Frame.Mono import MonoFrame
 from Frame.Gradient import GradientFrame
 
-# class Wborder(Frame):
-#     def __init__(self, root, *args, **kwargs):
-#         Frame.__init__(self, root, *args, **kwargs)
-#         self.pack(side="top", fill="both", expand=True, padx=5, pady=5)
-
-# class Wborder(Frame):
-#     def __init__(self, master, msgtxt):
-#         Frame.__init__(self, master)
-#         self.pack(side="top", fill="both", expand=True, padx=5, pady=5)
-        
-#         msg = Label(self, wraplength='4i', justify=LEFT)
-#         msg['text'] = ''.join(msgtxt)
-#         msg.pack(fill=X, padx=5, pady=5)
-
 class Wborder(Frame):
-    def __init__(self, *args, **kwargs):
-        window = Toplevel2()
+    def __init__(self, draggable=True, border='mono', color=7, mode='border', *args, **kwargs):
+        if draggable: self.window = Toplevel2()
+        else: self.window = Toplevel()
+        self.window.overrideredirect(True)
 
-        gradient_frame = GradientFrame(window)
+        if border=='mono': from Frame.Mono import MonoFrame as ColorFrame
+        elif border=='corner': from Frame.Corner import CornerFrame as ColorFrame
+        elif border=='gradient': from Frame.Gradient import GradientFrame as ColorFrame
+        gradient_frame = ColorFrame(self.window, color=color)
         gradient_frame.pack(side="top", fill="both", expand=True)
+
         Frame.__init__(self, gradient_frame, *args, **kwargs)
         self.pack(side="top", fill="both", expand=True, padx=5, pady=5)
 
-class Toplevel2(Toplevel):
-    def __init__(self, *args, **kwargs):
-        Toplevel.__init__(self, *args, **kwargs)
-        self.overrideredirect(True)
+class SampleApp(Tk):
+    def __init__(self):
+        Tk.__init__(self)
+        frame1 = Wborder(border='mono', color=6)
 
-        self.bind("<ButtonPress-1>", self.start_move)
-        self.bind("<ButtonRelease-1>", self.stop_move)
-        self.bind("<B1-Motion>", self.do_move)
-
-    def start_move(self, event):
-        self.x = event.x
-        self.y = event.y
-
-    def stop_move(self, event):
-        self.x = None
-        self.y = None
-
-    def do_move(self, event):
-        deltax = event.x - self.x
-        deltay = event.y - self.y
-        x = self.winfo_x() + deltax
-        y = self.winfo_y() + deltay
-        self.geometry(f"+{x}+{y}")
+        b1 = Button(frame1, text="Close",command=self.destroy)
+        t1 = Text(frame1, width=40, height=10)
+        b1.pack(side="top")
+        t1.pack(side="top", fill="both", expand=True)
 
 if __name__ == "__main__":
-    app=App()
+    app=SampleApp()
     app.mainloop()

@@ -2,10 +2,12 @@ import tkinter as tk
 
 class GradientFrame(tk.Canvas):
     '''A gradient frame which uses a canvas to draw the background'''
-    def __init__(self, parent, borderwidth=1, relief="sunken"):
+    def __init__(self, parent, borderwidth=1, relief="sunken", color=7, color2=''):
         tk.Canvas.__init__(self, parent, borderwidth=borderwidth, relief=relief)
-        self._color1 = "red"
-        self._color2 = "black"
+        self._index = ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'white']
+        self._color['pink'] = ['#ffafbd', '#ffc3a0']
+        self._color1 = self._color['pink'][0]
+        self._color2 = self._color['pink'][1]
         self.bind("<Configure>", self._draw_gradient)
 
     def _draw_gradient(self, event=None):

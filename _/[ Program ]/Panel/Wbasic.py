@@ -1,57 +1,11 @@
 from tkinter import *
-from Control.File import Example
-from Frame.Corner import CornerFrame
 
-class SampleApp(Tk):
-	def __init__(self):
-		Tk.__init__(self)
-		self.wm_overrideredirect(True)
-		gradient_frame = CornerFrame(self)
-		gradient_frame.pack(side="top", fill="both", expand=True)
-		inner_frame = Frame(gradient_frame)
-		inner_frame.pack(side="top", fill="both", expand=True, padx=5, pady=5)
-
-		b1 = Button(inner_frame, text="Ω",command=self.destroy)
-		t1 = Text(inner_frame, width=40, height=10)
-		b1.pack(side="top")
-		t1.pack(side="top", fill="both", expand=True)
-		Example(inner_frame).pack(side="top")
-
-class App(Tk):
-    def __init__(self):
-        Tk.__init__(self)
-        self.floater = FloatingWindow(self)
-
-class FloatingWindow(Toplevel):
-    def __init__(self, *args, **kwargs):
-        Toplevel.__init__(self, *args, **kwargs)
-        self.overrideredirect(True)
-
-        self.label = Label(self, text="Click on the grip to move")
-        self.grip = Label(self, bitmap="gray25")
-        self.grip.pack(side="left", fill="y")
-        self.label.pack(side="right", fill="both", expand=True)
-
-        self.grip.bind("<ButtonPress-1>", self.start_move)
-        self.grip.bind("<ButtonRelease-1>", self.stop_move)
-        self.grip.bind("<B1-Motion>", self.do_move)
-
-    def start_move(self, event):
-        self.x = event.x
-        self.y = event.y
-
-    def stop_move(self, event):
-        self.x = None
-        self.y = None
-
-    def do_move(self, event):
-        deltax = event.x - self.x
-        deltay = event.y - self.y
-        x = self.winfo_x() + deltax
-        y = self.winfo_y() + deltay
-        self.geometry(f"+{x}+{y}")
-
-if __name__ == "__main__":
-	app=App()
-	#app = SampleApp()
-	app.mainloop()
+class Decoration(Frame):
+    def __init__(self, master, title='Title'):
+        Frame.__init__(self, master)
+        self.pack(side=TOP, fill=X)
+        
+        msg = Label(self, wraplength='4i', justify=LEFT)
+        msg['text'] = ''.join(msgtxt)
+        msg.pack(fill=X, padx=5, pady=5)
+        btnclose = Button(text='Ω', command=self.winfo_toplevel().destroy)

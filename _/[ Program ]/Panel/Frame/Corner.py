@@ -1,10 +1,10 @@
 from tkinter import *
 
 class CornerFrame(Canvas):
-	def __init__(self, parent, borderwidth=1, relief="flat", darkmode=True, corner=10, cornerwidth=7):
+	def __init__(self, parent, borderwidth=1, relief="flat", color=7, corner=10, cornerwidth=7):
 		Canvas.__init__(self, parent, borderwidth=borderwidth, relief=relief)
-		self._color1 = "white" if darkmode else "black"
-		self._color2 = "black" if darkmode else "white"
+		self._color = ['black', '#FF0C12', '#FDAE32', '#FDFB00', '#5CFF00', '#00CFFB', '#8F00F2', 'white']
+		self._color1 = self._color[color]
 		self._corner = corner
 		self._width = cornerwidth
 		self.bind("<Configure>", self._draw_corner)

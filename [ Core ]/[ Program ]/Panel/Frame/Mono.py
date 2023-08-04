@@ -2,10 +2,11 @@ from tkinter import *
 
 class MonoFrame(Canvas):
 	'''A gradient frame which uses a canvas to draw the background'''
-	def __init__(self, parent, borderwidth=1, relief="flat"):
+	def __init__(self, parent, borderwidth=1, relief="flat", color=7):
 		Canvas.__init__(self, parent, borderwidth=borderwidth, relief=relief)
-		self._color1 = "white"
-		self._color2 = "white"
+		self._color = ['black', '#FF0C12', '#FDAE32', '#FDFB00', '#5CFF00', '#00CFFB', '#8F00F2', 'white']
+		self._color1 = self._color[color]
+		self._color2 = self._color[color]
 		self.bind("<Configure>", self._draw_gradient)
 
 	def _draw_gradient(self, event=None):
