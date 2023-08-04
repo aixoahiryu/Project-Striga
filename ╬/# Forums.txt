@@ -1,6 +1,8 @@
 Legacy: /lwt/ /g/95060897 crustywindo.ws
 AI: /aicg/
 Cyber: /g/94654978 https://wiki.installgentoo.com/wiki//cyb/_%2B_/sec/_general:_Cybersecurity_%26_Cyberpunk
+
+Artix: https://forum.artixlinux.org/index.php
 --------------------------------------------------------------
 
 Desktop https://boards.4channel.org/g/thread/95107980#p95143675
