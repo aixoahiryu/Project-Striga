@@ -5,7 +5,7 @@ from Frame.Mono import MonoFrame
 from Frame.Gradient import GradientFrame
 
 class Wborder(Frame):
-    def __init__(self, draggable=True, border='mono', color=7, mode='border', *args, **kwargs):
+    def __init__(self, draggable=True, border='mono', color=7, mode='border', style='even', *args, **kwargs):
         if draggable: self.window = Toplevel2()
         else: self.window = Toplevel()
         self.window.overrideredirect(True)
@@ -22,7 +22,7 @@ class Wborder(Frame):
 class SampleApp(Tk):
     def __init__(self):
         Tk.__init__(self)
-        frame1 = Wborder(border='mono', color=6)
+        frame1 = Wborder(border='gradient', color=4)
 
         b1 = Button(frame1, text="Close",command=self.destroy)
         t1 = Text(frame1, width=40, height=10)
