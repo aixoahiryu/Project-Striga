@@ -9,7 +9,7 @@ class Wborder(Frame):
         self.window = Toplevel2()
         self.window.overrideredirect(True)
 
-        gradient_frame = CornerFrame(self.window)
+        gradient_frame = MonoFrame(self.window)
         gradient_frame.pack(side="top", fill="both", expand=True)
         Frame.__init__(self, gradient_frame, *args, **kwargs)
         self.pack(side="top", fill="both", expand=True, padx=5, pady=5)
