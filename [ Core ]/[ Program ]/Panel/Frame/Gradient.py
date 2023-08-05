@@ -2,12 +2,22 @@ import tkinter as tk
 
 class GradientFrame(tk.Canvas):
     '''A gradient frame which uses a canvas to draw the background'''
-    def __init__(self, parent, borderwidth=1, relief="sunken", color=7, color2=''):
+    def __init__(self, parent, borderwidth=1, relief="sunken", color=4, color2=''):
         tk.Canvas.__init__(self, parent, borderwidth=borderwidth, relief=relief)
         self._index = ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'white']
-        self._color['pink'] = ['#ffafbd', '#ffc3a0']
-        self._color1 = self._color['pink'][0]
-        self._color2 = self._color['pink'][1]
+        index = self._index[color]
+        self._color = {'pink': ['#ffafbd', '#ffc3a0']}
+        self._color['red'] = ['#ff512f', '#dd2476']
+        self._color['orange'] = ['#eb3349', '#f45c43']
+        self._color['yellow'] = ['#ff5f6d', '#ffc371']
+        self._color['green'] = ['#56ab2f', '#a8e063']
+        self._color['blue'] = ['#2193b0', '#6dd5ed']
+        self._color['purple'] = ['#cc2b5e', '#753a88']
+        self._color['black'] = ['#141e30', '#243b55']
+        self._color['white'] = ['#bdc3c7', '#2c3e50']
+        if color2 != '': index = color2
+        self._color1 = self._color[index][0]
+        self._color2 = self._color[index][1]
         self.bind("<Configure>", self._draw_gradient)
 
     def _draw_gradient(self, event=None):

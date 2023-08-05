@@ -289,6 +289,7 @@ def preview_file():
 			file.close()
 			filecontent = filecontent.split("\n")
 			for i in filecontent[:30]:
+				i = i.replace("\t", "  ")
 				msg2_3 = msg2_3+r'| '+i[:55]+'\n'
 			if len(filecontent)<30:
 				for i in range(0, (30-len(filecontent))): msg2_3 = msg2_3+r'| '+'\n'
