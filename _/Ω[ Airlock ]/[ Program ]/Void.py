@@ -10,7 +10,7 @@ from natsort import os_sorted
 
 
 ZLCORE = os.environ['ZLCORE']
-home = r'D:\Scraps\╬'
+home = r'D:\MEGA\ZL-Core\Commit\╬'
 os.chdir(home)
 
 cwd = os.getcwd()
@@ -289,6 +289,7 @@ def preview_file():
 			file.close()
 			filecontent = filecontent.split("\n")
 			for i in filecontent[:30]:
+				i = i.replace("\t", "  ")
 				msg2_3 = msg2_3+r'| '+i[:55]+'\n'
 			if len(filecontent)<30:
 				for i in range(0, (30-len(filecontent))): msg2_3 = msg2_3+r'| '+'\n'
@@ -543,7 +544,7 @@ frame3_1.grid(sticky='W', row=0, column=0)
 Button(frame3_1, text='C', bg=colorbg, fg=colorfg, command=lambda: goPath('C:\\')).grid(sticky='W', row=0, column=0)
 Button(frame3_1, text='D', bg=colorbg, fg=colorfg, command=lambda: goPath('D:\\')).grid(sticky='W', row=0, column=1)
 Label(frame3_1, text='|', bg=colorbg, fg=colorfg).grid(sticky='W', row=0, column=2)
-Button(frame3_1, text='╬', bg=colorbg, fg=colorfg, command=lambda: goPath(r'D:\Scraps\╬')).grid(sticky='W', row=0, column=3)
+Button(frame3_1, text='╬', bg=colorbg, fg=colorfg, command=lambda: goPath(r'D:\MEGA\ZL-Core\Commit\╬')).grid(sticky='W', row=0, column=3)
 Button(frame3_1, text='_', bg=colorbg, fg=colorfg, command=lambda: goPath('D:\\_')).grid(sticky='W', row=0, column=4)
 Button(frame3_1, text='Data', bg=colorbg, fg=colorfg, command=lambda: goPath('D:\\Data')).grid(sticky='W', row=0, column=5)
 Button(frame3_1, text='Core', bg=colorbg, fg=colorfg, command=lambda: goPath('D:\\ZL-Core')).grid(sticky='W', row=0, column=6)
