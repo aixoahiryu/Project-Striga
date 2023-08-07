@@ -2,3 +2,4 @@
 %ZLCORE%\Toolbar\_\√ Experiment\[ Project ]
 
 D:\Temp\countershill
+C:\Users\Administrator\AppData\Local\Programs\Python\Python38\Lib
