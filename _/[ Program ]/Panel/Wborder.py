@@ -2,7 +2,7 @@ from tkinter import *
 from Toplevel2 import Toplevel2
 
 class Wborder(Frame):
-    def __init__(self, draggable=True, border='mono', color=7, color2='', mode='border', style='even', title='Title', *args, **kwargs):
+    def __init__(self, draggable=True, border='mono', color=7, color2='', mode='basic', style='even', title='Title', *args, **kwargs):
         if draggable: self.window = Toplevel2()
         else: self.window = Toplevel()
         self.window.overrideredirect(True)
@@ -25,7 +25,7 @@ class Wborder(Frame):
 class SampleApp(Tk):
     def __init__(self):
         Tk.__init__(self)
-        frame1 = Wborder(color2='green', mode='basic', title='Sample app')
+        frame1 = Wborder(color2='green', mode='basic', border='mono', title='Sample app')
 
         b1 = Button(frame1, text="Close",command=self.destroy)
         t1 = Text(frame1, width=40, height=10)

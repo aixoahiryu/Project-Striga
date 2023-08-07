@@ -2,7 +2,7 @@ from tkinter import *
 from Toplevel2 import Toplevel2
 
 class Wborder(Frame):
-    def __init__(self, draggable=True, border='mono', color=7, color2='', mode='border', style='even', *args, **kwargs):
+    def __init__(self, draggable=True, border='mono', color=7, color2='', mode='basic', style='even', title='Title', *args, **kwargs):
         if draggable: self.window = Toplevel2()
         else: self.window = Toplevel()
         self.window.overrideredirect(True)
@@ -13,13 +13,19 @@ class Wborder(Frame):
         gradient_frame = ColorFrame(self.window, color=color, color2=color2)
         gradient_frame.pack(side="top", fill="both", expand=True)
 
-        Frame.__init__(self, gradient_frame, *args, **kwargs)
+        if mode=='basic': from Wbasic import Decoration as ControlFrame
+        if mode!='border':
+            control_frame = ControlFrame(gradient_frame, color=color, color2=color2, title=title)
+            control_frame.pack(side="top", fill="both", expand=True, padx=5, pady=5)
+
+        if mode=='border': Frame.__init__(self, gradient_frame, *args, **kwargs)
+        else: Frame.__init__(self, control_frame, *args, **kwargs)
         self.pack(side="top", fill="both", expand=True, padx=5, pady=5)
 
 class SampleApp(Tk):
     def __init__(self):
         Tk.__init__(self)
-        frame1 = Wborder(border='mono', color=7, color2='green')
+        frame1 = Wborder(color2='green', mode='basic', border='mono', title='Sample app')
 
         b1 = Button(frame1, text="Close",command=self.destroy)
         t1 = Text(frame1, width=40, height=10)
