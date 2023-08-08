@@ -1,0 +1,19 @@
+Red Team Field Manual (RTFM)
+Hacking: The Art of Exploitation
+Advanced Penetration Testing
+--------------------------------------------------------------
+
+Black Hat Python
+Web Scraping with Python
+
+Hacklog
+
+
+H
+├── (OSINT) Open Source Intelligence.epub
+├── Advanced Penetration Testing.epub
+├── Hacking The Art of Exploitation.pdf
+├── Hacklog Volume 1.pdf
+├── Hacklog Volume 2.pdf
+├── Rtfm.pdf
+└── The Cyber Intelligence Analyst’s Cookbook.pdf

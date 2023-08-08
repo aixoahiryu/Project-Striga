@@ -1,0 +1,7 @@
+py
+├── Automate the Boring Stuff with Python.pdf
+├── Black Hat Python 2e.pdf
+├── Black Hat Python.pdf
+├── Python Tricks.pdf
+├── Violent Python.pdf
+└── Web Scraping with Python.pdf

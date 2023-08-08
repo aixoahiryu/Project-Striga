@@ -7,7 +7,7 @@ Game | Text
 VN | Comic
 
 Animation
-Artist
+Artist | User | Profile[compilation, diy, gooner]
 Art | Story
 [ Group ]
 
