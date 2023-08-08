@@ -1,6 +1,0 @@
-import webbrowser
-
-def callback(url):
-   webbrowser.open_new_tab(url)
-
-link.bind("<Button-1>", lambda e: callback("http://"))

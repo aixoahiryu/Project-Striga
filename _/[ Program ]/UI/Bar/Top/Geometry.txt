@@ -1,3 +1,0 @@
-1: sidebar.geometry("444x1+0+0") root.geometry("444x740+0+1")
-2: sidebar.geometry("475x1+444+0") root.geometry("475x740+444+1")
-3: sidebar.geometry("444x1+922+0") root.geometry("444x740+922+1")

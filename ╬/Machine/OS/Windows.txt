@@ -1,4 +1,5 @@
 # https://old.reddit.com/r/pcgaming/comments/sy1gb2/psa_shutup10_lets_you_control_every_single/
+  PChunter
 ShutUp10++
 Windows update blocker
 --------------------------------------------------------------

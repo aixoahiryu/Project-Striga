@@ -1,8 +1,0 @@
-https://github.com/topics/research
-
-
-===[ Tech ]===
-piFS: https://github.com/philipl/pifs
-Bitglitter: https://github.com/MarkMichon1/BitGlitter
-Chaos: https://libraryofbabel.info/
-URL: https://github.com/willcipriano/Podje.li
