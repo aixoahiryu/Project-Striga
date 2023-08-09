@@ -1,0 +1,13 @@
+===[ File ]===
+Home						D:\ZL-Core\Config\ZLext\home\index.html
+
+===[ Utility ]===
+Keyword:
+	Anon: .\-Utility\Keyword\anon.txt
+	Hacking: .\-Utility\Keyword\hacking.txt
+
+D:\MEGA\ZL-Core\Toolbar\F\[ Encrypt ]\[ Active ].txt
+==============================================================
+
+#6effbe
+%ZLCORE%\Toolbar\_\[ Program ]\[ Source ]\ico\neon\folder.ico

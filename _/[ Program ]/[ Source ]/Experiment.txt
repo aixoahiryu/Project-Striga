@@ -1,0 +1,41 @@
+===[ Core ]===
+# Interlink:	Backup
+				Meta
+[Data]:		Darknet
+			Entertainment
+Search: 	[Paste]: pastebin, rentry
+			[Dork]
+			[File]: social, host
+			scholar, chat
+
+===[ Project ]===
+JS drag-drop:	Furry
+				Sidebar
+				Browser > Links2
+Notepad++ auto-backup > [Scraps]
+AHK 	bookmark menu | Sidebar[left]
+		file menu | Bar[Bottom]
+		context HUD, button
+		Bubblegum + Tagspaces
+Sticky
+Window
+Tree
+Workspace:	- Sticky
+			Note
+			File
+			Image
+Flow:		Notepad++
+Launch:		Reminder[ link color ]
+			Studio
+--------------------------------------------------------------
+
+
+py 	md5
+	recursive
+tkinter studio
+
+arxiv
+
+
+Trim: [Embed]
+Shorten: youtube, archive

@@ -1,0 +1,2 @@
+https://stackoverflow.com/questions/65429281/how-to-add-only-a-bottom-border-to-input-fields-in-tkinter
+highlightbackground=self._color1, highlightthickness=1

@@ -1,0 +1,8 @@
+C|C:\
+D|D:\
+---
+╬|D:\MEGA\ZL-Core\Commit\╬
+_|D:\_
+Scraps|D:\Scraps
+Data|D:\Data
+Core|D:\ZL-Core

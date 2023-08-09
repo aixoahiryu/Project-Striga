@@ -1,0 +1,2 @@
+https://pythondev.readthedocs.io/platforms.html
+https://en.wikibooks.org/wiki/SDL_(Simple_DirectMedia_Layer)/Preface/What_is_SDL#:~:text=SDL%20supports%20Linux%2C%20Windows%2C%20Windows,these%20are%20not%20officially%20supported.
