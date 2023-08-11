@@ -1,0 +1,2 @@
+https://stackoverflow.com/questions/14267900/drag-and-drop-explorer-files-to-tkinter-entry-widget
+https://github.com/Eliav2/tkinterdnd2/tree/master/demos
