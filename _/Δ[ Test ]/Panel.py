@@ -1,7 +1,7 @@
 from tkinter import *
 from Zeta.Panel.Window import Panel
 
-x1 = Panel(mode='border')
+x1 = Panel()
 
 b1 = Button(x1, text="Close",command=x1.window.destroy)
 t1 = Text(x1, width=40, height=10)

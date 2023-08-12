@@ -15,3 +15,17 @@ class Neon():
 		if color2 != '':
 			self.hex = self._name1[color2][0]
 			self.hue = self._name1[color2][1]
+
+class Smoke():
+	def __init__(self):
+		self.background = '#D4D4D4'
+		self.foregroundb = '#474747'
+		self.foregroundw = '#d8d8d8'
+
+class Nier():
+	def __init__(self):
+		self.background = '#CCC8AF'
+		self.foreground = '#555753'
+		self.tint = '#B4AF9B'
+		self.orange = '#B55B47'
+		self.blue = '#3C9794'

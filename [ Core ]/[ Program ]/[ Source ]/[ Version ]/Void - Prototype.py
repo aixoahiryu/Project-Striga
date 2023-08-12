@@ -1,5 +1,3 @@
-import Zeta
-
 import time
 import os
 import glob
@@ -518,7 +516,7 @@ def workspace_select():
 	filecontent = filecontent.split("\n")
 	combo1['values'] = filecontent
 
-	#combo1.configure(width=len(combo1.get())+1)
+	combo1.configure(width=len(combo1.get())+1)
 	fullpath = ZLCORE+'\\Toolbar\\F\\[ Workspace ]\\[ Sidebar ]\\'+combo1.get()
 	if os.path.isdir(fullpath):
 		os.chdir(fullpath)
@@ -588,15 +586,15 @@ tree.bind('<ButtonRelease-1>', selectItem)
 menubar = Menu(root, tearoff=0)
 menubar.add_command(label="New", command=open_popup)
 menubar.add_separator()
-menubar.add_command(label="Open", command=lambda: (toggle_sidebar(), Zeta.OS.open(fullpath)))
+menubar.add_command(label="Open", command=menu_open)
 #subedit = Menu(menubar, tearoff=0)
 #menubar.add_cascade(label="Edit", menu=subedit, command=menu_edit)
-menubar.add_command(label="Edit", command=lambda: (toggle_sidebar(), Zeta.OS.edit(fullpath)))
+menubar.add_command(label="Edit", command=menu_edit)
 menubar.add_command(label="Select", command=menu_select)
 menubar.add_separator()
 menubar.add_command(label="Copy path", command=lambda: (root.clipboard_clear(),root.clipboard_append(fullpath),root.update()))
 menubar.add_command(label="Go to path", command=lambda: menu_select(root.clipboard_get()))
-menubar.add_command(label="Terminal", command=lambda: (toggle_sidebar(), Zeta.OS.terminal(fullpath)))
+menubar.add_command(label="Terminal", command=menu_terminal)
 menubar.add_command(label="Detach", command=menu_select)
 #menubar.add_command(label="Exit", command=menu_clear)
 #menubar.add_command(label="Exit", command=root.quit)
