@@ -1,0 +1,4 @@
+https://stackoverflow.com/questions/1854/how-to-identify-which-os-python-is-running-on/58071295#58071295
+https://docs.python.org/3/library/platform.html
+https://docs.python.org/3/library/os.html
+https://docs.python.org/3/library/sys.html

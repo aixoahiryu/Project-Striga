@@ -1,6 +1,10 @@
 import os
 import subprocess
-import sys
+import platform
+
+windows = True if platform.system() == 'Windows' else False
+linux = True if platform.system() == 'Linux' else False
+mac = True if platform.system() == 'Darwin' else False
 
 def open(fullpath):
 	if os.path.isfile(fullpath): path = os.path.split(fullpath)[0]
@@ -13,4 +17,5 @@ def edit(fullpath):
 def terminal(fullpath):
 	if os.path.isfile(fullpath): path = os.path.split(fullpath)[0]
 	else: path = fullpath
-	subprocess.Popen(r'cmd /k cd /d '+path)
+	
+	if windows: subprocess.Popen(r'cmd /k cd /d '+path)

@@ -3,6 +3,7 @@ AI: /aicg/
 Cyber: /g/94654978 https://wiki.installgentoo.com/wiki//cyb/_%2B_/sec/_general:_Cybersecurity_%26_Cyberpunk
 Privacy: /psg/
 
+K-meleon: http://kmeleonbrowser.org/
 Artix: https://forum.artixlinux.org/index.php
 FreeBSD: https://forums.freebsd.org/categories/desktop-usage.29/
 --------------------------------------------------------------

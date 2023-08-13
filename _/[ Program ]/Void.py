@@ -287,7 +287,7 @@ def preview_file():
 		if os.path.isfile(fullpath):
 			msg2_3 = msg2_2+'\n\n'+r'┌─[File]─[ %s ]' % fullpath[-44:] +'\n'
 			file = open(fullpath, mode='r', encoding='utf-8')
-			filecontent = file.read(666)
+			filecontent = file.read(7777)
 			file.close()
 			filecontent = filecontent.split("\n")
 			for i in filecontent[:30]:
