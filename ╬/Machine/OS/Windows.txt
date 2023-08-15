@@ -2,6 +2,11 @@
   PChunter
 ShutUp10++
 Windows update blocker
+Undocumented Windows API
 --------------------------------------------------------------
 
+StagingTool: https://www.osnews.com/story/136583/microsoft-leaked-its-internal-tool-that-enables-secret-windows-11-features/
+ViVe: https://github.com/thebookisclosed/ViVe
+
 Kill dwm.exe: https://news.ycombinator.com/item?id=36899029
+16-bit: https://fabulous.systems/posts/2022/12/16-bit-support-in-64-bit-windows/

@@ -1,5 +1,3 @@
-from tkinter import *
-
 class Neon():
 	def __init__(self, color=7, color2=''):
 		self._color = ['#000000', '#FF0C12', '#FDAE32', '#FDFB00', '#5CFF00', '#00CFFB', '#8F00F2', '#ffffff']
@@ -10,11 +8,26 @@ class Neon():
 		self._name1['green'] = ['#6effbe', '#253B34']
 		self._name1['blue'] = ['#00FFFF', '#014040']
 		self._name1['purple'] = ['#bc13fe', '#2a0538']
-
 		self.hex = self._color[color]
 		if color2 != '':
 			self.hex = self._name1[color2][0]
 			self.hue = self._name1[color2][1]
+
+class Gradient():
+	def __init__(self, color=7, color2=''):
+		self._index = ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'white']
+		index = self._index[color]
+		self._color = {'pink': ['#ffafbd', '#ffc3a0']}
+		self._color['red'] = ['#ff512f', '#dd2476']
+		self._color['orange'] = ['#eb3349', '#f45c43']
+		self._color['yellow'] = ['#ff5f6d', '#ffc371']
+		self._color['green'] = ['#56ab2f', '#a8e063']
+		self._color['blue'] = ['#2193b0', '#6dd5ed']
+		self._color['purple'] = ['#cc2b5e', '#753a88']
+		self._color['black'] = ['#141e30', '#243b55']
+		self._color['white'] = ['#bdc3c7', '#2c3e50']
+		if color2 != '': index = color2
+		self.array = self._color[index]
 
 class Smoke():
 	def __init__(self):

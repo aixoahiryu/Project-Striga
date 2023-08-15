@@ -1,0 +1,5 @@
+Internal:
+
+External:
+	Vulnerability scanner
+	Framework: metasploit

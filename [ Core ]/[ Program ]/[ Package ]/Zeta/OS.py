@@ -2,9 +2,9 @@ import os
 import subprocess
 import platform
 
-windows = True if platform.system() == 'Windows' else False
-linux = True if platform.system() == 'Linux' else False
-mac = True if platform.system() == 'Darwin' else False
+Windows = True if platform.system() == 'Windows' else False
+Linux = True if platform.system() == 'Linux' else False
+Mac = True if platform.system() == 'Darwin' else False
 
 def open(fullpath):
 	if os.path.isfile(fullpath): path = os.path.split(fullpath)[0]
