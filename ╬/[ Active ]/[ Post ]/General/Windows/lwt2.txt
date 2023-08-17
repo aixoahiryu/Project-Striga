@@ -1,0 +1,8 @@
+Feel free to share any tips and tricks here on using Windows past its EoL date, such as alternative browsers and ways to bypass software artificially blocking legacy Windows systems.
+Post your projects, devices, and setups.
+>Methods to hack software to male them run properly
+>Last versions of software/drivers known working on legacy Windows
+>Custom forks/builds of software that don't support legacy Windows systems anymore
+
+Remember, Windows 10 and 11 are user hostile operating systems. 
+

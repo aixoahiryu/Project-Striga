@@ -2,6 +2,12 @@ https://m.twitch.tv/juno_fox/videos?filter=archives
 https://m.twitch.tv/keatfox?lang=en
 https://m.twitch.tv/mosfet_en/videos
 https://m.twitch.tv/mr_bubblez/videos
+https://m.twitch.tv/meepskitten/videos
+https://m.twitch.tv/dragondirgel
+
+https://m.twitch.tv/duhey_the_fennec/videos?filter=archives
+https://m.twitch.tv/shads_fluff/videos?filter=archives
+https://m.twitch.tv/corey_coyote/videos?filter=archives
 
 
 
@@ -11,15 +17,11 @@ https://m.twitch.tv/mr_bubblez/videos
 
 
 
-
-
-
-
-
-
-
-
-
+https://m.twitch.tv/demonottergames/videos?filter=archives
+https://m.twitch.tv/fusano/videos?filter=archives
+https://m.twitch.tv/derykey/videos
+https://m.twitch.tv/argoswerewolf/videos
+https://m.twitch.tv/dutchwolffe/videos?filter=archives
 
 https://www.furaffinity.net/gallery/chevronthewolf/folder/1124064/Placeholder-Club/
 https://m.twitch.tv/heyafinchy

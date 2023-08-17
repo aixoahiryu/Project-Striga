@@ -9,3 +9,8 @@ System Call interface:
 				https://j00ru.vexillium.org/2011/11/refreshed-windows-system-call-table-released/
 				https://www.cs.uaf.edu/2008/fall/cs301/lecture/12_03_operating_system.html
 	Interupt:	Software | Hardware
+
+--------------------------------------------------------------
+
+Microkernel
+Exokernel

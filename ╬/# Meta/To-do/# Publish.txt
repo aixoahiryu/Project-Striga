@@ -4,5 +4,6 @@ OSdev | Metafilter
 --------------------------------------------------------------
 
 Dark mode
+Extension
 Tiling
 Project Striga

@@ -18,4 +18,4 @@ def terminal(fullpath):
 	if os.path.isfile(fullpath): path = os.path.split(fullpath)[0]
 	else: path = fullpath
 	
-	if windows: subprocess.Popen(r'cmd /k cd /d '+path)
+	if Windows: subprocess.Popen(r'cmd /k cd /d '+path)

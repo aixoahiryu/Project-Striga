@@ -1,0 +1,121 @@
+/lwt/ Legacy Windows Thread Thread paste no.1 - will be tweaked accordingly with new info and tools
+
+Remmber to post the thread number, usually found in the first few posts of the previous thread.
+
+OP:
+Feel free to share any tips and tricks here on using Windows past its EoL date, such as alternative browsers and ways to bypass software artificially blocking legacy Windows systems.
+Post your projects, devices, and setups.
+
+Remember, Windows 10 and 11 are user hostile operating systems. 
+
+(credits to pirate anon for the info below)
+
+Installing Windows 7 from scratch:
+1. Grab the latest Simplix updatepack torrent here: magnet:?xt=urn:btih:220BC5F3B03D831115DF2958885EDC165E45043A
+2. Grab yer Win7 ISO of your choice from: https://massgrave.dev/windows_7_links.html
+3. Drag yer Windows7.ISO onto the Simplix.exe file. It will integrate all updates, including NVME, and USB3 drivers into it. Learn some pirate tunes, it'll take a while.
+4. Prepare a USB Flash Disquette with Ventoy and copy the patched .ISO file to it. Rufus also works 
+5. Boot & install! Talk like a pirate while yer' doin' it! ARRRR!!!
+6. Grab this script from Github: https://github.com/Strappazzon/teleme7ry
+7. Run the script to remove telemetry from yer installation
+7. YES! 7! AGAIN! Install Simplewall from https://www.henrypp.org/product/simplewall for security!
+7! AHHAHAHAAAHAHAAA SEVEN!!! Tweak to your heart's desire!
+
+Activation-related scripts:
+https://github.com/fzlzjerry/BypassESU-v11/blob/main/Wim-Integration.cmd
+https://github.com/Alex313031/Snippets/tree/main/WIN7
+https://github.com/gatoslu/KMS-VL-ALL-CMD
+https://github.com/Alex313031/Snippets/raw/main/Windows_Loader_v2.2.2.zip
+https://github.com/Dir3ctr1x/EzWindSLIC
+* My personal way of doing it is Windows 7 Professional SP1 with KMS-VL-ALL
+
+Wufuc:
+Disables the "Unsupported Hardware" message in Windows Update, and allows you to continue installing updates on Windows 7 and 8.1 systems with Intel Kaby Lake, AMD Ryzen, or other unsupported processors.
+Inactive project, though it still works fine.
+https://github.com/chipsi007/wufuc - Use for info, download from https://www.majorgeeks.com/files/details/wufuc.html
+* github download link is down, use the majorgeeks link
+
+*Wufuc has had some mentions of being a bit unreliable, you can try out P-lider as an alternative: 
+https://github.com/p-lider/WuaCpuFix
+
+VKD3Don7: being a fork of vkd3d-proton, aims to provide support for the Windows® 7 operating system.
+https://github.com/Mantamaehne/VKD3Don7
+* experimental software
+
+WinAPICoreHack:
+Allows you to use modern software otherwise blocked on w7 such as blender and stable diffusion, fixes a lot of games which won't launch.
+https://github.com/nalexandru/api-ms-win-core-path-HACK
+
+Windows 7 API Extensions:
+https://github.com/vxiiduu/VxKex
+* experimental software
+
+Patches:
+https://hackandpwn.com/windows-7-esu-patching/
+https://github.com/HackAndPwn/Windows-7-Patching
+Once these updates are installed on top of an up-to-date Windows 7 SP1 installation, the OS has been completely updated with hotfixes and optional features. All of these updates can be found on this GitHub repository: Windows 7 Patching.
+
+Windows 7 theme for Linux users on KDE Plasma:
+https://gitgud.io/wackyideas/aerothemeplasma
+
+Latest working official Firefox (117.x) :
+>[Localized] * https://ftp.mozilla.org/pub/firefox/nightly/2023/07/2023-07-14-09-41-20-mozilla-central-l10n/
+>[English] * https://ftp.mozilla.org/pub/firefox/nightly/2023/07/2023-07-14-09-41-20-mozilla-central/
+* Only download the "...win32.zip" or "...win64.zip" releases for 32- and 64-Bit respectively, the installer blocks older operating systems.
+
+Latest working official Chromium (109.x) :
+>[Ungoogled] * https://github.com/macchrome/winchrome/releases/tag/v109.5414.120-M109.0.5414.120-r1070088-Win64
+>[Regular] * https://github.com/Hibbiki/chromium-win64/releases/tag/v109.0.5414.120-r1070088
+* Releases are 64-Bit only.
+
+
+===[ Windows Vista ]===
+Windows Vista Enterprise SP2 x64:
+https://archive.org/details/WinVistaEnterpriseSP2x64
+Process of activation:
+1. type cscript slmgr.vbs -skms kms.cangshui.net in an elevated command prompt
+2. type cscript slmgr.vbs -upk
+3. type cscript slmgr.vbs -ipk VKK3X-68KWM-X2YGT-QR4M6-4BWMV
+4. type cscript slmgr.vbs -ato
+
+DONE! Your Vista is activated
+
+Windows Vista Ultimate x64 ISO
+---THIS ISO IS AN UPGRADE EDITION FOR WINDOWS XP---
+https://archive.org/details/win-vista-ultimate-x64
+
+
+===[ Windows XP ]===
+Instal iso for build 3301:
+https://archive.org/details/windows-xp-build-3301
+Product key(Needs testing): 3D2W3-8DJM6-YKQRB-B2XDB-TVQHF
+
+Various SP install iso's, product keys found in description:
+https://archive.org/details/windows-xp-all-sp-msdn-iso-files-en-de-ru-tr-x86-x64
+
+download XP+SATA driver.
+https://archive.org/details/en_windows_xp_professional_sp3_nov_2013_incl_sata_drivers_202111
+
+Firefox version 48 32-Bit:
+https://ftp.mozilla.org/pub/firefox/releases/48.0/win32/en-US/Firefox%20Setup%2048.0.exe
+Firefox version 48 64-Bit:
+https://ftp.mozilla.org/pub/firefox/releases/48.0/win64/en-US/Firefox%20Setup%2048.0.exe
+
+
+===[ Browser ]===
+And here, some forks of interest.
+
+Supermium, a Chromium fork, patching new versions to keep support for older operating systems :
+>https://github.com/win32ss/supermium
+Thorium, a Chromium fork, heavily optimized:
+>https://github.com/Alex313031/thorium-win7
+Mercury, a Firefox fork, heavily optimized:
+>https://github.com/Alex313031/Mercury
+MyPal and RoyTam's browsers:
+>https://github.com/feodor2/mypal68
+>http://rtfreesoft.blogspot.com/
+
+
+===[ Update ]===
+Legacy update for all your needs: 	Compatible with Windows 2000, XP, Vista, 7, 8, 8.1, Server 2003, 2008, 2012 (including Server R2 variants)
+https://legacyupdate.net/

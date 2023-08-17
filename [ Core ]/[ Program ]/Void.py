@@ -1,4 +1,6 @@
 import Zeta
+from Zeta.Image import Icon
+from Zeta.Panel.Window import Panel
 
 import time
 import os
@@ -62,21 +64,21 @@ overflow.overrideredirect(1)
 overflow.configure(bg=colorbg)
 #overflow.transient(taskbar)
 overflow.attributes('-topmost', True)
-imggemini=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\geminiw.png')
+imggemini=Icon.Load(icon='geminiw', icontype='bw').image
 Button(overflow, text=' Thaumiel', relief='flat', background=colorbg, foreground='#c9c9c9', image=imggemini, compound='left').grid(column=0, row=0, sticky='NW')
-imgeye=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\eyew.png')
+imgeye=Icon.Load(icon='eyew', icontype='bw').image
 Button(overflow, text=' The eye', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgeye, compound='left').grid(column=0, row=1, sticky='NW')
-imgmoon=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\moonw.png')
+imgmoon=Icon.Load(icon='moonw', icontype='bw').image
 Button(overflow, text=' Moon cycle', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgmoon, compound='left').grid(column=0, row=2, sticky='NW')
-imgsun=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\sunw.png')
+imgsun=Icon.Load(icon='sunw', icontype='bw').image
 Button(overflow, text=' Sun cycle', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgsun, compound='left').grid(column=0, row=3, sticky='NW')
-imgdice=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\dicew.png')
+imgdice=Icon.Load(icon='dicew', icontype='bw').image
 Button(overflow, text=' Chaos theory', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgdice, compound='left').grid(column=0, row=4, sticky='NW')
-imgcalendar=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\calendarw.png')
+imgcalendar=Icon.Load(icon='calendarw', icontype='bw').image
 Button(overflow, text=' Calendar', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgcalendar, compound='left').grid(column=0, row=5, sticky='NW')
-imghorse=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\horsew.png')
+imghorse=Icon.Load(icon='horsew', icontype='bw').image
 Button(overflow, text=' Strategy', relief='flat', background=colorbg, foreground='#c9c9c9', image=imghorse, compound='left').grid(column=0, row=6, sticky='NW')
-imgwave=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\wave2w.png')
+imgwave=Icon.Load(icon='wave2w', icontype='bw').image
 Button(overflow, text=' Flunctuation', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgwave, compound='left').grid(column=0, row=7, sticky='NW')
 overflow.withdraw()
 overflow_on = False
@@ -102,30 +104,30 @@ Button(appframe, text='2', relief='flat', background=colorbg, foreground=colorfg
 Button(appframe, text='3', relief='flat', background=colorbg, foreground=colorfg).grid(column=2, row=0, sticky='NW')
 Button(appframe, text='4', relief='flat', background=colorbg, foreground=colorfg).grid(column=3, row=0, sticky='NW')
 Button(appframe, text='#', relief='flat', background=colorbg, foreground=colorfg).grid(column=4, row=0, sticky='NW')
-imgcode=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\neon\code.gif')
+imgcode=Icon.Load(icon='code', icontype='neon').image
 Button(appframe, text=' Program', relief='flat', background=colorbg, foreground=colorfg, image=imgcode, compound='left').grid(column=5, row=0, sticky='NW')
-imgterm=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\neon\term3.gif')
+imgterm=Icon.Load(icon='term3', icontype='neon').image
 Button(appframe, text=' Hacking', relief='flat', background=colorbg, foreground=colorfg, image=imgterm, compound='left').grid(column=6, row=0, sticky='NW')
-imgfile=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\neon\file.gif')
+imgfile=Icon.Load(icon='file', icontype='neon').image
 Button(appframe, text=' File', relief='flat', background=colorbg, foreground='#6effbe', image=imgfile, compound='left').grid(column=7, row=0, sticky='NW')
-imglink=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\neon\qr.gif')
+imglink=Icon.Load(icon='qr', icontype='neon').image
 Button(appframe, text=' Network', relief='flat', background=colorbg, foreground=colorfg, image=imglink, compound='left').grid(column=8, row=0, sticky='NW')
 trayframe = Frame(taskbar, bg=colorbg)
 trayframe.grid(sticky='NSE', column=1, row=0)
 taskbar.grid_columnconfigure(1, weight=1)
-imgcpu=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\cpuw.png')
+imgcpu=Icon.Load(icon='cpuw', icontype='bw').image
 Button(trayframe, text=' 13%', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgcpu, compound='left').grid(column=0, row=0, sticky='NW')
-imghdd=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\hddw.png')
+imghdd=Icon.Load(icon='hddw', icontype='bw').image
 Button(trayframe, text=' 322G', relief='flat', background=colorbg, foreground='#c9c9c9', image=imghdd, compound='left').grid(column=1, row=0, sticky='NW')
-imgnetwork=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\networkw.png')
+imgnetwork=Icon.Load(icon='networkw', icontype='bw').image
 Button(trayframe, text=' 0.7 MB/s', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgnetwork, compound='left').grid(column=2, row=0, sticky='NW')
-imgram=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\ramw.png')
+imgram=Icon.Load(icon='ramw', icontype='bw').image
 Button(trayframe, text=' 2.2 GB', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgram, compound='left').grid(column=3, row=0, sticky='NW')
-imgtemp=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\tempw.png')
+imgtemp=Icon.Load(icon='tempw', icontype='bw').image
 Button(trayframe, text=' 33°C', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgtemp, compound='left').grid(column=4, row=0, sticky='NW')
-imgvolume=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\volumew.png')
+imgvolume=Icon.Load(icon='volumew', icontype='bw').image
 Button(trayframe, text=' Ballad', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgvolume, compound='left').grid(column=5, row=0, sticky='NW')
-imgmenu=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\menuw.png')
+imgmenu=Icon.Load(icon='menuw', icontype='bw').image
 btnoverflow = Button(trayframe, text='', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgmenu, compound='none')
 btnoverflow.grid(column=6, row=0, sticky='NW')
 btnoverflow.bind("<Button-1>", lambda event: toggle_overflow())
@@ -588,15 +590,15 @@ tree.bind('<ButtonRelease-1>', selectItem)
 menubar = Menu(root, tearoff=0)
 menubar.add_command(label="New", command=open_popup)
 menubar.add_separator()
-menubar.add_command(label="Open", command=lambda: (toggle_sidebar(), Zeta.OS.open(fullpath)))
+menubar.add_command(label="Open", command=lambda: (toggle_sidebar(), Zeta.System.OS.open(fullpath)))
 #subedit = Menu(menubar, tearoff=0)
 #menubar.add_cascade(label="Edit", menu=subedit, command=menu_edit)
-menubar.add_command(label="Edit", command=lambda: (toggle_sidebar(), Zeta.OS.edit(fullpath)))
+menubar.add_command(label="Edit", command=lambda: (toggle_sidebar(), Zeta.System.OS.edit(fullpath)))
 menubar.add_command(label="Select", command=menu_select)
 menubar.add_separator()
 menubar.add_command(label="Copy path", command=lambda: (root.clipboard_clear(),root.clipboard_append(fullpath),root.update()))
 menubar.add_command(label="Go to path", command=lambda: menu_select(root.clipboard_get()))
-menubar.add_command(label="Terminal", command=lambda: (toggle_sidebar(), Zeta.OS.terminal(fullpath)))
+menubar.add_command(label="Terminal", command=lambda: (toggle_sidebar(), Zeta.System.OS.terminal(fullpath)))
 menubar.add_command(label="Detach", command=menu_select)
 #menubar.add_command(label="Exit", command=menu_clear)
 #menubar.add_command(label="Exit", command=root.quit)

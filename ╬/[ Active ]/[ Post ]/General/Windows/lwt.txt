@@ -1,0 +1,29 @@
+/lwt/ pastebin (work in progress): https://pastebin.com/M32z9Mpg
+
+Feel free to share your experience here on using legacy Windows operating systems past their EoL date, such as:
+>Methods to circumvent software artificial blocks
+>Last versions of software/drivers known working on legacy Windows
+>Custom forks/builds of software that don't support legacy Windows systems anymore
+>Getting legacy Windows systems updated
+>And other tips-and-tricks
+Post your projects, devices, and setups.
+
+Remember, Windows 10 and 11 are user-hostile operating systems.
+
+Recommended legacy Windows:
+>8.1 with Update 3 (NT 6.2)
+The middle-ground for those wanting to avoid 10/11, and yet not want to completely sacrifice hardware compatibility in the progress, compared to 7:
+– In-built USB3/UASP support
+– In-built NVMe & eMMC support
+– 4Kn/Advanced Format drive support
+– First Windows OS to be compatible with UEFI Class 3 devices (no need for int10h workarounds like UefiSeven)
+– Start Screen/Ribbon can easily be eliminated with StartIsBack/OldNewExplorer
+– Arguably more efficient than 7, especially for low-end devices of the era (e.g. x86 tablets with Windows RT)
+– Stigma due to Metro UI caused it to be quickly forgotten, with some software devs dropping support quicker than for 7.
+EoL Date: 01/10/2023 (Embedded 8.1 Industry: 07/11/2023)
+ESU Bypass: BypassESU Blue (10/13/2026 with Server 2012 R2 updates - only common client/server components will be updated, keep that in mind)
+
+>7 SP1 (NT 6.1)
+The thread-starter. If you can get it running on your modern device without any problems, then do so - forwards-compatibility utilities like VxKex are designed for 7, mostly.
+EoL Date: 01/14/2020
+ESU Bypass: BypassESU (01/10/2023 with client updates; 01/09/2024 with Server 2008 R2 updates - common client/server components will be updated)
