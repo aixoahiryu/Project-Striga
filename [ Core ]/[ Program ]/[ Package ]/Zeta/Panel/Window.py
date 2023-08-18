@@ -1,8 +1,11 @@
+import Zeta
+
 from tkinter import *
 from .Toplevel2 import Toplevel2
 
 class Panel(Frame):
     def __init__(self, draggable=True, border='mono', color=7, color2='', mode='basic', style='even', title='Title', *args, **kwargs):
+        hue = Zeta.Color.Neon(color=color, color2=color2).hue
         if draggable: self.window = Toplevel2()
         else: self.window = Toplevel()
         self.window.overrideredirect(True)
@@ -20,6 +23,7 @@ class Panel(Frame):
 
         if mode=='border': Frame.__init__(self, gradient_frame, *args, **kwargs)
         else: Frame.__init__(self, control_frame, *args, **kwargs)
+        self['background'] = hue
         self.pack(side="top", fill="both", expand=True, padx=5, pady=5)
 
 class SampleApp(Tk):
