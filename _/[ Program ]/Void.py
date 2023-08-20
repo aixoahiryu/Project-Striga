@@ -15,7 +15,7 @@ from natsort import os_sorted
 
 ZLCORE = os.environ['ZLCORE']
 home = r'D:\MEGA\ZL-Core\Commit\╬'
-os.chdir(home)
+#os.chdir(home)
 
 cwd = os.getcwd()
 fullpath = home
@@ -338,19 +338,6 @@ def tooltip_hide():
 
 #-------------------------------------------------------------------------------
 
-def menu_open():
-	toggle_sidebar()
-	if os.path.isfile(fullpath): path = os.path.split(fullpath)[0]
-	else: path = fullpath
-	os.startfile(path)
-	#subprocess.Popen(r'explorer /select,"C:\xampp"')
-	#subprocess.Popen(r'explorer '+fullpath)
-
-def menu_edit():
-	toggle_sidebar()
-	subprocess.Popen(['C:\Program Files\Sublime Text 3\sublime_text.exe', fullpath], start_new_session=True)
-	#os.startfile(r'C:\Program Files\Sublime Text 3\sublime_text.exe '+fullpath)
-
 def menu_select(path=''):
 	node = tree.focus()
 	if tree.parent(node):
@@ -358,14 +345,9 @@ def menu_select(path=''):
 		print(path)
 		if path!='': fullpath = path
 		if os.path.isfile(fullpath): fullpath = os.path.split(fullpath)[0]
-		os.chdir(fullpath)
+		#os.chdir(fullpath)
 		tree.delete(tree.get_children(''))
 		populate_roots(tree)
-
-def menu_terminal():
-	if os.path.isfile(fullpath): path = os.path.split(fullpath)[0]
-	else: path = fullpath
-	subprocess.Popen(r'cmd /k cd /d '+path)
 
 def menu_clear():
 	#os.execv(sys.argv[0], sys.argv)
@@ -457,7 +439,10 @@ def autoscroll(sbar, first, last):
 	sbar.set(first, last)
 
 def goBack(event=None):
-	goPath(os.path.abspath(os.path.join(os.getcwd(), os.pardir)))
+	global fullpath
+	fullpath = tree.item(tree.get_children('')).get('values')[0]
+	#goPath(os.path.abspath(os.path.join(os.getcwd(), os.pardir)))
+	goPath(os.path.abspath(os.path.join(fullpath, os.pardir)))
 
 def goHome(event=None):
 	goPath(home)
@@ -465,7 +450,7 @@ def goHome(event=None):
 def goPath(path):
 	global fullpath
 	fullpath = path
-	os.chdir(fullpath)
+	#os.chdir(fullpath)
 	tree.delete(tree.get_children(''))
 	populate_roots(tree)
 
@@ -523,7 +508,7 @@ def workspace_select():
 	#combo1.configure(width=len(combo1.get())+1)
 	fullpath = ZLCORE+'\\Toolbar\\F\\[ Workspace ]\\[ Sidebar ]\\'+combo1.get()
 	if os.path.isdir(fullpath):
-		os.chdir(fullpath)
+		#os.chdir(fullpath)
 		tree.delete(tree.get_children(''))
 		populate_roots(tree)
 
