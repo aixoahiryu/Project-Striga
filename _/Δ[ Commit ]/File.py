@@ -1,4 +1,5 @@
 import Zeta
+from Zeta.Panel.Window import Panel
 
 import time
 import os
@@ -11,52 +12,69 @@ from natsort import os_sorted
 
 
 ZLCORE = os.environ['ZLCORE']
-home = r'D:\Data'
 #os.chdir(home)
 
-cwd = os.getcwd()
-hidden = False
 
-addicon = False
-darkmode = True
-tooltip = True
-colorbg = "#000000" if darkmode else "#ffffff"
-colorbg2 = "#253B34" if darkmode else "#6effbe"
-colorfg = "#ffffff" if darkmode else "#000000"
-
+class Controller():
+	def toggle_sidebar(child): print('toggled')
+	def preview_file(child): print('preview')
 
 class FileBox(Frame):
-	def __init__(self, master, controller, title='Title', color=7, color2=''):
-		self.fullpath = home
-		self.parent = controller
+	def __init__(self, master, controller=None, home='', darkmode=True, fileicon=False, color2='', neonmode=False):
+		self.home = os.path.abspath(os.sep) if home=='' else home
+		self.fullpath = self.home
+		self.parent = controller if controller!=None else Controller()
+		self.window = master.winfo_toplevel()
 		self.dialog = ''
 		self.newFileName = StringVar(master, "", 'new_name')
-		Button(master, text='≡', command=self.goHome, bg=colorbg, fg=colorfg).grid(sticky='NSEW', column=0, row=0)
 
-		frame1 = Frame(master, bg=colorbg)
+		self.color2 = 'green' if color2=='' else color2
+		self.darkmode = darkmode
+		self.neonmode = neonmode
+		neon = Zeta.Color.Neon(self.color2).hex
+		neonhue = Zeta.Color.Neon(self.color2).hue2 if neonmode else Zeta.Color.Neon(self.color2).hue
+		self.colorbg = "black" if darkmode else "white"
+		self.colorbg2 = neonhue if darkmode else neon
+		self.colorfg = "white" if darkmode else "black"
+		self.colorfg2 = neon if darkmode else "black"
+		if darkmode & neonmode: self.colorbg=Zeta.Color.Neon(self.color2).hue
+		self.buttoncolor = neon if neonmode else self.colorfg
+		self.buttonrelief = 'flat' if neonmode else 'raised'
+		style = ttk.Style()
+		style.theme_use('alt')
+		style.configure("Treeview", background=self.colorbg, foreground=self.colorfg, fieldbackground=self.colorbg)
+		style.map('Treeview', background=[('selected', self.colorbg2)], foreground=[('selected', self.colorfg2)])
+		style.configure("TCombobox", background=self.colorbg, foreground=self.colorfg, fieldbackground=self.colorbg, highlightcolor=self.colorfg, arrowcolor=self.colorfg)
+		style.map('TCombobox', background=[('readonly', self.colorbg)], foreground=[('readonly', self.colorfg)], fieldbackground=[('readonly', self.colorbg)], highlightcolor=[('readonly', self.colorfg)], arrowcolor=[('readonly', self.colorfg)] )
+		style.configure("TScrollbar", background=self.colorbg, foreground=self.colorfg, fieldbackground=self.colorbg, highlightcolor=self.colorfg, troughcolor=self.colorbg, arrowcolor=self.colorfg)
+		style.configure("Menu", background=self.colorbg, foreground=self.colorfg, fieldbackground=self.colorbg, highlightcolor=self.colorfg)
+
+		Button(master, text='≡', command=self.goHome, bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief).grid(sticky='NSEW', column=0, row=0)
+
+		frame1 = Frame(master, bg=self.colorbg)
 		frame1.grid(sticky='NSEW', column=0, row=1)
-		button1 = Button(frame1, text='∆', command=self.goBack, bg=colorbg, fg=colorfg)
-		button2 = Button(frame1, text='X', command=self.goBack, bg=colorbg, fg=colorfg)
+		button1 = Button(frame1, text='∆', command=self.goBack, bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief)
+		button2 = Button(frame1, text='X', command=self.goBack, bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief)
 		button1.grid(sticky='N', row=0)
 		button2.grid(sticky='N', row=1)
 		#button1.place(relx=0, rely=0, relwidth=0.1, relheight=0.1)
 		Frame.__init__(self, master)
 		self.grid(sticky='NSEW', column=1, row=1)
 
-		#Entry(master, textvariable=currentPath, bg=colorbg, fg=colorfg)
-		frame3 = Frame(master, bg=colorbg)
+		#Entry(master, textvariable=currentPath, bg=self.colorbg, fg=self.colorfg)
+		frame3 = Frame(master, bg=self.colorbg)
 		frame3.grid(sticky='NSEW', column=1, row=0)
-		frame3_1 = Frame(frame3, bg=colorbg)
+		frame3_1 = Frame(frame3, bg=self.colorbg)
 		frame3_1.grid(sticky='W', row=0, column=0)
-		Button(frame3_1, text='C', bg=colorbg, fg=colorfg, command=lambda: self.goPath('C:\\')).grid(sticky='W', row=0, column=0)
-		Button(frame3_1, text='D', bg=colorbg, fg=colorfg, command=lambda: self.goPath('D:\\')).grid(sticky='W', row=0, column=1)
-		Label(frame3_1, text='|', bg=colorbg, fg=colorfg).grid(sticky='W', row=0, column=2)
-		Button(frame3_1, text='╬', bg=colorbg, fg=colorfg, command=lambda: self.goPath(r'D:\MEGA\ZL-Core\Commit\╬')).grid(sticky='W', row=0, column=3)
-		Button(frame3_1, text='_', bg=colorbg, fg=colorfg, command=lambda: self.goPath('D:\\_')).grid(sticky='W', row=0, column=4)
-		Button(frame3_1, text='Data', bg=colorbg, fg=colorfg, command=lambda: self.goPath('D:\\Data')).grid(sticky='W', row=0, column=5)
-		Button(frame3_1, text='Core', bg=colorbg, fg=colorfg, command=lambda: self.goPath('D:\\ZL-Core')).grid(sticky='W', row=0, column=6)
-		Button(frame3_1, text='Scraps', bg=colorbg, fg=colorfg, command=lambda: self.goPath('D:\\Scraps')).grid(sticky='W', row=0, column=7)
-		frame3_2 = Frame(frame3, bg=colorbg)
+		Button(frame3_1, text='C', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('C:\\')).grid(sticky='W', row=0, column=0)
+		Button(frame3_1, text='D', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\')).grid(sticky='W', row=0, column=1)
+		Label(frame3_1, text='|', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief).grid(sticky='W', row=0, column=2)
+		Button(frame3_1, text='╬', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath(r'D:\MEGA\ZL-Core\Commit\╬')).grid(sticky='W', row=0, column=3)
+		Button(frame3_1, text='_', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\_')).grid(sticky='W', row=0, column=4)
+		Button(frame3_1, text='Data', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\Data')).grid(sticky='W', row=0, column=5)
+		Button(frame3_1, text='Core', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\ZL-Core')).grid(sticky='W', row=0, column=6)
+		Button(frame3_1, text='Scraps', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\Scraps')).grid(sticky='W', row=0, column=7)
+		frame3_2 = Frame(frame3, bg=self.colorbg)
 		frame3_2.grid(sticky='E', row=0, column=1)
 		frame3.grid_columnconfigure(1, weight=1)
 		self.combo1 = ttk.Combobox(frame3_2, state="readonly", values=['--------------'], width=10)
@@ -99,10 +117,10 @@ class FileBox(Frame):
 		menubar.add_command(label="Edit", command=lambda: (self.parent.toggle_sidebar(), Zeta.System.OS.edit(self.fullpath)))
 		menubar.add_command(label="Select", command=self.menu_select)
 		menubar.add_separator()
-		menubar.add_command(label="Copy path", command=lambda: (self.parent.window.clipboard_clear(),self.parent.window.clipboard_append(self.fullpath),self.parent.window.update()))
-		menubar.add_command(label="Go to path", command=lambda: self.menu_select(self.parent.window.clipboard_get()))
+		menubar.add_command(label="Copy path", command=lambda: (self.window.clipboard_clear(),self.window.clipboard_append(self.fullpath),self.window.update()))
+		menubar.add_command(label="Go to path", command=lambda: self.menu_select(self.window.clipboard_get()))
 		menubar.add_command(label="Terminal", command=lambda: (self.parent.toggle_sidebar(), Zeta.System.OS.terminal(self.fullpath)))
-		menubar.add_command(label="Detach", command=self.menu_select)
+		menubar.add_command(label="Detach", command=self.menu_detach)
 		#menubar.add_command(label="Exit", command=menu_clear)
 		#menubar.add_command(label="Exit", command=master.quit)
 		#master.config(menu=menubar)
@@ -137,6 +155,14 @@ class FileBox(Frame):
 			if os.path.isfile(self.fullpath): self.fullpath = os.path.split(self.fullpath)[0]
 			self.tree.delete(self.tree.get_children(''))
 			self.populate_masters(self.tree)
+
+	def menu_detach(self):
+		from Zeta.Panel.Control.File import FileBox as DetachBox
+		panelcolor = self.color2 if self.neonmode else self.colorfg
+		path = self.fullpath if os.path.isdir(self.fullpath) else os.path.split(self.fullpath)[0]
+
+		detached = Panel(border='mono', color2=panelcolor, mode='basic')
+		DetachBox(detached, color2=self.color2, home=path, darkmode=self.darkmode, neonmode=self.neonmode)
 
 	def menu_clear():
 		#os.execv(sys.argv[0], sys.argv)
@@ -232,7 +258,7 @@ class FileBox(Frame):
 		self.goPath(os.path.abspath(os.path.join(self.fullpath, os.pardir)))
 
 	def goHome(self, event=None):
-		self.goPath(home)
+		self.goPath(self.home)
 
 	def goPath(self, path):
 		self.fullpath = path
@@ -242,11 +268,11 @@ class FileBox(Frame):
 	def open_popup(self):
 		self.newFileName.set('')
 		
-		self.dialog = Toplevel(self.parent.window)
+		self.dialog = Toplevel(self.window)
 		self.dialog.geometry("+333+25")
 		self.dialog.resizable(False, False)
 		self.dialog.title("New")
-		self.dialog.transient(self.parent.window)
+		self.dialog.transient(self.window)
 		self.dialog.columnconfigure(0, weight=1)
 		Label(self.dialog, text='Enter File or Folder name').grid()
 		Entry(self.dialog, textvariable=self.newFileName).grid(column=0, sticky='NSEW')

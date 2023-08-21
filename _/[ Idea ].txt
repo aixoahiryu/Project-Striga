@@ -3,3 +3,5 @@ BSD: https://forums.freebsd.org/threads/freebsd-screen-shots.8877/page-70
 
 Color: 	https://digitalsynopsis.com/design/minimal-web-color-palettes-combination-hex-code/
 		https://digitalsynopsis.com/design/beautiful-color-palettes-combinations-schemes/
+
+controller passthrough https://www.oreilly.com/library/view/functional-programming-in/9781492048633/ch04.html

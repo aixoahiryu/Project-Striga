@@ -1,0 +1,4 @@
+Trading
+Money | Coin
+Fiat | Bill | Debt | Credit
+CBDC
