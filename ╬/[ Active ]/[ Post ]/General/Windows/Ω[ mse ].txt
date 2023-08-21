@@ -1,0 +1,13 @@
+Anonymous 08/12/23(Sat)04:49:17 No.95301633▶
+>>95299393
+>Anyone else keep getting errors when trying to update MSE definitions all of a sudden?
+Apparently, even if the error shows up, the definitions eventually get updated.
+But then again, there are conflicting reports on the problem fixing by time, or having to clean up the SoftwareDistribution folder in order for it to work.
+https://www.sevenforums.com/system-security/428578-mse-totally-down-end-support-windows-7-a.html
+
+Assuming you have the same errorcode as others - 0x80072f8f: https://borncity.com/win/2022/09/11/windows-update-error-0x80072f8f/
+It basicallly lines up to either misconfigured date/time settings, or newer TLS (1.1, 1.2) protocols not being utilised. While you can enable TLS 1.1 and TLS 1.2 via Internet Options at Control Panel, you'd have to make registry changes in order to utilise newer protocols in WinHttp and .NET
+https://www.emailarchitect.net/easendmail/sdk/html/object_tls12_a.htm
+https://learn.microsoft.com/en-us/mem/configmgr/core/plan-design/security/enable-tls-1-2-client (should basically have the same information and instructions as link above)
+
+>captcha: XY0WN

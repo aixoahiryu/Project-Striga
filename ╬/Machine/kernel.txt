@@ -2,6 +2,7 @@ operating system rings -shill -shopping -company before:2012
 Linux Architecture 2⧸5： Kernel⧸Security⧸and more! [85eINAowuMc]
 Linux Kernel Development
 Windows Kernel Programming
+	Kernel Extension: VxKex
 
 System Call interface:
 	Windows: 	https://www.codeguru.com/windows/how-do-windows-nt-system-calls-really-work/

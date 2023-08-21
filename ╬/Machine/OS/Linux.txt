@@ -2,4 +2,4 @@ https://www.linuxquestions.org/questions/
 --------------------------------------------------------------
 
 Bedrock
-Nix
+Nix | Guix

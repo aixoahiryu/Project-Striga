@@ -1,0 +1,6 @@
+Currently running XP integral edition in a VM. Heres some software resources.
+Myabandonware.
+Winworld.
+Archive.org
+And cnet still has alot of older windows software.
+Still very usable to this day. Installed it on bare metal a couple years ago and it handled fine with semi recent hardware. Athlon 5350 quad core, asus am1 motherboard and a cheap 200gb ssd. Drivers worked fine

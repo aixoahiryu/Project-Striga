@@ -1,0 +1,19 @@
+Anonymous 08/20/23(Sun)05:47:56 No.95481110▶
+>>95477718
+>>95478207
+>I'll post the link when I'm done
+Neato.
+
+BTW, Here are also further resources for Vista:
+https://msfn.org/board/topic/175262-last-versions-of-software-for-windows-vista-and-windows-server-2008/
+https://msfn.org/board/topic/181756-windows-vista-update-repository-until-april-2017/ (update repo with all Vista updates up to EOL)
+https://msfn.org/board/topic/176686-server-2008-updates-on-windows-vista/#comment-1139171 (Server 2008 updates repo, for installing on Vista; up to December 2019, so non-ESU)
+
+Should be useful if one wants to update their Vista image/install by himself, although with DISM being non-existent back then (was introduced with Win7 AIK, which runs on a Vista host, on a sidenote), it's kinda a pain in the ass. So you have to manouever with PkgMgr/PEImg for update integration, and use ImageX to image into a WIM.
+AFAIK DISM has limited support for Vista images (I believe it shouldn't suck that much on SP2 ones, compared to SP1 and earlier), passing control to PkgMgr with relevant parameters if it detects one being serviced. So yeah.
+Heard you might have good results with DISM++ (seeing as it's not based on DISM per-se, but on CBS, so low-level) or vLite (actually designed for servicing Vista images), though.
+Fun fact, Since April 2019 updates for NT 6.0, the build number got incremented to 6003 (due to revision number range constraints). AFAIK it caused problems for some apps (like Avast/AVG, although there was a micro-update for them released, in the end).
+
+And about those untouched Windows images, might as well direct people to these links:
+https://massgrave.dev/genuine-installation-media.html
+https://files.rg-adguard.net/ (served via torrent, but seems to mirror all of MSDN/MVS stuff)

@@ -59,22 +59,22 @@ class FileBox(Frame):
 		frame3_2 = Frame(frame3, bg=colorbg)
 		frame3_2.grid(sticky='E', row=0, column=1)
 		frame3.grid_columnconfigure(1, weight=1)
-		self.combo1 = ttk.Combobox(frame3_2, state="readonly", values=['--------------'], width=10)
-		self.combo1.grid(sticky='E', row=0, column=0)
-		self.combo1.bind('<Button-3>', lambda e: combo1.configure(state="normal"))
-		self.combo1.bind('<Button-1>', lambda e: self.workspace_select())
-		self.combo1.bind('<<ComboboxSelected>>', lambda e: self.workspace_select())
+		combo1 = ttk.Combobox(frame3_2, state="readonly", values=['--------------'], width=10)
+		combo1.grid(sticky='E', row=0, column=0)
+		combo1.bind('<Button-3>', lambda e: combo1.configure(state="normal"))
+		combo1.bind('<Button-1>', lambda e: self.workspace_select())
+		combo1.bind('<<ComboboxSelected>>', lambda e: self.workspace_select())
 
-		self.vsb = ttk.Scrollbar(self, orient="vertical")
-		self.hsb = ttk.Scrollbar(self, orient="horizontal")
+		vsb = ttk.Scrollbar(self, orient="vertical")
+		hsb = ttk.Scrollbar(self, orient="horizontal")
 		self.tree = ttk.Treeview(self, columns=("fullpath", "type", "size"), show="tree",
-			displaycolumns="size", yscrollcommand=lambda f, l: self.autoscroll(self.vsb, f, l),
-			xscrollcommand=lambda f, l:self.autoscroll(self.hsb, f, l))
-		self.vsb['command'] = self.tree.yview
-		self.hsb['command'] = self.tree.xview
+			displaycolumns="size", yscrollcommand=lambda f, l: self.autoscroll(vsb, f, l),
+			xscrollcommand=lambda f, l:self.autoscroll(hsb, f, l))
+		vsb['command'] = self.tree.yview
+		hsb['command'] = self.tree.xview
 		self.tree.grid(column=0, row=0, sticky='NSEW')
-		self.vsb.grid(column=1, row=0, sticky='ns')
-		self.hsb.grid(column=0, row=1, sticky='ew')
+		vsb.grid(column=1, row=0, sticky='ns')
+		hsb.grid(column=0, row=1, sticky='ew')
 		self.grid_columnconfigure(0, weight=1)
 		self.grid_rowconfigure(0, weight=1)
 
@@ -279,15 +279,15 @@ class FileBox(Frame):
 	#currentPath.trace('w', pathChange)
 
 	def workspace_select(self):
-		self.combo1.configure(state="readonly")
+		combo1.configure(state="readonly")
 		file = open(ZLCORE+r'\Toolbar\F\[ Workspace ]\[ Sidebar ]\Internal.txt', mode='r')
 		filecontent = file.read()
 		file.close()
 		filecontent = filecontent.split("\n")
-		self.combo1['values'] = filecontent
+		combo1['values'] = filecontent
 
 		#combo1.configure(width=len(combo1.get())+1)
-		self.fullpath = ZLCORE+'\\Toolbar\\F\\[ Workspace ]\\[ Sidebar ]\\'+self.combo1.get()
+		self.fullpath = ZLCORE+'\\Toolbar\\F\\[ Workspace ]\\[ Sidebar ]\\'+combo1.get()
 		if os.path.isdir(self.fullpath):
 			self.tree.delete(self.tree.get_children(''))
 			self.populate_masters(self.tree)

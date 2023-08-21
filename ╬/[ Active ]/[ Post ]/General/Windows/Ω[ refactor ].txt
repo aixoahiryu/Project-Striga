@@ -1,0 +1,15 @@
+Anonymous 08/21/23(Mon)06:04:35 No.95501733▶
+File: 1667727833653754.jpg (94 KB, 400x1511)
+94 KB
+>>95500152
+You should also see these posts (they were in the first quote I posted, but not sure if you have seen them. They're 404'd, so you have to see them in desuarchive. Or just use 4chanX):
+>>94820250 (slimdown list of activation-related scripts, to the essentials)
+>>94884189 (GameUX.dll and old games depending on its compatibility shim failing to launch)
+>>95056309 >>95058184 (About backported Win10 telemetry components and updates containing them)
+Also, these Vista ISOs that I linked aren't preactivated. You still have to activate them in the process. (I still think you should remove the kms.cangshui.net activation process, or any other online KMS servers. Don't want some chink to see a random activating Vista. Besides, KMS-VL-ALL is better).
+
+You should really think of refactoring the paste, e.g. while hackandpwn's guide may include interesting stuff unrelated to ESU, what will matter for most of people wanting to benefit from the ESU updates is abbodi's BypassESU instead:
+https://forums.mydigitallife.net/threads/bypass-windows-7-extended-security-updates-eligibility.80606/
+https://forums.mydigitallife.net/threads/bypass-esu-blue.86548/ (for 8.1)
+and of course, simplix's UpdatePack7R2 for quickly getting a 7 install/image updated.
+https://blog.simplix.info/update7/

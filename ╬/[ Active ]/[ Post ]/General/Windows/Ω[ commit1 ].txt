@@ -1,0 +1,25 @@
+Anonymous 08/07/23(Mon)02:25:29 No.95197012▶>>95197142
+>>95195567
+NTA, but you'd either have to use EzWindSLIC (UEFI-GPT) or Daz's Windows Loader (if BIOS/CSM-MBR)
+>>95192879
+Wondering if you can include these following info in the paste:
+>>94820250 (Slim down list of activation-related scripts to the essentials)
+>>94884189 (GameUX.dll and old games depending on the DLL's shims failing to launch)
+>>95056309 → >>95058184 → (About backported Win10 telemetry components and updates containing them)
+In addition, to the Vista and XP sections:
+-I'd rather give Ramsey's XP Integral Edition (formerly Black Edition) a mention, and remove the rest of these random XP homebrews from paste.
+https://zone94.com/downloads/software/operating-systems/123-windows-xp-professional-sp3-x86-integral-edition
+>inb4 XP-IE's also a rando homebrew
+Not really that much of a rando. Ramsey/LuxLOL's been doing it since 2008-ish, as far as I can tell. Should be trusted.
+-Give harkaz's Unofficial Service Pack 4 a mention, if somebody wants to update an XP install or ISO by himself
+https://msfn.org/board/topic/171171-introducing-unofficial-windows-xp-sp4
+-Mention Legacy Update (brings back Windows Update client functionability for legacy Windows systems)
+also contains an archive of Microsoft's Download Center before most of the stuff got removed due to the SHA-2 transitioning in August 2020
+https://legacyupdate.net/
+-Remove the online activation mention for Vista (don't really like how one has to rely on external random activation servers)
+EzWindSlic/Daz's Windows Loader should work fine with them, alternatively KMS-VL-ALL (not to be mistaken with abbodi's KMS_VL_ALL, of which is a fork of the earlier)
+https://forums.mydigitallife.net/posts/1296482/
+
+BTW, i'd rather use these ISOs instead, for Vista, as they are fully updated:
+https://archive.org/details/win-vista-sp-2-x-64-aio (x64)
+https://archive.org/details/vista_winclubpl (x86)
