@@ -27,7 +27,10 @@ class Decoration(Frame):
 		Button(btnframe, text='■', relief='flat', foreground=Zeta.Color.Neon(color2='red').hex, background=self._bg1, command=self.winfo_toplevel().destroy).pack(side='left')
 
 		try:
-			top.bind("<ButtonPress-1>", self.winfo_toplevel().start_move)
-			top.bind("<ButtonRelease-1>", self.winfo_toplevel().stop_move)
-			top.bind("<B1-Motion>", self.winfo_toplevel().do_move)
+			self.winfo_toplevel().bind_drag(top)
+			self.winfo_toplevel().bind_drag(msg)
+			self.winfo_toplevel().bind_drag(btnframe)
+			# top.bind("<ButtonPress-1>", self.winfo_toplevel().start_move)
+			# top.bind("<ButtonRelease-1>", self.winfo_toplevel().stop_move)
+			# top.bind("<B1-Motion>", self.winfo_toplevel().do_move)
 		except: print('Window error')
