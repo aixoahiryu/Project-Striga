@@ -26,6 +26,30 @@ class Panel(Frame):
         self['background'] = hue
         self.pack(side="top", fill="both", expand=True, padx=5, pady=5)
 
+class Fallback(Frame):
+    def __init__(self, draggable=True, color=7, color2='', mode='basic', title='Title', *args, **kwargs):
+        neon = Zeta.Color.Neon(color=color, color2=color2).hex
+        hue = Zeta.Color.Neon(color=color, color2=color2).hue
+        if draggable: self.window = Toplevel2()
+        else: self.window = Toplevel()
+        self.window.overrideredirect(True)
+
+        frame1 = Frame(self.window)
+        frame1.pack(side="top", fill="both", expand=True, ipadx=1, ipady=1)
+        #frame1['highlightbackground'] = neon
+        #frame1['highlightthickness'] = 1
+        frame1['background'] = neon
+
+        if mode=='basic': from .Wbasic import Decoration as ControlFrame
+        if mode!='border':
+            control_frame = ControlFrame(frame1, color=color, color2=color2, title=title)
+            control_frame.pack(side="top", fill="both", expand=True, padx=1, pady=1)
+
+        if mode=='border': Frame.__init__(self, frame1, *args, **kwargs)
+        else: Frame.__init__(self, control_frame, *args, **kwargs)
+        self['background'] = hue
+        self.pack(side="top", fill="both", expand=True, ipadx=3, ipady=3, padx=1, pady=1)
+
 class SampleApp(Tk):
     def __init__(self):
         Tk.__init__(self)
