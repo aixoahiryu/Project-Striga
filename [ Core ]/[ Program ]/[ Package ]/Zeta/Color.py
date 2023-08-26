@@ -1,7 +1,7 @@
 class Neon():
 	def __init__(self, color2='', color=7):
 		self._color = ['#000000', '#FF0C12', '#FDAE32', '#FDFB00', '#5CFF00', '#00CFFB', '#8F00F2', '#ffffff']
-		self._name1 = {'black': ['#000000', '#ffffff'], 'white': ['#ffffff', '#000000']}
+		self._name1 = {'black': ['#000000', '#ffffff', '#333333'], 'white': ['#ffffff', '#000000', '#cccccc']}
 		self._name1['red'] = ['#fa5a5a', '#471a1a', '#5c2121']
 		self._name1['orange'] = ['#FF5F1F', '#401808', '#5c220b']
 		self._name1['yellow'] = ['#FFCC00', '#362b00', '#4f3f00']

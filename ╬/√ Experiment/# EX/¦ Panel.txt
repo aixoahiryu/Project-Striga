@@ -8,5 +8,4 @@ Text
 panel-left panel-top
 window-left window-top
 
-hue[]
-borderwidth
+Outer border|Dynamic: corner-focus, blinking lights, glyph

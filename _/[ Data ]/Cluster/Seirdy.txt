@@ -1,0 +1,14 @@
+https://seirdy.one/posts/2021/03/10/search-engines-with-own-indexes/#general-indexing-search-engines
+Webring: https://seirdy.one/
+
+https://seirdy.one/about/
+	https://a.gh0.pw/1
+	https://tildes.net/
+	
+	https://pleroma.envs.net/
+	https://lemmy.ml/
+	
+	https://www.jstpst.net/
+	https://lobste.rs/
+	https://old.reddit.com/user/Seirdy/ https://old.reddit.com/r/coolgithubprojects/
+	https://news.ycombinator.com/

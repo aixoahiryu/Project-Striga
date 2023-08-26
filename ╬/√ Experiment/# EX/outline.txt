@@ -1,0 +1,4 @@
+Checkbox=ttk.Checkbutton(root, takefocus=0)
+https://stackoverflow.com/questions/23354303/removing-ttk-notebook-tab-dashed-line
+
+root.unbind_all('<<NextWindow>>')  # Unbinding the behavior that causes Tab Cycling

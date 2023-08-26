@@ -4,6 +4,8 @@ Cyber: /g/94654978 https://wiki.installgentoo.com/wiki//cyb/_%2B_/sec/_general:_
 Privacy: /psg/
 
 Beta: https://www.betaarchive.com/forum/
+Degoogle: https://old.reddit.com/r/degoogle
+
 K-meleon: http://kmeleonbrowser.org/
 Artix: https://forum.artixlinux.org/index.php
 FreeBSD: https://forums.freebsd.org/categories/desktop-usage.29/

@@ -4,10 +4,6 @@ class Toplevel2(Toplevel):
     def __init__(self, *args, **kwargs):
         Toplevel.__init__(self, *args, **kwargs)
 
-        self.bind("<ButtonPress-3>", self.start_move)
-        self.bind("<ButtonRelease-3>", self.stop_move)
-        self.bind("<B3-Motion>", self.do_move)
-
     def start_move(self, event):
         self.x = event.x
         self.y = event.y
@@ -25,3 +21,13 @@ class Toplevel2(Toplevel):
         x = self.winfo_x() + deltax
         y = self.winfo_y() + deltay
         self.geometry(f"+{x}+{y}")
+
+    def bind_rightclick(self):
+        self.bind("<ButtonPress-3>", self.start_move)
+        self.bind("<ButtonRelease-3>", self.stop_move)
+        self.bind("<B3-Motion>", self.do_move)
+
+    def bind_drag(self, control):
+        control.bind("<ButtonPress-1>", self.start_move)
+        control.bind("<ButtonRelease-1>", self.stop_move)
+        control.bind("<B1-Motion>", self.do_move)

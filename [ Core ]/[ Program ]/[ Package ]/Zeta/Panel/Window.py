@@ -5,10 +5,12 @@ from .Toplevel2 import Toplevel2
 
 class Panel(Frame):
     def __init__(self, draggable=True, border='mono', color=7, color2='', mode='basic', style='even', title='Title', *args, **kwargs):
+        neon = Zeta.Color.Neon(color=color, color2=color2).hex
         hue = Zeta.Color.Neon(color=color, color2=color2).hue
-        if draggable: self.window = Toplevel2()
-        else: self.window = Toplevel()
+        
+        self.window = Toplevel2()
         self.window.overrideredirect(True)
+        if draggable: self.window.bind_rightclick()
 
         if border=='mono': from .Frame.Mono import MonoFrame as ColorFrame
         elif border=='corner': from .Frame.Corner import CornerFrame as ColorFrame
@@ -30,9 +32,10 @@ class Fallback(Frame):
     def __init__(self, draggable=True, color=7, color2='', mode='basic', title='Title', *args, **kwargs):
         neon = Zeta.Color.Neon(color=color, color2=color2).hex
         hue = Zeta.Color.Neon(color=color, color2=color2).hue
-        if draggable: self.window = Toplevel2()
-        else: self.window = Toplevel()
+        
+        self.window = Toplevel2()
         self.window.overrideredirect(True)
+        if draggable: self.window.bind_rightclick()
 
         frame1 = Frame(self.window)
         frame1.pack(side="top", fill="both", expand=True, ipadx=1, ipady=1)

@@ -1,0 +1,5 @@
+https://www.libhunt.com/r/awesome-pinescript
+--------------------------------------------------------------
+
+TradingView: Pine script
+NinjaScript
