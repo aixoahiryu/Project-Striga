@@ -51,3 +51,8 @@ Strategy
 Economy
 Diplomacy
 Hacking
+
+System1 System2 System3
+Fantasy
+World of horror
+Cyberpunk

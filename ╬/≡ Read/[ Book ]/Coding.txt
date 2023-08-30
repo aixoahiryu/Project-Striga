@@ -1,4 +1,13 @@
 py
+├── Tkinter
+│   ├── Python GUI Programming With Tkinter.pdf
+│   ├── Tkinter GUI Application Development Blueprints.pdf
+│   └── Tkinter GUI Application Development Cookbook.epub
+├── Video
+│   ├── 5 Python BAD Practices To Avoid [5Ui37whUDrM].mp4
+│   ├── Mastering Python - Everything You Need To Know To Become a Python Master [p15xzjzR9j0].mp4
+│   ├── Metaclasses in Python [yWzMiaqnpkI].mp4
+│   └── Python Is Weird... [hz7ipeH5Dug].mp4
 ├── Automate the Boring Stuff with Python.pdf
 ├── Black Hat Python 2e.pdf
 ├── Black Hat Python.pdf
