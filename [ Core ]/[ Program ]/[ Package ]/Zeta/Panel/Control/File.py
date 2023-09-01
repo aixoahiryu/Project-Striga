@@ -1,5 +1,4 @@
 import Zeta
-from Zeta.Panel.Window import Panel
 
 import time
 import os
@@ -17,7 +16,7 @@ ZLCORE = os.environ['ZLCORE']
 
 class Controller():
 	def toggle_sidebar(child): print('toggled')
-	def preview_file(child): print('preview')
+	def preview_file(child, path): print(path)
 
 class FileBox(Frame):
 	def __init__(self, master, controller=None, home='', darkmode=True, fileicon=False, color2='', neonmode=False):
@@ -70,7 +69,7 @@ class FileBox(Frame):
 		Button(frame3_1, text='D', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\')).grid(sticky='W', row=0, column=1)
 		Label(frame3_1, text='|', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief).grid(sticky='W', row=0, column=2)
 		Button(frame3_1, text='╬', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath(r'D:\MEGA\ZL-Core\Commit\╬')).grid(sticky='W', row=0, column=3)
-		Button(frame3_1, text='_', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\_')).grid(sticky='W', row=0, column=4)
+		Button(frame3_1, text=' _ ', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\_')).grid(sticky='W', row=0, column=4)
 		Button(frame3_1, text='Data', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\Data')).grid(sticky='W', row=0, column=5)
 		Button(frame3_1, text='Core', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\ZL-Core')).grid(sticky='W', row=0, column=6)
 		Button(frame3_1, text='Scraps', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\Scraps')).grid(sticky='W', row=0, column=7)
@@ -95,6 +94,8 @@ class FileBox(Frame):
 		self.hsb.grid(column=0, row=1, sticky='ew')
 		self.grid_columnconfigure(0, weight=1)
 		self.grid_rowconfigure(0, weight=1)
+		master.grid_columnconfigure(1, weight=1)
+		master.grid_rowconfigure(1, weight=1)
 
 		self.tree.heading("#0", text="Directory Structure", anchor='w')
 		self.tree.heading("size", text="File Size", anchor='w')
@@ -157,6 +158,7 @@ class FileBox(Frame):
 			self.populate_masters(self.tree)
 
 	def menu_detach(self):
+		from Zeta.Panel.Window import Panel
 		from Zeta.Panel.Control.File import FileBox as DetachBox
 		panelcolor = self.color2 if self.neonmode else self.colorfg
 		path = self.fullpath if os.path.isdir(self.fullpath) else os.path.split(self.fullpath)[0]
@@ -172,7 +174,7 @@ class FileBox(Frame):
 		selectedfocus = self.tree.focus()
 		selecteditem = self.tree.item(selectedfocus)
 		self.fullpath = selecteditem.get('values')[0]
-		self.parent.preview_file()
+		self.parent.preview_file(self.fullpath)
 
 	def populate_tree(self, tree, node):
 		if tree.set(node, "type") != 'directory':

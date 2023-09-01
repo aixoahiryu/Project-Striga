@@ -52,6 +52,8 @@ root.title('===[ Sidebar: File ]===')
 root.attributes('-topmost', True)
 root.geometry("333x715+1+25")
 root.overrideredirect(1)
+root.grid_columnconfigure(1, weight=1)
+root.grid_rowconfigure(1, weight=1)
 #root.option_add("*tearOff", False)
 #root.configure(background="#000000")
 #root.configure(highlightbackground="#000000")
@@ -302,7 +304,7 @@ def preview_file(path):
 	except: txt2.configure(text=msg2_2+'Preview failure')
 
 def toggle_sidebar(*event):
-	global hidden, overflow_on
+	global hidden, root, overflow_on
 	
 	if (hidden == False):
 		root.withdraw()
@@ -325,6 +327,7 @@ def toggle_sidebar(*event):
 		overflow.withdraw()
 		overflow_on = False
 
+	#root.focus_set()
 	hidden = not hidden
 
 def tooltip_show(x, y):

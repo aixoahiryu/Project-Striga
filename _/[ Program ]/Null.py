@@ -28,9 +28,10 @@ sidebarext = Toplevel(sidebar)
 sidebarext.attributes('-topmost', True)
 sidebarext.attributes('-alpha', 0.1)
 sidebarext.title('1ext')
-sidebarext.geometry("250x1-1+0")
+sidebarext.geometry("1x740+0+0")
 sidebarext.overrideredirect(1)
 sidebarext.configure(bg=colorbg)
+sidebarext.withdraw()
 
 #root = Tk()
 root = Toplevel(sidebar)
@@ -147,10 +148,12 @@ def toggle_sidebar(*event):
 	if (hidden == False):
 		root.withdraw()
 		taskbar.withdraw()
+		sidebarext.withdraw()
 	else:
 		root.deiconify()
 		taskbar.deiconify()
 		popup.withdraw()
+		sidebarext.deiconify()
 	hidden = not hidden
 	if overflow_on:
 		overflow.withdraw()
@@ -230,8 +233,5 @@ if tooltip:
 	sidebar.bind("<Enter>", lambda e: tooltip_show(e.x, e.y))
 	sidebar.bind("<Leave>", lambda e: tooltip_hide())
 	sidebar.bind('<Motion>', lambda e: tooltip_show(e.x, e.y))
-	sidebarext.bind("<Enter>", lambda e: tooltip_show(e.x, e.y))
-	sidebarext.bind("<Leave>", lambda e: tooltip_hide())
-	sidebarext.bind('<Motion>', lambda e: tooltip_show(e.x, e.y))
 
 sidebar.mainloop()

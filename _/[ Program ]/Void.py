@@ -1,6 +1,7 @@
 import Zeta
 from Zeta.Image import Icon
-from Zeta.Panel.Window import Panel
+from Zeta.Panel.Window import Fallback as Panel
+from Zeta.Panel.Control.File import FileBox
 
 import time
 import os
@@ -40,9 +41,10 @@ sidebarext = Toplevel(sidebar)
 sidebarext.attributes('-topmost', True)
 sidebarext.attributes('-alpha', 0.1)
 sidebarext.title('1ext')
-sidebarext.geometry("250x1+1+0")
+sidebarext.geometry("1x710-0+30")
 sidebarext.overrideredirect(1)
 sidebarext.configure(bg=colorbg)
+sidebarext.withdraw()
 
 #root = Tk()
 root = Toplevel(sidebar)
@@ -50,8 +52,6 @@ root.title('===[ Sidebar: File ]===')
 root.attributes('-topmost', True)
 root.geometry("333x715+1+25")
 root.overrideredirect(1)
-root.grid_columnconfigure(1, weight=1)
-root.grid_rowconfigure(1, weight=1)
 #root.option_add("*tearOff", False)
 #root.configure(background="#000000")
 #root.configure(highlightbackground="#000000")
@@ -275,20 +275,20 @@ def preview_clipboard():
 			for i in range(0, (10-len(temp1))): msg2_2 = msg2_2+r'| '+'\n'
 		msg2_2 = msg2_2+r'└── ‡ limit --head 10'
 		txt2.configure(text=msg2_2)
-		preview_file()
+		preview_file(File1.fullpath)
 	except: #txt2.configure(text=msg2+'Clipboard failure')
 		msg2_2 = msg2+r'┌─[ Clipboard:xclip ]─[ /dev/clipboard ]'+'\n'
 		msg2_2 = msg2_2+r'| '+'Cliboard failure \n'
 		for i in range(1, 10): msg2_2 = msg2_2+r'| '+'\n'
 		msg2_2 = msg2_2+r'└── ‡ limit --head 10'
 		txt2.configure(text=msg2_2)
-		preview_file()
+		preview_file(File1.fullpath)
 
-def preview_file():
+def preview_file(path):
 	try:
-		if os.path.isfile(fullpath):
-			msg2_3 = msg2_2+'\n\n'+r'┌─[File]─[ %s ]' % fullpath[-44:] +'\n'
-			file = open(fullpath, mode='r', encoding='utf-8')
+		if os.path.isfile(path):
+			msg2_3 = msg2_2+'\n\n'+r'┌─[File]─[ %s ]' % path[-44:] +'\n'
+			file = open(path, mode='r', encoding='utf-8')
 			filecontent = file.read(666)
 			file.close()
 			filecontent = filecontent.split("\n")
@@ -302,28 +302,30 @@ def preview_file():
 	except: txt2.configure(text=msg2_2+'Preview failure')
 
 def toggle_sidebar(*event):
-	global hidden, root, overflow_on
+	global hidden, overflow_on
 	
 	if (hidden == False):
 		root.withdraw()
 		taskbar.withdraw()
 		titlepanel.withdraw()
 		sidebar.attributes('-alpha', 0.1)
+		sidebarext.withdraw()
 		#sidebar.geometry("1x690+0+50")
 	else:
 		root.deiconify()
 		taskbar.deiconify()
 		titlepanel.deiconify()
 		sidebar.attributes('-alpha', 1.0)
+		sidebarext.deiconify()
 		#sidebar.geometry("1x740+0+0")
 		popup.withdraw()
 		preview_clipboard()
-	hidden = not hidden
+	
 	if overflow_on:
 		overflow.withdraw()
 		overflow_on = False
 
-	root.focus_set()
+	hidden = not hidden
 
 def tooltip_show(x, y):
 	#popup.deiconify() if hidden else print(e)
@@ -338,270 +340,19 @@ def tooltip_hide():
 
 #-------------------------------------------------------------------------------
 
-def menu_select(path=''):
-	node = tree.focus()
-	if tree.parent(node):
-		global fullpath
-		print(path)
-		if path!='': fullpath = path
-		if os.path.isfile(fullpath): fullpath = os.path.split(fullpath)[0]
-		#os.chdir(fullpath)
-		tree.delete(tree.get_children(''))
-		populate_roots(tree)
+class Controller():
+	def toggle_sidebar(child): toggle_sidebar()
+	def preview_file(child, path): preview_file(path)
 
-def menu_clear():
-	#os.execv(sys.argv[0], sys.argv)
-	os.execv(sys.executable, ['python'] + sys.argv)
-
-def selectItem(a):
-	selectedfocus = tree.focus()
-	selecteditem = tree.item(selectedfocus)
-	global fullpath
-	fullpath = selecteditem.get('values')[0]
-	preview_file()
-
-def populate_tree(tree, node):
-	if tree.set(node, "type") != 'directory':
-		return
-
-	path = tree.set(node, "fullpath")
-	tree.delete(*tree.get_children(node))
-
-	parent = tree.parent(node)
-	#special_dirs = [] if parent else glob.glob('.') + glob.glob('..')
-	special_dirs = []
-
-	dirlist = [x for x in os.listdir(path) if os.path.isdir(os.path.join(path, x))]
-	filelist = [x for x in os.listdir(path) if not os.path.isdir(os.path.join(path, x))]
-	dirlist = os_sorted(dirlist)
-	filelist = os_sorted(filelist)
-
-	for i in dirlist:
-		fname = os.path.split(i)[1]
-		i = os.path.join(path, i)
-		#folderimg = PhotoImage(file=ZLCORE+r"/Toolbar/_/[ Program ]/[ Source ]/gif/neon/folder.gif")
-		#id = tree.insert(node, "end", text=fname, values=[i, "directory"], image=folderimg)
-		id = tree.insert(node, "end", text=fname, values=[i, "directory"])
-		tree.insert(id, 0, text="dummy")
-		tree.item(id, text=fname)
-
-	for i in filelist:
-		fname = os.path.split(i)[1]
-		i = os.path.join(path, i)
-		id = tree.insert(node, "end", text=fname, values=[i, "file"])
-		size = os.stat(i).st_size
-		tree.set(id, "size", "%d bytes" % size)
-
-	# for p in special_dirs + os.listdir(path):
-	#	 ptype = None
-	#	 p = os.path.join(path, p).replace('\\', '/')
-	#	 if os.path.isdir(p): ptype = "directory"
-	#	 elif os.path.isfile(p): ptype = "file"
-
-	#	 fname = os.path.split(p)[1]
-	#	 id = tree.insert(node, "end", text=fname, values=[p, ptype])
-
-	#	 if ptype == 'directory':
-	#		 if fname not in ('.', '..'):
-	#			 tree.insert(id, 0, text="dummy")
-	#			 tree.item(id, text=fname)
-	#	 elif ptype == 'file':
-	#		 size = os.stat(p).st_size
-	#		 tree.set(id, "size", "%d bytes" % size)
-
-def populate_roots(tree):
-	#dir = os.path.abspath('.').replace('\\', '/')
-	dir = fullpath
-	node = tree.insert('', 'end', text=dir, values=[dir, "directory"], open=True)
-	populate_tree(tree, node)
-
-def update_tree(event):
-	tree = event.widget
-	populate_tree(tree, tree.focus())
-
-def change_dir(event):
-	tree = event.widget
-	node = tree.focus()
-	if tree.parent(node):
-		path = os.path.abspath(tree.set(node, "fullpath"))
-		if os.path.isfile(path): os.startfile(path)
-		# if os.path.isdir(path):
-		# 	os.chdir(path)
-		# 	tree.delete(tree.get_children(''))
-		# 	populate_roots(tree)
-
-def autoscroll(sbar, first, last):
-	first, last = float(first), float(last)
-	if first <= 0 and last >= 1:
-		sbar.grid_remove()
-	else:
-		sbar.grid()
-	sbar.set(first, last)
-
-def goBack(event=None):
-	global fullpath
-	fullpath = tree.item(tree.get_children('')).get('values')[0]
-	#goPath(os.path.abspath(os.path.join(os.getcwd(), os.pardir)))
-	goPath(os.path.abspath(os.path.join(fullpath, os.pardir)))
-
-def goHome(event=None):
-	goPath(home)
-
-def goPath(path):
-	global fullpath
-	fullpath = path
-	#os.chdir(fullpath)
-	tree.delete(tree.get_children(''))
-	populate_roots(tree)
-
-dialog = ''
-def open_popup():
-	global dialog
-	newFileName.set('')
-	
-	dialog = Toplevel(root)
-	dialog.geometry("+333+25")
-	dialog.resizable(False, False)
-	dialog.title("New")
-	dialog.transient(root)
-	dialog.columnconfigure(0, weight=1)
-	Label(dialog, text='Enter File or Folder name').grid()
-	Entry(dialog, textvariable=newFileName).grid(column=0, sticky='NSEW')
-	btnframe = Frame(dialog)
-	btnframe.grid(column=0, sticky='NSEW')
-	Button(btnframe, text="Time", command=lambda: newFileName.set( str(round(time.time())) )).pack(side=LEFT)
-	Button(btnframe, text="TXT", command=lambda: newFileName.set(newFileName.get()+'.txt')).pack(side=LEFT)
-	Button(btnframe, text="[  ]", command=lambda: newFileName.set(r'[ '+newFileName.get()+r' ]')).pack(side=LEFT)
-	Button(btnframe, text=" ¦ ", command=lambda: newFileName.set(newFileName.get()+r' ¦ ')).pack(side=LEFT)
-	Button(btnframe, text=" √ ", command=lambda: newFileName.set(r'√ ')).pack(side=LEFT)
-	Button(btnframe, text=" ≡ ", command=lambda: newFileName.set(r'≡ ')).pack(side=LEFT)
-	Button(btnframe, text=" ▷ ", command=lambda: newFileName.set(r'▷ ')).pack(side=LEFT)
-	Button(btnframe, text=" Δ ", command=lambda: newFileName.set(r'Δ[ '+newFileName.get()+r' ]')).pack(side=LEFT)
-	Button(btnframe, text=" Σ ", command=lambda: newFileName.set(r'Σ[ '+newFileName.get()+r' ]')).pack(side=LEFT)
-	Button(btnframe, text=" Ω ", command=lambda: newFileName.set(r'Ω[ '+newFileName.get()+r' ]')).pack(side=LEFT)
-	Button(btnframe, text="Create", command=newFileOrFolder).pack(side=LEFT)
-
-def newFileOrFolder():
-	if os.path.isdir(fullpath): fullpath2 = fullpath
-	if os.path.isfile(fullpath): fullpath2 = os.path.split(fullpath)[0]
-	if len(newFileName.get().split('.')) != 1:
-		open(os.path.join(fullpath2, newFileName.get()), 'w').close()
-	else:
-		os.mkdir(os.path.join(fullpath2, newFileName.get()))
-	dialog.destroy()
-	if os.path.isdir(fullpath): populate_tree(tree, tree.focus())
-	else: populate_tree(tree, tree.parent(tree.focus()))
-
-newFileName = StringVar(root, "", 'new_name')
-#currentPath = StringVar(root, name='currentPath', value=pathlib.Path.cwd())
-#currentPath.trace('w', pathChange)
-
-def workspace_select():
-	global fullpath
-	combo1.configure(state="readonly")
-	file = open(ZLCORE+r'\Toolbar\F\[ Workspace ]\[ Sidebar ]\Internal.txt', mode='r')
-	filecontent = file.read()
-	file.close()
-	filecontent = filecontent.split("\n")
-	combo1['values'] = filecontent
-
-	#combo1.configure(width=len(combo1.get())+1)
-	fullpath = ZLCORE+'\\Toolbar\\F\\[ Workspace ]\\[ Sidebar ]\\'+combo1.get()
-	if os.path.isdir(fullpath):
-		#os.chdir(fullpath)
-		tree.delete(tree.get_children(''))
-		populate_roots(tree)
-
-
-Button(root, text='≡', command=goHome, bg=colorbg, fg=colorfg).grid(sticky='NSEW', column=0, row=0)
-
-frame1 = Frame(root, bg=colorbg)
-frame1.grid(sticky='NSEW', column=0, row=1)
-button1 = Button(frame1, text='∆', command=goBack, bg=colorbg, fg=colorfg)
-button2 = Button(frame1, text='X', command=goBack, bg=colorbg, fg=colorfg)
-button1.grid(sticky='N', row=0)
-button2.grid(sticky='N', row=1)
-#button1.place(relx=0, rely=0, relwidth=0.1, relheight=0.1)
-frame2 = Frame(root, bg=colorbg)
-frame2.grid(sticky='NSEW', column=1, row=1)
-
-#Entry(root, textvariable=currentPath, bg=colorbg, fg=colorfg)
-frame3 = Frame(root, bg=colorbg)
-frame3.grid(sticky='NSEW', column=1, row=0)
-frame3_1 = Frame(frame3, bg=colorbg)
-frame3_1.grid(sticky='W', row=0, column=0)
-Button(frame3_1, text='C', bg=colorbg, fg=colorfg, command=lambda: goPath('C:\\')).grid(sticky='W', row=0, column=0)
-Button(frame3_1, text='D', bg=colorbg, fg=colorfg, command=lambda: goPath('D:\\')).grid(sticky='W', row=0, column=1)
-Label(frame3_1, text='|', bg=colorbg, fg=colorfg).grid(sticky='W', row=0, column=2)
-Button(frame3_1, text='╬', bg=colorbg, fg=colorfg, command=lambda: goPath(r'D:\MEGA\ZL-Core\Commit\╬')).grid(sticky='W', row=0, column=3)
-Button(frame3_1, text=' _ ', bg=colorbg, fg=colorfg, command=lambda: goPath('D:\\_')).grid(sticky='W', row=0, column=4)
-Button(frame3_1, text='Data', bg=colorbg, fg=colorfg, command=lambda: goPath('D:\\Data')).grid(sticky='W', row=0, column=5)
-Button(frame3_1, text='Core', bg=colorbg, fg=colorfg, command=lambda: goPath('D:\\ZL-Core')).grid(sticky='W', row=0, column=6)
-Button(frame3_1, text='Scraps', bg=colorbg, fg=colorfg, command=lambda: goPath('D:\\Scraps')).grid(sticky='W', row=0, column=7)
-frame3_2 = Frame(frame3, bg=colorbg)
-frame3_2.grid(sticky='E', row=0, column=1)
-frame3.grid_columnconfigure(1, weight=1)
-combo1 = ttk.Combobox(frame3_2, state="readonly", values=['--------------'], width=10)
-combo1.grid(sticky='E', row=0, column=0)
-combo1.bind('<Button-3>', lambda e: combo1.configure(state="normal"))
-combo1.bind('<Button-1>', lambda e: workspace_select())
-combo1.bind('<<ComboboxSelected>>', lambda e: workspace_select())
-
-vsb = ttk.Scrollbar(frame2, orient="vertical")
-hsb = ttk.Scrollbar(frame2, orient="horizontal")
-tree = ttk.Treeview(frame2, columns=("fullpath", "type", "size"), show="tree",
-	displaycolumns="size", yscrollcommand=lambda f, l: autoscroll(vsb, f, l),
-	xscrollcommand=lambda f, l:autoscroll(hsb, f, l))
-vsb['command'] = tree.yview
-hsb['command'] = tree.xview
-tree.grid(column=0, row=0, sticky='NSEW')
-vsb.grid(column=1, row=0, sticky='ns')
-hsb.grid(column=0, row=1, sticky='ew')
-frame2.grid_columnconfigure(0, weight=1)
-frame2.grid_rowconfigure(0, weight=1)
-
-tree.heading("#0", text="Directory Structure", anchor='w')
-tree.heading("size", text="File Size", anchor='w')
-tree.column("size", stretch=0, width=0)
-#tree['show'] = ('headings', 'tree')
-
-populate_roots(tree)
-tree.bind('<<TreeviewOpen>>', update_tree)
-tree.bind('<Double-Button-1>', change_dir)
-tree.bind('<ButtonRelease-1>', selectItem)
-
-
-#menubar = Menu(root, tearoff=0, background='#ffffff', foreground='#000000', activebackground='#000000', activeforeground='#ffffff')
-menubar = Menu(root, tearoff=0)
-menubar.add_command(label="New", command=open_popup)
-menubar.add_separator()
-menubar.add_command(label="Open", command=lambda: (toggle_sidebar(), Zeta.System.OS.open(fullpath)))
-#subedit = Menu(menubar, tearoff=0)
-#menubar.add_cascade(label="Edit", menu=subedit, command=menu_edit)
-menubar.add_command(label="Edit", command=lambda: (toggle_sidebar(), Zeta.System.OS.edit(fullpath)))
-menubar.add_command(label="Select", command=menu_select)
-menubar.add_separator()
-menubar.add_command(label="Copy path", command=lambda: (root.clipboard_clear(),root.clipboard_append(fullpath),root.update()))
-menubar.add_command(label="Go to path", command=lambda: menu_select(root.clipboard_get()))
-menubar.add_command(label="Terminal", command=lambda: (toggle_sidebar(), Zeta.System.OS.terminal(fullpath)))
-menubar.add_command(label="Detach", command=menu_select)
-#menubar.add_command(label="Exit", command=menu_clear)
-#menubar.add_command(label="Exit", command=root.quit)
-#root.config(menu=menubar)
-tree.bind("<Button-3>", lambda event: menubar.post(event.x_root, event.y_root))
+File1 = FileBox(root, home=home, darkmode=True, controller=Controller())
 
 #-------------------------------------------------------------------------------
 
 sidebar.bind("<Button-1>", toggle_sidebar)
 sidebarext.bind("<Button-1>", toggle_sidebar)
-root.bind("<Alt-Up>", goBack)
-#root.bind("<FocusOut>", exit)
 
 if tooltip:
 	sidebar.bind("<Enter>", lambda e: tooltip_show(e.x, e.y))
 	sidebar.bind("<Leave>", lambda e: tooltip_hide())
 	sidebar.bind('<Motion>', lambda e: tooltip_show(e.x, e.y))
-	sidebarext.bind("<Enter>", lambda e: tooltip_show(e.x, e.y))
-	sidebarext.bind("<Leave>", lambda e: tooltip_hide())
-	sidebarext.bind('<Motion>', lambda e: tooltip_show(e.x, e.y))
 sidebar.mainloop()
