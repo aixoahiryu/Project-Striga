@@ -48,6 +48,8 @@ class FileBox(Frame):
 		style.configure("TScrollbar", background=self.colorbg, foreground=self.colorfg, fieldbackground=self.colorbg, highlightcolor=self.colorfg, troughcolor=self.colorbg, arrowcolor=self.colorfg)
 		style.configure("Menu", background=self.colorbg, foreground=self.colorfg, fieldbackground=self.colorbg, highlightcolor=self.colorfg)
 
+		master.grid_columnconfigure(1, weight=1)
+		master.grid_rowconfigure(1, weight=1)
 		Button(master, text='≡', command=self.goHome, bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief).grid(sticky='NSEW', column=0, row=0)
 
 		frame1 = Frame(master, bg=self.colorbg)
@@ -94,8 +96,6 @@ class FileBox(Frame):
 		self.hsb.grid(column=0, row=1, sticky='ew')
 		self.grid_columnconfigure(0, weight=1)
 		self.grid_rowconfigure(0, weight=1)
-		master.grid_columnconfigure(1, weight=1)
-		master.grid_rowconfigure(1, weight=1)
 
 		self.tree.heading("#0", text="Directory Structure", anchor='w')
 		self.tree.heading("size", text="File Size", anchor='w')
@@ -164,7 +164,10 @@ class FileBox(Frame):
 		path = self.fullpath if os.path.isdir(self.fullpath) else os.path.split(self.fullpath)[0]
 
 		detached = Panel(border='mono', color2=panelcolor, mode='basic')
-		DetachBox(detached, color2=self.color2, home=path, darkmode=self.darkmode, neonmode=self.neonmode)
+		detached.attributes('-topmost', True)
+		detached.geometry("+333+25")
+		detached.attributes('-alpha', 0.77)
+		DetachBox(detached.frame, color2=self.color2, home=path, controller=self.parent, darkmode=self.darkmode, neonmode=self.neonmode)
 
 	def menu_clear():
 		#os.execv(sys.argv[0], sys.argv)

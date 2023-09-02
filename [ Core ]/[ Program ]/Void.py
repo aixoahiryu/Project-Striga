@@ -47,7 +47,8 @@ sidebarext.configure(bg=colorbg)
 sidebarext.withdraw()
 
 #root = Tk()
-root = Toplevel(sidebar)
+# root = Toplevel(sidebar)
+root = Panel(color2='white', mode='basic')
 root.title('===[ Sidebar: File ]===')
 root.attributes('-topmost', True)
 root.geometry("333x715+1+25")
@@ -344,7 +345,7 @@ class Controller():
 	def toggle_sidebar(child): toggle_sidebar()
 	def preview_file(child, path): preview_file(path)
 
-File1 = FileBox(root, home=home, darkmode=True, controller=Controller())
+File1 = FileBox(root.frame, home=home, darkmode=True, controller=Controller())
 
 #-------------------------------------------------------------------------------
 

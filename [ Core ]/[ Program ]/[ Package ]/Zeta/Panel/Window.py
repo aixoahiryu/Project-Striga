@@ -3,19 +3,22 @@ import Zeta
 from tkinter import *
 from .Toplevel2 import Toplevel2
 
-class Panel(Frame):
-    def __init__(self, draggable=True, border='mono', color=7, color2='', mode='basic', style='even', title='Title', *args, **kwargs):
+class Panel(Toplevel2):
+    def __init__(self, draggable=False, border='mono', color=7, color2='', mode='basic', style='even', title='Title', *args, **kwargs):
         neon = Zeta.Color.Neon(color=color, color2=color2).hex
         hue = Zeta.Color.Neon(color=color, color2=color2).hue
         
-        self.window = Toplevel2()
-        self.window.overrideredirect(True)
-        if draggable: self.window.bind_rightclick()
+        #self.window = Toplevel2()
+        #self.window.overrideredirect(True)
+        #if draggable: self.window.bind_rightclick()
+        Toplevel.__init__(self, *args, **kwargs)
+        self.overrideredirect(True)
+        if draggable: self.bind_rightclick()
 
         if border=='mono': from .Frame.Mono import MonoFrame as ColorFrame
         elif border=='corner': from .Frame.Corner import CornerFrame as ColorFrame
         elif border=='gradient': from .Frame.Gradient import GradientFrame as ColorFrame
-        gradient_frame = ColorFrame(self.window, color=color, color2=color2)
+        gradient_frame = ColorFrame(self, color=color, color2=color2)
         gradient_frame.pack(side="top", fill="both", expand=True)
 
         if mode=='basic': from .Wbasic import Decoration as ControlFrame
@@ -23,21 +26,23 @@ class Panel(Frame):
             control_frame = ControlFrame(gradient_frame, color=color, color2=color2, title=title)
             control_frame.pack(side="top", fill="both", expand=True, padx=5, pady=5)
 
-        if mode=='border': Frame.__init__(self, gradient_frame, *args, **kwargs)
-        else: Frame.__init__(self, control_frame, *args, **kwargs)
-        self['background'] = hue
-        self.pack(side="top", fill="both", expand=True, padx=5, pady=5)
+        # if mode=='border': Frame.__init__(self, gradient_frame, *args, **kwargs)
+        # else: Frame.__init__(self, control_frame, *args, **kwargs)
+        if mode=='border': self.frame = Frame(gradient_frame)
+        else: self.frame = Frame(control_frame)
+        self.frame['background'] = hue
+        self.frame.pack(side="top", fill="both", expand=True, padx=5, pady=5)
 
-class Fallback(Frame):
-    def __init__(self, draggable=True, color=7, color2='', mode='basic', title='Title', *args, **kwargs):
+class Fallback(Toplevel2):
+    def __init__(self, draggable=False, color=7, color2='', mode='basic', title='Title', *args, **kwargs):
         neon = Zeta.Color.Neon(color=color, color2=color2).hex
         hue = Zeta.Color.Neon(color=color, color2=color2).hue
         
-        self.window = Toplevel2()
-        self.window.overrideredirect(True)
-        if draggable: self.window.bind_rightclick()
+        Toplevel.__init__(self, *args, **kwargs)
+        self.overrideredirect(True)
+        if draggable: self.bind_rightclick()
 
-        frame1 = Frame(self.window)
+        frame1 = Frame(self)
         frame1.pack(side="top", fill="both", expand=True, ipadx=1, ipady=1)
         #frame1['highlightbackground'] = neon
         #frame1['highlightthickness'] = 1
@@ -48,10 +53,10 @@ class Fallback(Frame):
             control_frame = ControlFrame(frame1, color=color, color2=color2, title=title)
             control_frame.pack(side="top", fill="both", expand=True, padx=1, pady=1)
 
-        if mode=='border': Frame.__init__(self, frame1, *args, **kwargs)
-        else: Frame.__init__(self, control_frame, *args, **kwargs)
-        self['background'] = hue
-        self.pack(side="top", fill="both", expand=True, ipadx=3, ipady=3, padx=1, pady=1)
+        if mode=='border': self.frame = Frame(frame1)
+        else: self.frame = Frame(control_frame)
+        self.frame['background'] = hue
+        self.frame.pack(side="top", fill="both", expand=True, ipadx=3, ipady=3, padx=1, pady=1)
 
 class SampleApp(Tk):
     def __init__(self):

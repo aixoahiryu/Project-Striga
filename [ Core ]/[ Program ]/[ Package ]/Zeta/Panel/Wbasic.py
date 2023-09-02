@@ -8,7 +8,7 @@ class Decoration(Frame):
 
 		Frame.__init__(self, master, background=self._bg1)
 		top = Frame(self, background=self._bg1)
-		top.pack(side='top', expand=True, fill="both")
+		top.pack(side='top', fill=X)
 		top.grid_columnconfigure(0, weight=1)
 		#body = Frame(self)
 		
