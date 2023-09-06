@@ -1,3 +1,4 @@
+# https://code.activestate.com/recipes/langs/python/
 https://gameuidatabase.com/
 https://old.reddit.com/r/unixporn/ https://lemmy.world/c/unixporn
 https://github.com/zemmsoares/awesome-rices

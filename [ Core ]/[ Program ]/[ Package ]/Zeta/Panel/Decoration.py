@@ -1,7 +1,7 @@
 import Zeta
 from tkinter import *
 
-class Decoration(Frame):
+class Basic(Frame):
 	def __init__(self, master, title='Title', color=7, color2=''):
 		self._color1 = Zeta.Color.Neon(color=color, color2=color2).hex
 		self._bg1 = Zeta.Color.Neon(color=color, color2=color2).hue

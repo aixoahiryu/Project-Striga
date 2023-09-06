@@ -11,4 +11,5 @@ Artix: https://forum.artixlinux.org/index.php
 FreeBSD: https://forums.freebsd.org/categories/desktop-usage.29/
 --------------------------------------------------------------
 
-Desktop https://boards.4channel.org/g/thread/95107980#p95143675
+GUI: https://www.lainchan.org/%CE%BB/res/32969.html#37028
+Desktop: https://boards.4channel.org/g/thread/95107980#p95143675

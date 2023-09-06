@@ -17,14 +17,14 @@ hue = Zeta.Color.Neon(color2='green').hue
 controller1 = Controller()
 
 imgx = Icon.Load(icon='alchemybw', icontype='bw').image
-frame1 = Frame(x1)
+frame1 = Frame(x1.frame)
 #imgx = Zeta.Image.Icon.Load(icon='alchemybw', icontype='bw').image
-b1 = Button(x1, text="Close", background=hue, relief='flat', command=x1.window.destroy, image=imgx)
+b1 = Button(x1.frame, text="Close", background=hue, relief='flat', command=x1.destroy, image=imgx)
 b1.pack(side="top")
 frame1.pack(side="top")
 
-FileBox(frame1, home=r'D:\Data', color2='green', darkmode=True, neonmode=True)
+FileBox(frame1, home=r'D:\Data', darkmode=True, neonmode=True, color2='green')
 
-x1.window.mainloop()
+x1.mainloop()
 
 

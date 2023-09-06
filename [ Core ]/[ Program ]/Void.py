@@ -1,7 +1,6 @@
 import Zeta
 from Zeta.Image import Icon
-from Zeta.Panel.Window import Fallback as Panel
-from Zeta.Panel.Control.File import FileBox
+from Zeta.Panel import *
 
 import time
 import os
@@ -47,10 +46,11 @@ sidebarext.configure(bg=colorbg)
 sidebarext.withdraw()
 
 #root = Tk()
-# root = Toplevel(sidebar)
-root = Panel(color2='white', mode='basic')
+root = Toplevel(sidebar)
+# root = Window(color2='white', mode='basic')
 root.title('===[ Sidebar: File ]===')
 root.attributes('-topmost', True)
+root.attributes('-alpha', 0.77)
 root.geometry("333x715+1+25")
 root.overrideredirect(1)
 #root.option_add("*tearOff", False)
@@ -91,6 +91,7 @@ def toggle_overflow():
 	overflow_on = not overflow_on
 taskbar = Toplevel(sidebar)
 taskbar.attributes('-topmost', True)
+taskbar.attributes('-alpha', 0.77)
 taskbar.title('Taskbar')
 taskbar.geometry("1366x25+1+0")
 taskbar.overrideredirect(1)
@@ -152,6 +153,8 @@ msg1=r''' __________________________________________________________
 | Right: dial, command, launch                           | |
 |                                                        |_|
 |________________________________________________________|/|
+
+
 '''
 msg2=r'''
 |     .-.
@@ -345,7 +348,7 @@ class Controller():
 	def toggle_sidebar(child): toggle_sidebar()
 	def preview_file(child, path): preview_file(path)
 
-File1 = FileBox(root.frame, home=home, darkmode=True, controller=Controller())
+File1 = FileBox(root, home=home, darkmode=True, controller=Controller())
 
 #-------------------------------------------------------------------------------
 

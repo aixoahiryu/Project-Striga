@@ -1,2 +1,2 @@
-NieR: Automata
+NieR: Automata | https://metakirby5.github.io/yorha/
 cool-retro-term

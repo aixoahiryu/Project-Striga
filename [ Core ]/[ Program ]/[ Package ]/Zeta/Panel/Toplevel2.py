@@ -3,6 +3,7 @@ from tkinter import *
 class Toplevel2(Toplevel):
     def __init__(self, *args, **kwargs):
         Toplevel.__init__(self, *args, **kwargs)
+        self.attributes('-alpha', 0.99)
 
     def start_move(self, event):
         self.x = event.x

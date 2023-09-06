@@ -1,0 +1,4 @@
+GDB
+
+Invariants	https://brooker.co.za/blog/2023/07/28/ds-testing.html
+			https://news.ycombinator.com/item?id=37355487

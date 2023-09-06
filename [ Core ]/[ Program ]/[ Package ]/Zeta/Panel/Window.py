@@ -3,7 +3,7 @@ import Zeta
 from tkinter import *
 from .Toplevel2 import Toplevel2
 
-class Panel(Toplevel2):
+class Primary(Toplevel2):
     def __init__(self, draggable=False, border='mono', color=7, color2='', mode='basic', style='even', title='Title', *args, **kwargs):
         neon = Zeta.Color.Neon(color=color, color2=color2).hex
         hue = Zeta.Color.Neon(color=color, color2=color2).hue
@@ -21,7 +21,7 @@ class Panel(Toplevel2):
         gradient_frame = ColorFrame(self, color=color, color2=color2)
         gradient_frame.pack(side="top", fill="both", expand=True)
 
-        if mode=='basic': from .Wbasic import Decoration as ControlFrame
+        if mode=='basic': from .Decoration import Basic as ControlFrame
         if mode!='border':
             control_frame = ControlFrame(gradient_frame, color=color, color2=color2, title=title)
             control_frame.pack(side="top", fill="both", expand=True, padx=5, pady=5)
@@ -48,7 +48,7 @@ class Fallback(Toplevel2):
         #frame1['highlightthickness'] = 1
         frame1['background'] = neon
 
-        if mode=='basic': from .Wbasic import Decoration as ControlFrame
+        if mode=='basic': from .Decoration import Basic as ControlFrame
         if mode!='border':
             control_frame = ControlFrame(frame1, color=color, color2=color2, title=title)
             control_frame.pack(side="top", fill="both", expand=True, padx=1, pady=1)

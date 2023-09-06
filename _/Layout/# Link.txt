@@ -1,0 +1,2 @@
+https://stackoverflow.com/questions/19749476/3-different-issues-with-ttk-treeviews-in-python
+https://stackoverflow.com/questions/49498820/tkinter-treeview-remove-dotbox-highlight
