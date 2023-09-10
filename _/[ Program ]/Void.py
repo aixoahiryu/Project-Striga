@@ -1,12 +1,11 @@
 import Zeta
-from Zeta.Image import Icon
 from Zeta.Panel import *
 
 import time
 import os
 import glob
 import subprocess
-from tkinter import *
+#from tkinter import *
 import tkinter.ttk as ttk
 
 from natsort import os_sorted
@@ -43,7 +42,7 @@ sidebarext.title('1ext')
 sidebarext.geometry("1x710-0+30")
 sidebarext.overrideredirect(1)
 sidebarext.configure(bg=colorbg)
-sidebarext.withdraw()
+sidebarext.hide()
 
 #root = Tk()
 root = Toplevel(sidebar)
@@ -58,6 +57,22 @@ root.overrideredirect(1)
 #root.configure(highlightbackground="#000000")
 #root.configure(highlightcolor="white")
 
+# sidebar2 = Toplevel(sidebar)
+sidebar2 = Window(color2='white', mode='border')
+sidebar2.title('===[ Sidebar: File ]===')
+sidebar2.attributes('-topmost', True)
+sidebar2.attributes('-alpha', 0.77)
+sidebar2.geometry("333x715-1+25")
+sidebar2.overrideredirect(1)
+sidebar2.hide()
+#File1 = FileBox(sidebar2, home=home, darkmode=False)
+sidebar2_on = False
+def toggle_sidebar2(*event):
+	global sidebar2_on
+	if sidebar2_on: sidebar2.hide()
+	else: sidebar2.show()
+	sidebar2_on = not sidebar2_on
+
 overflow = Toplevel(sidebar)
 overflow.title('Icon overflow')
 overflow.geometry("-0+25")
@@ -65,29 +80,29 @@ overflow.overrideredirect(1)
 overflow.configure(bg=colorbg)
 #overflow.transient(taskbar)
 overflow.attributes('-topmost', True)
-imggemini=Icon.Load(icon='geminiw', icontype='bw').image
+imggemini=Zeta.Image.Icon.Load(icon='geminiw', icontype='bw').image
 Button(overflow, text=' Thaumiel', relief='flat', background=colorbg, foreground='#c9c9c9', image=imggemini, compound='left').grid(column=0, row=0, sticky='NW')
-imgeye=Icon.Load(icon='eyew', icontype='bw').image
+imgeye=Zeta.Image.Icon.Load(icon='eyew', icontype='bw').image
 Button(overflow, text=' The eye', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgeye, compound='left').grid(column=0, row=1, sticky='NW')
-imgmoon=Icon.Load(icon='moonw', icontype='bw').image
+imgmoon=Zeta.Image.Icon.Load(icon='moonw', icontype='bw').image
 Button(overflow, text=' Moon cycle', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgmoon, compound='left').grid(column=0, row=2, sticky='NW')
-imgsun=Icon.Load(icon='sunw', icontype='bw').image
+imgsun=Zeta.Image.Icon.Load(icon='sunw', icontype='bw').image
 Button(overflow, text=' Sun cycle', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgsun, compound='left').grid(column=0, row=3, sticky='NW')
-imgdice=Icon.Load(icon='dicew', icontype='bw').image
+imgdice=Zeta.Image.Icon.Load(icon='dicew', icontype='bw').image
 Button(overflow, text=' Chaos theory', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgdice, compound='left').grid(column=0, row=4, sticky='NW')
-imgcalendar=Icon.Load(icon='calendarw', icontype='bw').image
+imgcalendar=Zeta.Image.Icon.Load(icon='calendarw', icontype='bw').image
 Button(overflow, text=' Calendar', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgcalendar, compound='left').grid(column=0, row=5, sticky='NW')
-imghorse=Icon.Load(icon='horsew', icontype='bw').image
+imghorse=Zeta.Image.Icon.Load(icon='horsew', icontype='bw').image
 Button(overflow, text=' Strategy', relief='flat', background=colorbg, foreground='#c9c9c9', image=imghorse, compound='left').grid(column=0, row=6, sticky='NW')
-imgwave=Icon.Load(icon='wave2w', icontype='bw').image
+imgwave=Zeta.Image.Icon.Load(icon='wave2w', icontype='bw').image
 Button(overflow, text=' Flunctuation', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgwave, compound='left').grid(column=0, row=7, sticky='NW')
-overflow.withdraw()
+overflow.hide()
 overflow_on = False
 
 def toggle_overflow():
 	global overflow_on
-	if overflow_on: overflow.withdraw()
-	else: overflow.deiconify()
+	if overflow_on: overflow.hide()
+	else: overflow.show()
 	overflow_on = not overflow_on
 taskbar = Toplevel(sidebar)
 taskbar.attributes('-topmost', True)
@@ -106,35 +121,35 @@ Button(appframe, text='2', relief='flat', background=colorbg, foreground=colorfg
 Button(appframe, text='3', relief='flat', background=colorbg, foreground=colorfg).grid(column=2, row=0, sticky='NW')
 Button(appframe, text='4', relief='flat', background=colorbg, foreground=colorfg).grid(column=3, row=0, sticky='NW')
 Button(appframe, text='#', relief='flat', background=colorbg, foreground=colorfg).grid(column=4, row=0, sticky='NW')
-imgcode=Icon.Load(icon='code', icontype='neon').image
+imgcode=Zeta.Image.Icon.Load(icon='code', icontype='neon').image
 Button(appframe, text=' Program', relief='flat', background=colorbg, foreground=colorfg, image=imgcode, compound='left').grid(column=5, row=0, sticky='NW')
-imgterm=Icon.Load(icon='term3', icontype='neon').image
+imgterm=Zeta.Image.Icon.Load(icon='term3', icontype='neon').image
 Button(appframe, text=' Hacking', relief='flat', background=colorbg, foreground=colorfg, image=imgterm, compound='left').grid(column=6, row=0, sticky='NW')
-imgfile=Icon.Load(icon='file', icontype='neon').image
+imgfile=Zeta.Image.Icon.Load(icon='file', icontype='neon').image
 Button(appframe, text=' File', relief='flat', background=colorbg, foreground='#6effbe', image=imgfile, compound='left').grid(column=7, row=0, sticky='NW')
-imglink=Icon.Load(icon='qr', icontype='neon').image
+imglink=Zeta.Image.Icon.Load(icon='qr', icontype='neon').image
 Button(appframe, text=' Network', relief='flat', background=colorbg, foreground=colorfg, image=imglink, compound='left').grid(column=8, row=0, sticky='NW')
 trayframe = Frame(taskbar, bg=colorbg)
 trayframe.grid(sticky='NSE', column=1, row=0)
 taskbar.grid_columnconfigure(1, weight=1)
-imgcpu=Icon.Load(icon='cpuw', icontype='bw').image
+imgcpu=Zeta.Image.Icon.Load(icon='cpuw', icontype='bw').image
 Button(trayframe, text=' 13%', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgcpu, compound='left').grid(column=0, row=0, sticky='NW')
-imghdd=Icon.Load(icon='hddw', icontype='bw').image
+imghdd=Zeta.Image.Icon.Load(icon='hddw', icontype='bw').image
 Button(trayframe, text=' 322G', relief='flat', background=colorbg, foreground='#c9c9c9', image=imghdd, compound='left').grid(column=1, row=0, sticky='NW')
-imgnetwork=Icon.Load(icon='networkw', icontype='bw').image
+imgnetwork=Zeta.Image.Icon.Load(icon='networkw', icontype='bw').image
 Button(trayframe, text=' 0.7 MB/s', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgnetwork, compound='left').grid(column=2, row=0, sticky='NW')
-imgram=Icon.Load(icon='ramw', icontype='bw').image
+imgram=Zeta.Image.Icon.Load(icon='ramw', icontype='bw').image
 Button(trayframe, text=' 2.2 GB', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgram, compound='left').grid(column=3, row=0, sticky='NW')
-imgtemp=Icon.Load(icon='tempw', icontype='bw').image
+imgtemp=Zeta.Image.Icon.Load(icon='tempw', icontype='bw').image
 Button(trayframe, text=' 33°C', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgtemp, compound='left').grid(column=4, row=0, sticky='NW')
-imgvolume=Icon.Load(icon='volumew', icontype='bw').image
+imgvolume=Zeta.Image.Icon.Load(icon='volumew', icontype='bw').image
 Button(trayframe, text=' Ballad', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgvolume, compound='left').grid(column=5, row=0, sticky='NW')
-imgmenu=Icon.Load(icon='menuw', icontype='bw').image
+imgmenu=Zeta.Image.Icon.Load(icon='menuw', icontype='bw').image
 btnoverflow = Button(trayframe, text='', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgmenu, compound='none')
 btnoverflow.grid(column=6, row=0, sticky='NW')
 btnoverflow.bind("<Button-1>", lambda event: toggle_overflow())
-#taskbar.bind("<Button-1>", lambda event: (root.withdraw(), sidebar.geometry("1366x1+0+0"), taskbar.geometry("1366x24+0+1")))
-taskbar.bind("<Button-1>", lambda event: root.withdraw())
+#taskbar.bind("<Button-1>", lambda event: (root.hide(), sidebar.geometry("1366x1+0+0"), taskbar.geometry("1366x24+0+1")))
+taskbar.bind("<Button-1>", lambda event: root.hide())
 
 
 titlepanel = Toplevel(sidebar)
@@ -242,7 +257,7 @@ titlepanel.grid_columnconfigure(1, weight=1)
 titlepanel.grid_columnconfigure(2, weight=1)
 txt1frame = Frame(txt1, bg=colorbg)
 txt1frame.grid(row=1, column=0, sticky='NW')
-img1=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\geminiw.png')
+img1=Zeta.Image.Icon.Load(icon='geminiw', icontype='bw').image
 Button(txt1frame, text=' Thaumiel', relief='flat', background=colorbg, foreground='#c9c9c9', image=img1, compound='left').grid(column=0, row=0, sticky='NW')
 
 popup = Toplevel(sidebar)
@@ -254,7 +269,7 @@ popup.configure(bg=colorbg)
 popup.attributes('-topmost', True)
 popupmsg = Message(popup, text='[File] Workspace', bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal"), aspect=500)
 popupmsg.grid(sticky='NWES')
-popup.withdraw()
+popup.hide()
 
 #root.tk.call("source", r"C:\Users\Administrator\Desktop\tcl\theme\Forest\void.tcl")
 style = ttk.Style()
@@ -306,41 +321,44 @@ def preview_file(path):
 	except: txt2.configure(text=msg2_2+'Preview failure')
 
 def toggle_sidebar(*event):
-	global hidden, overflow_on
+	global hidden, overflow_on, sidebar2_on
 	
 	if (hidden == False):
-		root.withdraw()
-		taskbar.withdraw()
-		titlepanel.withdraw()
+		root.hide()
+		taskbar.hide()
+		titlepanel.hide()
 		sidebar.attributes('-alpha', 0.1)
-		sidebarext.withdraw()
+		sidebarext.hide()
 		#sidebar.geometry("1x690+0+50")
 	else:
-		root.deiconify()
-		taskbar.deiconify()
-		titlepanel.deiconify()
+		popup.hide()
+		root.show()
+		taskbar.show()
+		titlepanel.show()
 		sidebar.attributes('-alpha', 1.0)
-		sidebarext.deiconify()
+		sidebarext.show()
 		#sidebar.geometry("1x740+0+0")
-		popup.withdraw()
 		preview_clipboard()
 	
 	if overflow_on:
-		overflow.withdraw()
+		overflow.hide()
 		overflow_on = False
+	if sidebar2_on:
+		sidebar2.hide()
+		sidebar2_on = False
 
 	hidden = not hidden
 
 def tooltip_show(x, y):
-	#popup.deiconify() if hidden else print(e)
+	#popup.show() if hidden else print(e)
 	if hidden:
-		if (y<=50 and x==0): (popupmsg.configure(text='Network'),popup.geometry('+10+10'),popup.deiconify())
-		elif x>=1: (popupmsg.configure(text='F'),popup.geometry('+10+10'),popup.deiconify())
-		elif y>=700: (popupmsg.configure(text='Lounge'),popup.geometry('+10-40'),popup.deiconify())
-		else: (popupmsg.configure(text='File'),popup.withdraw())
+		if (y<=50 and x==0): (popupmsg.configure(text='Network'),popup.geometry('+10+10'),popup.show())
+		elif x>=1: (popupmsg.configure(text='F'),popup.geometry('+10+10'),popup.show())
+		elif y>=700: (popupmsg.configure(text='Lounge'),popup.geometry('+10-40'),popup.show())
+		else: (popupmsg.configure(text='File'),popup.hide())
 
 def tooltip_hide():
-	popup.withdraw() if hidden else print('hidden')
+	popup.hide() if hidden else print('hidden')
 
 #-------------------------------------------------------------------------------
 
@@ -349,11 +367,12 @@ class Controller():
 	def preview_file(child, path): preview_file(path)
 
 File1 = FileBox(root, home=home, darkmode=True, controller=Controller())
+File2 = FileBox(sidebar2.frame, home=r'D:\ZL-Core\Toolbar\_\[ Sidebar ]', darkmode=True, controller=Controller())
 
 #-------------------------------------------------------------------------------
 
 sidebar.bind("<Button-1>", toggle_sidebar)
-sidebarext.bind("<Button-1>", toggle_sidebar)
+sidebarext.bind("<Button-1>", toggle_sidebar2)
 
 if tooltip:
 	sidebar.bind("<Enter>", lambda e: tooltip_show(e.x, e.y))

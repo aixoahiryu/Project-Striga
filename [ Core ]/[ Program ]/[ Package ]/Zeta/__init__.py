@@ -1,3 +1,7 @@
-from .System import *
+from . import Color
+from . import System
+from . import Setting
 
-from .Color import *
+from . import Panel
+
+from . import Image

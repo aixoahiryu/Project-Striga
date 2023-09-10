@@ -60,9 +60,9 @@ elif data.endswith(']'):
 elif data.startswith('embed/'):
     webbrowser.open('https://youtu.be/'+data.replace('embed/',''), new=2, autoraise=True)
 else:
-    #subprocess.Popen(["C:\Program Files\Links\links-g.exe", "https://www.google.com/search?hl=en&q="+data], start_new_session=True)
-    webbrowser.open("https://archive.4plebs.org/pol/search/text/"+data, new=2, autoraise=True)
-    webbrowser.open("https://desuarchive.org/g/search/text/"+data, new=2, autoraise=True)
-    webbrowser.open("https://archive.4plebs.org/x/search/text/"+data, new=2, autoraise=True)
-    webbrowser.open("https://desuarchive.org/k/search/text/"+data, new=2, autoraise=True)
+    subprocess.Popen(["C:\Program Files\Links\links-g.exe", "https://www.google.com/search?hl=en&q="+data], start_new_session=True)
+    #webbrowser.open("https://archive.4plebs.org/pol/search/text/"+data, new=2, autoraise=True)
+    #webbrowser.open("https://desuarchive.org/g/search/text/"+data, new=2, autoraise=True)
+    #webbrowser.open("https://archive.4plebs.org/x/search/text/"+data, new=2, autoraise=True)
+    #webbrowser.open("https://desuarchive.org/k/search/text/"+data, new=2, autoraise=True)
 

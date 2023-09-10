@@ -26,6 +26,8 @@ frame1.pack(side="top")
 
 FileBox(frame1, home=r'D:\Data', darkmode=True)
 
+x1.child.append(x2)
+x1.bind('<Button-1>', lambda e: print(x1.winfo_width()))
 x1.mainloop()
 
 

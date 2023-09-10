@@ -22,9 +22,9 @@ class Basic(Frame):
 		Button(btnframe, text=u'Σ', relief='flat', foreground='#c9c9c9', background=self._bg1, font=("Tahoma", 8, "normal"), command=self.winfo_toplevel().destroy).pack(side='left')
 		Button(btnframe, text=u'Ω', relief='flat', foreground='#c9c9c9', background=self._bg1, font=("Tahoma", 8, "normal"), command=self.winfo_toplevel().destroy).pack(side='left')
 		Button(btnframe, text=u'¦', relief='flat', foreground='#c9c9c9', background=self._bg1, font=("Tahoma", 8, "normal"), command=self.winfo_toplevel().destroy).pack(side='left')
-		Button(btnframe, text='■', relief='flat', foreground=Zeta.Color.Neon(color2='green').hex, background=self._bg1, command=self.winfo_toplevel().destroy).pack(side='left')
+		Button(btnframe, text='■', relief='flat', foreground=Zeta.Color.Neon(color2='green').hex, background=self._bg1, command=self.winfo_toplevel().hide).pack(side='left')
 		Button(btnframe, text='■', relief='flat', foreground=Zeta.Color.Neon(color2='yellow').hex, background=self._bg1, command=self.winfo_toplevel().destroy).pack(side='left')
-		Button(btnframe, text='■', relief='flat', foreground=Zeta.Color.Neon(color2='red').hex, background=self._bg1, command=self.winfo_toplevel().destroy).pack(side='left')
+		Button(btnframe, text='■', relief='flat', foreground=Zeta.Color.Neon(color2='red').hex, background=self._bg1, command=self.winfo_toplevel().close).pack(side='left')
 
 		try:
 			self.winfo_toplevel().bind_drag(top)

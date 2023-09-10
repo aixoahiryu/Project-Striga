@@ -1,7 +1,8 @@
 import Zeta
+
 import os
 import inspect
-from tkinter import *
+from tkinter import PhotoImage
 
 class Load():
 	def __init__(self, icon='', icontype='', iconformat='png'):

@@ -162,10 +162,14 @@ class FileBox(Frame):
 		panelcolor = self.color2 if self.neonmode else self.colorfg
 		path = self.fullpath if os.path.isdir(self.fullpath) else os.path.split(self.fullpath)[0]
 
-		detached = Zeta.Panel.Window(border='mono', color2=panelcolor, mode='basic')
+		#detached = Zeta.Panel.Window(border='mono', color2=panelcolor, mode='basic')
+		detached = Zeta.Panel.Window(color2=panelcolor)
 		detached.attributes('-topmost', True)
 		detached.geometry("+333+25")
 		detached.attributes('-alpha', 0.77)
+		# self.window.child.append(detached)
+		# detached.owner.append(self.window)
+		detached.transient(self.window)
 		Zeta.Panel.FileBox(detached.frame, color2=self.color2, home=path, controller=self.parent, darkmode=self.darkmode, neonmode=self.neonmode)
 
 	def menu_clear():

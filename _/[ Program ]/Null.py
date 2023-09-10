@@ -3,10 +3,12 @@ import os
 import subprocess
 from tkinter import *
 import tkinter.ttk as ttk
+from Zeta.Panel import *
 
 from natsort import os_sorted
 
 ZLCORE = os.environ['ZLCORE']
+home = r'D:\MEGA\ZL-Core\Commit\_'
 hidden = False
 
 addicon = False
@@ -31,7 +33,7 @@ sidebarext.title('1ext')
 sidebarext.geometry("1x740+0+0")
 sidebarext.overrideredirect(1)
 sidebarext.configure(bg=colorbg)
-sidebarext.withdraw()
+sidebarext.hide()
 
 #root = Tk()
 root = Toplevel(sidebar)
@@ -44,6 +46,21 @@ root.grid_rowconfigure(1, weight=1)
 root.configure(background="#ffffff")
 root.configure(highlightbackground="#000000")
 root.configure(highlightcolor="#000000")
+
+sidebar2 = Toplevel(sidebar)
+# sidebar2 = Window(color2='black', mode='border')
+sidebar2.title('===[ Sidebar: File ]===')
+sidebar2.attributes('-topmost', True)
+sidebar2.geometry("333x740+1+0")
+sidebar2.overrideredirect(1)
+sidebar2.hide()
+File1 = FileBox(sidebar2, home=home, darkmode=False)
+sidebar2_on = False
+def toggle_sidebar2(*event):
+	global sidebar2_on
+	if sidebar2_on: sidebar2.hide()
+	else: sidebar2.show()
+	sidebar2_on = not sidebar2_on
 
 overflow = Toplevel(sidebar)
 overflow.title('Icon overflow')
@@ -68,13 +85,13 @@ imghorse=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\cpub.
 Button(overflow, text=' Strategy', relief='flat', background=colorbg, foreground=colorfg, image=imghorse, compound='left').grid(column=0, row=6, sticky='NW')
 imgwave=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\cpub.png')
 Button(overflow, text=' Flunctuation', relief='flat', background=colorbg, foreground=colorfg, image=imgwave, compound='left').grid(column=0, row=7, sticky='NW')
-overflow.withdraw()
+overflow.hide()
 overflow_on = False
 
 def toggle_overflow():
 	global overflow_on
-	if overflow_on: overflow.withdraw()
-	else: overflow.deiconify()
+	if overflow_on: overflow.hide()
+	else: overflow.show()
 	overflow_on = not overflow_on
 taskbar = Toplevel(sidebar)
 taskbar.attributes('-topmost', True)
@@ -126,8 +143,8 @@ Button(trayframe, text=' Manager', relief='flat', background=colorbg, foreground
 imgcalendar=PhotoImage(file=ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\gif\bw\calendarb.png')
 Button(trayframe, text=' Z[1.95996|97.5] 54.7356° π[3.14159] √[1.41421] ϕ[1.61803]', relief='flat', background=colorbg, foreground=colorfg, image=imgcalendar, compound='left').grid(column=6, row=0, sticky='NSW')
 Button(trayframe, text=' ', relief='flat', background=colorbg, foreground=colorfg).grid(column=7, row=0, sticky='NSW')
-#taskbar.bind("<Button-1>", lambda event: (root.withdraw(), sidebar.geometry("1366x1+0+0"), taskbar.geometry("1366x24+0+1")))
-taskbar.bind("<Button-1>", lambda event: root.withdraw())
+#taskbar.bind("<Button-1>", lambda event: (root.hide(), sidebar.geometry("1366x1+0+0"), taskbar.geometry("1366x24+0+1")))
+taskbar.bind("<Button-1>", lambda event: root.hide())
 
 popup = Toplevel(sidebar)
 popup.title('Popup')
@@ -138,39 +155,42 @@ popup.configure(bg=colorbg)
 popup.attributes('-topmost', True)
 popupmsg = Message(popup, text='[File] Workspace', bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal"), aspect=500)
 popupmsg.grid(sticky='NWES')
-popup.withdraw()
+popup.hide()
 
 ttk.Style().theme_use('alt')
 
 def toggle_sidebar(*event):
-	global hidden, root, searchbox, overflow_on
+	global hidden, overflow_on, sidebar2_on
 	
 	if (hidden == False):
-		root.withdraw()
-		taskbar.withdraw()
-		sidebarext.withdraw()
+		root.hide()
+		taskbar.hide()
+		sidebarext.hide()
 	else:
-		root.deiconify()
-		taskbar.deiconify()
-		popup.withdraw()
-		sidebarext.deiconify()
-	hidden = not hidden
+		popup.hide()
+		root.show()
+		taskbar.show()
+		sidebarext.show()
+	
 	if overflow_on:
-		overflow.withdraw()
+		overflow.hide()
 		overflow_on = False
+	if sidebar2_on:
+		sidebar2.hide()
+		sidebar2_on = False
 
-	root.focus_set()
+	hidden = not hidden
 
 def tooltip_show(x, y):
-	#popup.deiconify() if hidden else print(e)
+	#popup.show() if hidden else print(e)
 	if hidden:
-		if (y<=50 and x==0): (popupmsg.configure(text='Monolith'),popup.geometry('-10+10'),popup.deiconify())
-		elif x>=1: (popupmsg.configure(text='_'),popup.geometry('-10+10'),popup.deiconify())
-		elif y>=468: (popupmsg.configure(text='Launch'),popup.geometry('-10-40'),popup.deiconify())
-		else: (popupmsg.configure(text='Command'),popup.withdraw())
+		if (y<=50 and x==0): (popupmsg.configure(text='Monolith'),popup.geometry('-10+10'),popup.show())
+		elif x>=1: (popupmsg.configure(text='_'),popup.geometry('-10+10'),popup.show())
+		elif y>=468: (popupmsg.configure(text='Launch'),popup.geometry('-10-40'),popup.show())
+		else: (popupmsg.configure(text='Command'),popup.hide())
 
 def tooltip_hide():
-	popup.withdraw() if hidden else print('hidden')
+	popup.hide() if hidden else print('hidden')
 
 #-------------------------------------------------------------------------------
 
@@ -226,8 +246,8 @@ linkbtn.bind("<Button-3>", lambda e: subprocess.Popen(["C:\\Program Files\\Notep
 #-------------------------------------------------------------------------------
 
 sidebar.bind("<Button-1>", toggle_sidebar)
-sidebarext.bind("<Button-1>", toggle_sidebar)
-#taskbar.bind("<Enter>", lambda e: root.withdraw())
+sidebarext.bind("<Button-1>", toggle_sidebar2)
+#taskbar.bind("<Enter>", lambda e: root.hide())
 
 if tooltip:
 	sidebar.bind("<Enter>", lambda e: tooltip_show(e.x, e.y))

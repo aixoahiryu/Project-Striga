@@ -1,1 +1,1 @@
-from .Icon import *
+from .Icon import Load
