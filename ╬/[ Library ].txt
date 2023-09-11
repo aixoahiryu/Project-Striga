@@ -47,7 +47,7 @@ Update: feed, watch
 Board: catalog, topics, overview, index, glossary, dictionary, etymology
 Collection: history, archive, newspaper, record, educator, research
 	Anna, LoC, archive.org, btdig, [local] | scholar|books.google.com
-	Zeitgeist, Almanac, Encyclopedia, Glossary, Dictionary | Britannica, Encarta, Grolier, World Book, Compton, Webster | https://www.cia.gov/readingroom/home | https://eresources.loc.gov/ | https://dp.la/browse-by-partner | https://edition.cnn.com/2020/04/19/us/digital-libraries-from-your-couch-trnd/index.html
+	Zeitgeist, Almanac, Encyclopedia, Glossary, Dictionary | Britannica, Encarta, Grolier, World Book, Compton, Webster | https://www.cia.gov/readingroom/home, https://www.dia.mil/FOIA/FOIA-Electronic-Reading-Room/FileId/170026/ | https://eresources.loc.gov/ | https://dp.la/browse-by-partner | https://edition.cnn.com/2020/04/19/us/digital-libraries-from-your-couch-trnd/index.html
 	Reading room | Wiki/Search | Shelf: microsoft bookshelf|encarta
 	Map: Zooming | https://www.cia.gov/the-world-factbook/ | https://www.loc.gov/maps/
 	Media: 

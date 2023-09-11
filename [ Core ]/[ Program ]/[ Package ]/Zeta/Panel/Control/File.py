@@ -276,15 +276,18 @@ class FileBox(Frame):
 	def open_popup(self):
 		self.newFileName.set('')
 		
-		self.dialog = Toplevel(self.window)
-		self.dialog.geometry("+333+25")
+		# self.dialog = Toplevel(self.window)
+		self.dialog = Zeta.Panel.Window(color2='white', mode='basic', title='Create file')
+		self.dialog.geometry("+340+25")
+		self.dialog.attributes('-topmost', True)
+		self.dialog.attributes('-alpha', 0.77)
 		self.dialog.resizable(False, False)
 		self.dialog.title("New")
 		self.dialog.transient(self.window)
 		self.dialog.columnconfigure(0, weight=1)
-		Label(self.dialog, text='Enter File or Folder name').grid()
-		Entry(self.dialog, textvariable=self.newFileName).grid(column=0, sticky='NSEW')
-		btnframe = Frame(self.dialog)
+		Label(self.dialog.frame, text='Enter File or Folder name').grid()
+		Entry(self.dialog.frame, textvariable=self.newFileName).grid(column=0, sticky='NSEW')
+		btnframe = Frame(self.dialog.frame)
 		btnframe.grid(column=0, sticky='NSEW')
 		Button(btnframe, text="Time", command=lambda: self.newFileName.set( str(round(time.time())) )).pack(side=LEFT)
 		Button(btnframe, text="TXT", command=lambda: self.newFileName.set(self.newFileName.get()+'.txt')).pack(side=LEFT)
@@ -297,6 +300,7 @@ class FileBox(Frame):
 		Button(btnframe, text=" Σ ", command=lambda: self.newFileName.set(r'Σ[ '+self.newFileName.get()+r' ]')).pack(side=LEFT)
 		Button(btnframe, text=" Ω ", command=lambda: self.newFileName.set(r'Ω[ '+self.newFileName.get()+r' ]')).pack(side=LEFT)
 		Button(btnframe, text="Create", command=self.newFileOrFolder).pack(side=LEFT)
+		self.dialog.theme(target=self.dialog.frame, bg='#000000', fg='#ffffff')
 
 	def newFileOrFolder(self):
 		if os.path.isdir(self.fullpath): fullpath2 = self.fullpath

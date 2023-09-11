@@ -46,7 +46,6 @@ sidebarext.hide()
 
 #root = Tk()
 root = Toplevel(sidebar)
-# root = Window(color2='white', mode='basic')
 root.title('===[ Sidebar: File ]===')
 root.attributes('-topmost', True)
 root.attributes('-alpha', 0.77)
