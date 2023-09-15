@@ -1,16 +1,41 @@
-py
-├── Tkinter
-│   ├── Python GUI Programming With Tkinter.pdf
-│   ├── Tkinter GUI Application Development Blueprints.pdf
-│   └── Tkinter GUI Application Development Cookbook.epub
-├── Video
-│   ├── 5 Python BAD Practices To Avoid [5Ui37whUDrM].mp4
-│   ├── Mastering Python - Everything You Need To Know To Become a Python Master [p15xzjzR9j0].mp4
-│   ├── Metaclasses in Python [yWzMiaqnpkI].mp4
-│   └── Python Is Weird... [hz7ipeH5Dug].mp4
-├── Automate the Boring Stuff with Python.pdf
-├── Black Hat Python 2e.pdf
-├── Black Hat Python.pdf
-├── Python Tricks.pdf
-├── Violent Python.pdf
-└── Web Scraping with Python.pdf
+coding
+├── OS
+│   ├── Distributed Operating Systems.djvu
+│   ├── FreeBSD Handbook.pdf
+│   ├── FreeBSD Mastery Advanced ZFS.pdf
+│   ├── Modern Operating Systems.pdf
+│   ├── Protected Mode Software Architecture.pdf
+│   ├── The Design and Implementation of the FreeBSD Operating System.epub
+│   └── Unix internals the new frontiers.djvu
+├── Py
+│   ├── Tkinter
+│   │   ├── Python GUI Programming With Tkinter.pdf
+│   │   ├── Tkinter GUI Application Development Blueprints.pdf
+│   │   └── Tkinter GUI Application Development Cookbook.epub
+│   ├── Video
+│   │   ├── 5 Python BAD Practices To Avoid [5Ui37whUDrM].mp4
+│   │   ├── Mastering Python - Everything You Need To Know To Become a Python Master [p15xzjzR9j0].mp4
+│   │   ├── Metaclasses in Python [yWzMiaqnpkI].mp4
+│   │   └── Python Is Weird... [hz7ipeH5Dug].mp4
+│   ├── Automate the Boring Stuff with Python.pdf
+│   ├── Black Hat Python 2e.pdf
+│   ├── Black Hat Python.pdf
+│   ├── Python Tricks.pdf
+│   ├── Violent Python.pdf
+│   └── Web Scraping with Python.pdf
+├── Utility
+│   ├── DNSSEC Mastery.epub
+│   ├── Network Security with OpenSSL.pdf
+│   ├── Relayd and Httpd Mastery.pdf
+│   ├── SSH Mastery OpenSSH, PuTTY, Tunnels and Keys.epub
+│   ├── Sudo Mastery.pdf
+│   └── The FreeBSD corporate networkers.pdf
+├── Computer Networks (4th Edition).pdf
+├── Fundamentals of Database Systems.pdf
+├── Implementing SSLTLS Using Cryptography and PKI.pdf
+├── Internetworking with TCPIP, Vol. III.pdf
+├── Microprocessor Design A Practical Guide.pdf
+├── Microprocessors and their Operating Systems.pdf
+└── POSIX programmers guide.pdf
+
+5 directories, 33 files

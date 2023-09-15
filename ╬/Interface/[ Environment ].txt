@@ -7,6 +7,7 @@ https://en.wikipedia.org/wiki/Desktop_environment
 https://en.wikipedia.org/wiki/Elements_of_graphical_user_interfaces
 https://en.wikipedia.org/wiki/WIMP_(computing) https://en.wikipedia.org/wiki/Graphical_user_interface
 https://en.wikipedia.org/wiki/Widget_(GUI) https://en.wikipedia.org/wiki/Category:Graphical_control_elements
+	https://old.reddit.com/r/programming/comments/224se/ask_reddit_why_is_tk_still_the_standard_gui/
 
 PythonCard
 

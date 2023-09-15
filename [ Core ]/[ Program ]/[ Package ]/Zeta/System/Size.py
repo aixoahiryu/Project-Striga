@@ -1,5 +1,10 @@
 from tkinter import *
 
+class System():
+	def __init__(self):
+		self.taskbar = 30
+		self.topbar = 50
+
 class Screen():
 	def __init__(self):
 		self.width = 1366
