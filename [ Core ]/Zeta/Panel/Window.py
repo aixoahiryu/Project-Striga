@@ -8,9 +8,6 @@ class Primary(Toplevel2):
         neon = Zeta.Color.Neon(color=color, color2=color2).hex
         hue = Zeta.Color.Neon(color=color, color2=color2).hue
         
-        #self.window = Toplevel2()
-        #self.window.overrideredirect(True)
-        #if draggable: self.window.bind_rightclick()
         Toplevel2.__init__(self, *args, **kwargs)
         self.overrideredirect(True)
         if draggable: self.bind_rightclick()

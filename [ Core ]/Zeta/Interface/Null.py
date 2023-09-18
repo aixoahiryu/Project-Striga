@@ -1,5 +1,5 @@
 import Zeta
-from Internal import *
+import Internal
 from Zeta.Panel import *
 import tkinter.ttk as ttk
 
@@ -9,9 +9,8 @@ import subprocess
 
 from natsort import os_sorted
 
+
 ZLCORE = os.environ['ZLCORE']
-home = r'D:\MEGA\ZL-Core\Commit\_'
-hidden = False
 
 addicon = False
 darkmode = False
@@ -19,6 +18,9 @@ tooltip = True
 colorbg = "#000000" if darkmode else "#ffffff"
 colorbg2 = "#253B34" if darkmode else "#6effbe"
 colorfg = "#ffffff" if darkmode else "#000000"
+
+Panel = {'System': {'taskbar': '', 'wallpaper': ''}, 'Monolith': {'root': ''}, 'Command': {'root': ''}, 'Launch': {'root': ''}}
+Workspace = Zeta.System.WM.Workspace(Panel)
 
 sidebar = Tk()
 sidebar.attributes('-topmost', True)
@@ -36,23 +38,16 @@ sidebarext.geometry("1x740+0+0")
 sidebarext.overrideredirect(1)
 sidebarext.configure(bg=colorbg)
 sidebarext.hide()
+Panel['System']['sidebarext'] = sidebarext
 
-root = Launch(sidebar)
-
-sidebar2 = Toplevel(sidebar)
-# sidebar2 = Window(color2='black', mode='border')
+# sidebar2 = Toplevel(sidebar)
+sidebar2 = Window(color2='black', mode='border')
 sidebar2.title('===[ Sidebar: File ]===')
 sidebar2.attributes('-topmost', True)
 sidebar2.geometry("333x740+1+0")
 sidebar2.overrideredirect(1)
 sidebar2.hide()
-File1 = FileBox(sidebar2, home=home, darkmode=False)
-sidebar2_on = False
-def toggle_sidebar2(*event):
-	global sidebar2_on
-	if sidebar2_on: sidebar2.hide()
-	else: sidebar2.show()
-	sidebar2_on = not sidebar2_on
+File1 = FileBox(sidebar2.frame, home=Zeta.System.Path.Core().Planner, darkmode=False)
 
 overflow = Toplevel(sidebar)
 overflow.title('Icon overflow')
@@ -78,13 +73,7 @@ Button(overflow, text=' Strategy', relief='flat', bg=colorbg, fg=colorfg, image=
 imgwave=Zeta.Image.Icon.Load(icon='cpub', icontype='bw').image
 Button(overflow, text=' Flunctuation', relief='flat', bg=colorbg, fg=colorfg, image=imgwave, compound='left').grid(column=0, row=7, sticky='NW')
 overflow.hide()
-overflow_on = False
 
-def toggle_overflow():
-	global overflow_on
-	if overflow_on: overflow.hide()
-	else: overflow.show()
-	overflow_on = not overflow_on
 taskbar = Toplevel(sidebar)
 taskbar.attributes('-topmost', True)
 taskbar.title('Taskbar')
@@ -99,7 +88,7 @@ appframe.grid_rowconfigure(0, weight=1)
 imgmenu=Zeta.Image.Icon.Load(icon='menu2b', icontype='bw').image
 btnoverflow = Button(appframe, text='', relief='flat', bg=colorbg, fg=colorfg, image=imgmenu, compound='left')
 btnoverflow.grid(column=0, row=0, sticky='NSW')
-btnoverflow.bind("<Button-1>", lambda event: toggle_overflow())
+Zeta.System.WM.toggle_bind(btnoverflow, overflow)
 quickframe = Frame(taskbar, bg=colorbg)
 quickframe.grid(sticky='NSW', column=1, row=0)
 quickframe.grid_rowconfigure(0, weight=1)
@@ -135,8 +124,16 @@ Button(trayframe, text=' Manager', relief='flat', bg=colorbg, fg=colorfg, image=
 imgcalendar=Zeta.Image.Icon.Load(icon='calendarb', icontype='bw').image
 Button(trayframe, text=' Z[1.95996|97.5] 54.7356° π[3.14159] √[1.41421] ϕ[1.61803]', relief='flat', bg=colorbg, fg=colorfg, image=imgcalendar, compound='left').grid(column=6, row=0, sticky='NSW')
 Button(trayframe, text=' ', relief='flat', bg=colorbg, fg=colorfg).grid(column=7, row=0, sticky='NSW')
-#taskbar.bind("<Button-1>", lambda event: (root.hide(), sidebar.geometry("1366x1+0+0"), taskbar.geometry("1366x24+0+1")))
-taskbar.bind("<Button-1>", lambda event: root.hide())
+Panel['System']['taskbar'] = taskbar
+
+wallpaper = Toplevel(sidebar)
+wallpaper.title('Wallpaper')
+wallpaper.geometry("1366x740+0+0")
+wallpaper.overrideredirect(1)
+wallpaper.configure(bg=colorbg)
+wallpaper.lower()
+wallpaper.hide()
+Panel['System']['wallpaper'] = wallpaper
 
 popup = Toplevel(sidebar)
 popup.title('Popup')
@@ -145,44 +142,28 @@ popup.overrideredirect(1)
 popup.attributes('-alpha', 0.77)
 popup.configure(bg=colorbg)
 popup.attributes('-topmost', True)
-popupmsg = Message(popup, text='[File] Workspace', bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal"), aspect=500)
+popupmsg = Message(popup, text='', bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal"), aspect=500)
 popupmsg.grid(sticky='NWES')
 popup.hide()
 
 ttk.Style().theme_use('alt')
 
 def toggle_sidebar(*event):
-	global hidden, overflow_on, sidebar2_on
+	Workspace.toggle(popupmsg.cget('text'))
 	
-	if (hidden == False):
-		root.hide()
-		taskbar.hide()
-		sidebarext.hide()
-	else:
-		popup.hide()
-		root.show()
-		taskbar.show()
-		sidebarext.show()
-	
-	if overflow_on:
-		overflow.hide()
-		overflow_on = False
-	if sidebar2_on:
-		sidebar2.hide()
-		sidebar2_on = False
-
-	hidden = not hidden
+	if sidebarext.on: Zeta.System.WM.toggle(sidebarext)
+	if btnoverflow.on: Zeta.System.WM.toggle(btnoverflow)
 
 def tooltip_show(x, y):
 	#popup.show() if hidden else print(e)
-	if hidden:
+	if Workspace.hidden:
 		if (y<=50 and x==0): (popupmsg.configure(text='Monolith'),popup.geometry('-10+10'),popup.show())
 		elif x>=1: (popupmsg.configure(text='_'),popup.geometry('-10+10'),popup.show())
 		elif y>=468: (popupmsg.configure(text='Launch'),popup.geometry('-10-40'),popup.show())
 		else: (popupmsg.configure(text='Command'),popup.hide())
 
 def tooltip_hide():
-	popup.hide() if hidden else print('hidden')
+	popup.hide() if Workspace.hidden else print('hidden')
 
 #-------------------------------------------------------------------------------
 
@@ -190,17 +171,25 @@ def menu_clear():
 	#os.execv(sys.argv[0], sys.argv)
 	os.execv(sys.executable, ['python'] + sys.argv)
 
-top = ''
+root = Internal.Launch()
+Panel['Launch']['root'] = root
+Panel['Monolith']['root'] = root
+Panel['Command']['root'] = root
 
 #-------------------------------------------------------------------------------
 
-sidebar.bind("<Button-1>", toggle_sidebar)
-sidebarext.bind("<Button-1>", toggle_sidebar2)
-#taskbar.bind("<Enter>", lambda e: root.hide())
-
 if tooltip:
 	sidebar.bind("<Enter>", lambda e: tooltip_show(e.x, e.y))
-	sidebar.bind("<Leave>", lambda e: tooltip_hide())
 	sidebar.bind('<Motion>', lambda e: tooltip_show(e.x, e.y))
+	sidebar.bind("<Leave>", lambda e: tooltip_hide())
+	sidebar.bind("<Button-1>", lambda e: tooltip_hide())
+
+sidebar.bind("<Button-1>", toggle_sidebar, add="+")
+Zeta.System.WM.toggle_bind(sidebarext, sidebar2)
+# Zeta.System.WM.hover_bind(sidebarext, sidebar2, stay=True)
+
+#taskbar.bind("<Enter>", lambda e: root.hide())
+#taskbar.bind("<Button-1>", lambda event: (root.hide(), sidebar.geometry("1366x1+0+0"), taskbar.geometry("1366x24+0+1")))
+taskbar.bind("<Button-1>", lambda event: root.hide())
 
 sidebar.mainloop()

@@ -65,12 +65,6 @@ sidebar2.geometry("333x715-1+25")
 sidebar2.overrideredirect(1)
 sidebar2.hide()
 #File1 = FileBox(sidebar2, home=home, darkmode=False)
-sidebar2_on = False
-def toggle_sidebar2(*event):
-	global sidebar2_on
-	if sidebar2_on: sidebar2.hide()
-	else: sidebar2.show()
-	sidebar2_on = not sidebar2_on
 
 overflow = Toplevel(sidebar)
 overflow.title('Icon overflow')
@@ -96,13 +90,7 @@ Button(overflow, text=' Strategy', relief='flat', background=colorbg, foreground
 imgwave=Zeta.Image.Icon.Load(icon='wave2w', icontype='bw').image
 Button(overflow, text=' Flunctuation', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgwave, compound='left').grid(column=0, row=7, sticky='NW')
 overflow.hide()
-overflow_on = False
 
-def toggle_overflow():
-	global overflow_on
-	if overflow_on: overflow.hide()
-	else: overflow.show()
-	overflow_on = not overflow_on
 taskbar = Toplevel(sidebar)
 taskbar.attributes('-topmost', True)
 taskbar.attributes('-alpha', 0.77)
@@ -146,7 +134,7 @@ Button(trayframe, text=' Ballad', relief='flat', background=colorbg, foreground=
 imgmenu=Zeta.Image.Icon.Load(icon='menuw', icontype='bw').image
 btnoverflow = Button(trayframe, text='', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgmenu, compound='none')
 btnoverflow.grid(column=6, row=0, sticky='NW')
-btnoverflow.bind("<Button-1>", lambda event: toggle_overflow())
+Zeta.System.WM.toggle_bind(btnoverflow, overflow)
 #taskbar.bind("<Button-1>", lambda event: (root.hide(), sidebar.geometry("1366x1+0+0"), taskbar.geometry("1366x24+0+1")))
 taskbar.bind("<Button-1>", lambda event: root.hide())
 
@@ -320,16 +308,9 @@ def preview_file(path):
 	except: txt2.configure(text=msg2_2+'Preview failure')
 
 def toggle_sidebar(*event):
-	global hidden, overflow_on, sidebar2_on
+	global hidden
 	
-	if (hidden == False):
-		root.hide()
-		taskbar.hide()
-		titlepanel.hide()
-		sidebar.attributes('-alpha', 0.1)
-		sidebarext.hide()
-		#sidebar.geometry("1x690+0+50")
-	else:
+	if hidden:
 		popup.hide()
 		root.show()
 		taskbar.show()
@@ -337,14 +318,17 @@ def toggle_sidebar(*event):
 		sidebar.attributes('-alpha', 1.0)
 		sidebarext.show()
 		#sidebar.geometry("1x740+0+0")
-		preview_clipboard()
-	
-	if overflow_on:
-		overflow.hide()
-		overflow_on = False
-	if sidebar2_on:
-		sidebar2.hide()
-		sidebar2_on = False
+		preview_clipboard()		
+	else:
+		root.hide()
+		taskbar.hide()
+		titlepanel.hide()
+		sidebar.attributes('-alpha', 0.1)
+		sidebarext.hide()
+		#sidebar.geometry("1x690+0+50")
+		
+	if sidebarext.on: Zeta.System.WM.toggle(sidebarext)
+	if btnoverflow.on: Zeta.System.WM.toggle(btnoverflow)
 
 	hidden = not hidden
 
@@ -371,7 +355,7 @@ File2 = FileBox(sidebar2.frame, home=r'D:\ZL-Core\Toolbar\_\[ Sidebar ]', darkmo
 #-------------------------------------------------------------------------------
 
 sidebar.bind("<Button-1>", toggle_sidebar)
-sidebarext.bind("<Button-1>", toggle_sidebar2)
+Zeta.System.WM.toggle_bind(sidebarext, sidebar2)
 
 if tooltip:
 	sidebar.bind("<Enter>", lambda e: tooltip_show(e.x, e.y))

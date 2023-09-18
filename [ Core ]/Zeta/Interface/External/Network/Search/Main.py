@@ -19,9 +19,11 @@ from Zeta.Panel import *
 
 class Search(Window):
 	def __init__(self, *args, **kwargs):
-		Window.__init__(self, mode='border', color2='black', *args, **kwargs)
+		Window.__init__(self, mode='border', color2='white', *args, **kwargs)
+		self.hide()
 		self.attributes('-topmost', True)
-		self.geometry("333x740+1+25")
+		self.attributes('-alpha', 0.77)
+		self.geometry("333x333+1+25")
 		self.overrideredirect(1)
 		self.frame.grid_columnconfigure(1, weight=1)
 		self.frame.grid_rowconfigure(1, weight=1)
@@ -72,6 +74,7 @@ class Search(Window):
 			self.list1.insert(END, item)
 
 		self.theme(self.frame, bg='#000000', fg='#ffffff')
+		self.bind('<Expose>', lambda e: self.searchbox.focus())
 
 
 	def engine(self, id):

@@ -10,7 +10,8 @@ import tkinter.ttk as ttk
 from natsort import os_sorted
 
 
-ZLCORE = os.environ['ZLCORE']
+# ZLCORE = os.environ['ZLCORE']
+ZLCORE = Zeta.System.Path.Core().ZLCORE
 #os.chdir(home)
 
 
@@ -22,7 +23,7 @@ class FileBox(Frame):
 	def __init__(self, master, controller=None, home='', darkmode=True, fileicon=False, color2='', neonmode=False):
 		self.home = os.path.abspath(os.sep) if home=='' else home
 		self.fullpath = self.home
-		self.parent = controller if controller!=None else Controller()
+		self.controller = controller if controller!=None else Controller()
 		self.window = master.winfo_toplevel()
 		self.dialog = ''
 		self.newFileName = StringVar(master, "", 'new_name')
@@ -78,7 +79,7 @@ class FileBox(Frame):
 		frame3_2 = Frame(frame3, bg=self.colorbg)
 		frame3_2.grid(sticky='E', row=0, column=1)
 		frame3.grid_columnconfigure(1, weight=1)
-		self.combo1 = ttk.Combobox(frame3_2, state="readonly", values=['--------------'], width=10)
+		self.combo1 = ttk.Combobox(frame3_2, state="readonly", values=['--------------'], width=10, takefocus=0)
 		self.combo1.grid(sticky='E', row=0, column=0)
 		self.combo1.bind('<Button-3>', lambda e: combo1.configure(state="normal"))
 		self.combo1.bind('<Button-1>', lambda e: self.workspace_select())
@@ -112,15 +113,15 @@ class FileBox(Frame):
 		menubar = Menu(master, tearoff=0)
 		menubar.add_command(label="New", command=self.open_popup)
 		menubar.add_separator()
-		menubar.add_command(label="Open", command=lambda: (self.parent.toggle_sidebar(), Zeta.System.OS.open(self.fullpath)))
+		menubar.add_command(label="Open", command=lambda: (self.controller.toggle_sidebar(), Zeta.System.OS.open(self.fullpath)))
 		#subedit = Menu(menubar, tearoff=0)
 		#menubar.add_cascade(label="Edit", menu=subedit, command=menu_edit)
-		menubar.add_command(label="Edit", command=lambda: (self.parent.toggle_sidebar(), Zeta.System.OS.edit(self.fullpath)))
+		menubar.add_command(label="Edit", command=lambda: (self.controller.toggle_sidebar(), Zeta.System.OS.edit(self.fullpath)))
 		menubar.add_command(label="Select", command=self.menu_select)
 		menubar.add_separator()
 		menubar.add_command(label="Copy path", command=lambda: (self.window.clipboard_clear(),self.window.clipboard_append(self.fullpath),self.window.update()))
 		menubar.add_command(label="Go to path", command=lambda: self.menu_select(self.window.clipboard_get()))
-		menubar.add_command(label="Terminal", command=lambda: (self.parent.toggle_sidebar(), Zeta.System.OS.terminal(self.fullpath)))
+		menubar.add_command(label="Terminal", command=lambda: (self.controller.toggle_sidebar(), Zeta.System.OS.terminal(self.fullpath)))
 		menubar.add_command(label="Detach", command=self.menu_detach)
 		#menubar.add_command(label="Exit", command=menu_clear)
 		#menubar.add_command(label="Exit", command=master.quit)
@@ -170,7 +171,7 @@ class FileBox(Frame):
 		# self.window.child.append(detached)
 		# detached.owner.append(self.window)
 		detached.transient(self.window)
-		Zeta.Panel.FileBox(detached.frame, color2=self.color2, home=path, controller=self.parent, darkmode=self.darkmode, neonmode=self.neonmode)
+		Zeta.Panel.FileBox(detached.frame, color2=self.color2, home=path, controller=self.controller, darkmode=self.darkmode, neonmode=self.neonmode)
 
 	def menu_clear():
 		#os.execv(sys.argv[0], sys.argv)
@@ -180,7 +181,7 @@ class FileBox(Frame):
 		selectedfocus = self.tree.focus()
 		selecteditem = self.tree.item(selectedfocus)
 		self.fullpath = selecteditem.get('values')[0]
-		self.parent.preview_file(self.fullpath)
+		self.controller.preview_file(self.fullpath)
 
 	def populate_tree(self, tree, node):
 		if tree.set(node, "type") != 'directory':

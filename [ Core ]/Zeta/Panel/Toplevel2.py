@@ -1,9 +1,10 @@
+import Zeta
 from tkinter import *
 
 class Toplevel2(Toplevel):
 	def __init__(self, *args, **kwargs):
 		Toplevel.__init__(self, *args, **kwargs)
-		self.attributes('-alpha', 0.99)
+		if Zeta.Setting.antifragment: self.attributes('-alpha', 0.99)
 		
 		self.child = []
 		self.owner = []
@@ -48,13 +49,14 @@ class Toplevel2(Toplevel):
 	# 		if hasattr(c, 'background'): c['background'] = bg
 	# 		if hasattr(c, 'foreground'): c['foreground'] = fg
 
-	def theme(self, target, bg='#000000', fg='#ffffff'):
-		# for label in filter(lambda w:isinstance(w,Label), frame.children.itervalues()):
+	def theme(self, target, bg='#000000', fg='#ffffff', relief=''):
+		# for b in filter(lambda w:isinstance(w,Button), target.children.itervalues()):
 		try: 
 			target['background'] = bg
 			target['foreground'] = fg
+			if relief!='' and isinstance(target,Button): target['relief']=relief
 		except Exception as error: print(error)
-		for c in target.children.values(): self.theme(c, bg, fg)
+		for c in target.children.values(): self.theme(c, bg, fg, relief)
 
 
 	def start_move(self, event):

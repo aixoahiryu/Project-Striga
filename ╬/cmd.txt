@@ -1,0 +1,27 @@
+anon
+scraps
+anti
+
+Encrypt
+	zlenc		zlencf
+Steg
+
+
+
+
+
+
+
+
+ytx: youtube-dl, yt-dlp
+
+
+
+
+
+Program:
+	date, time
+	platform
+	value: 	length, weight
+			currency
+			temp

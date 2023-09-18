@@ -1,24 +1,20 @@
 import Zeta
+import External
 from Zeta.Panel import *
+import tkinter.ttk as ttk
 
 import time
 import os
 import glob
 import subprocess
-#from tkinter import *
-import tkinter.ttk as ttk
 
 from natsort import os_sorted
 #import codecs
 
 
 ZLCORE = os.environ['ZLCORE']
-home = r'D:\MEGA\ZL-Core\Commit\╬'
 #os.chdir(home)
-
-cwd = os.getcwd()
-fullpath = home
-hidden = False
+#cwd = os.getcwd()
 
 addicon = False
 darkmode = True
@@ -26,6 +22,9 @@ tooltip = True
 colorbg = "#000000" if darkmode else "#ffffff"
 colorbg2 = "#253B34" if darkmode else "#6effbe"
 colorfg = "#ffffff" if darkmode else "#000000"
+
+Panel = {'System': {'taskbar': '', 'wallpaper': ''}, 'File': {'root': ''}, 'Network': {'root': ''}, 'Lounge': {'root': ''}}
+Workspace = Zeta.System.WM.Workspace(Panel)
 
 sidebar = Tk()
 sidebar.attributes('-topmost', True)
@@ -43,18 +42,7 @@ sidebarext.geometry("1x710-0+30")
 sidebarext.overrideredirect(1)
 sidebarext.configure(bg=colorbg)
 sidebarext.hide()
-
-#root = Tk()
-root = Toplevel(sidebar)
-root.title('===[ Sidebar: File ]===')
-root.attributes('-topmost', True)
-root.attributes('-alpha', 0.77)
-root.geometry("333x715+1+25")
-root.overrideredirect(1)
-#root.option_add("*tearOff", False)
-#root.configure(background="#000000")
-#root.configure(highlightbackground="#000000")
-#root.configure(highlightcolor="white")
+Panel['System']['sidebarext'] = sidebarext
 
 # sidebar2 = Toplevel(sidebar)
 sidebar2 = Window(color2='white', mode='border')
@@ -64,13 +52,7 @@ sidebar2.attributes('-alpha', 0.77)
 sidebar2.geometry("333x715-1+25")
 sidebar2.overrideredirect(1)
 sidebar2.hide()
-#File1 = FileBox(sidebar2, home=home, darkmode=False)
-sidebar2_on = False
-def toggle_sidebar2(*event):
-	global sidebar2_on
-	if sidebar2_on: sidebar2.hide()
-	else: sidebar2.show()
-	sidebar2_on = not sidebar2_on
+File2 = FileBox(sidebar2.frame, home=Zeta.System.Path.Core().Sidebar, darkmode=True)
 
 overflow = Toplevel(sidebar)
 overflow.title('Icon overflow')
@@ -96,13 +78,7 @@ Button(overflow, text=' Strategy', relief='flat', background=colorbg, foreground
 imgwave=Zeta.Image.Icon.Load(icon='wave2w', icontype='bw').image
 Button(overflow, text=' Flunctuation', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgwave, compound='left').grid(column=0, row=7, sticky='NW')
 overflow.hide()
-overflow_on = False
 
-def toggle_overflow():
-	global overflow_on
-	if overflow_on: overflow.hide()
-	else: overflow.show()
-	overflow_on = not overflow_on
 taskbar = Toplevel(sidebar)
 taskbar.attributes('-topmost', True)
 taskbar.attributes('-alpha', 0.77)
@@ -146,19 +122,18 @@ Button(trayframe, text=' Ballad', relief='flat', background=colorbg, foreground=
 imgmenu=Zeta.Image.Icon.Load(icon='menuw', icontype='bw').image
 btnoverflow = Button(trayframe, text='', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgmenu, compound='none')
 btnoverflow.grid(column=6, row=0, sticky='NW')
-btnoverflow.bind("<Button-1>", lambda event: toggle_overflow())
-#taskbar.bind("<Button-1>", lambda event: (root.hide(), sidebar.geometry("1366x1+0+0"), taskbar.geometry("1366x24+0+1")))
-taskbar.bind("<Button-1>", lambda event: root.hide())
+Zeta.System.WM.toggle_bind(btnoverflow, overflow)
+Panel['System']['taskbar'] = taskbar
 
 
-titlepanel = Toplevel(sidebar)
-titlepanel.attributes('-topmost', True)
-titlepanel.attributes('-alpha', 0.77)
-titlepanel.title('ASCII')
-titlepanel.geometry("1366x740+1+25")
-titlepanel.overrideredirect(1)
-titlepanel.configure(bg=colorbg)
-titlepanel.lower()
+wallpaper = Toplevel(sidebar)
+wallpaper.attributes('-alpha', 0.77)
+wallpaper.title('ASCII')
+wallpaper.geometry("1366x740+0+25")
+wallpaper.overrideredirect(1)
+wallpaper.configure(bg=colorbg)
+wallpaper.lower()
+Panel['System']['wallpaper'] = wallpaper
 msg1=r''' __________________________________________________________
 |[] Module                                           |F]|!"|
 |""""""""""""""""""""""""""""""""""""""""""""""""""""""""|"|
@@ -244,16 +219,16 @@ If my delusion is so strong it can bend reality, is it really a delusion? I can 
 |                                                             |
 └── ‡ breach --cluster #6effbe                         ───────┘
 '''
-txt1 = Frame(titlepanel, bg=colorbg)
+txt1 = Frame(wallpaper, bg=colorbg)
 txt1.grid(row=0, column=0, sticky='NW')
 Message(txt1, text=msg1, width=444, bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal")).grid(row=0, column=0, sticky='NW')
-txt2 = Message(titlepanel, text=msg2, width=444, bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal"))
+txt2 = Message(wallpaper, text=msg2, width=444, bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal"))
 txt2.grid(row=0, column=1, sticky='NEW')
-txt3 = Message(titlepanel, text=msg3, width=444, bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal"))
+txt3 = Message(wallpaper, text=msg3, width=444, bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal"))
 txt3.grid(row=0, column=2, sticky='NE')
-titlepanel.grid_columnconfigure(0, weight=1)
-titlepanel.grid_columnconfigure(1, weight=1)
-titlepanel.grid_columnconfigure(2, weight=1)
+wallpaper.grid_columnconfigure(0, weight=1)
+wallpaper.grid_columnconfigure(1, weight=1)
+wallpaper.grid_columnconfigure(2, weight=1)
 txt1frame = Frame(txt1, bg=colorbg)
 txt1frame.grid(row=1, column=0, sticky='NW')
 img1=Zeta.Image.Icon.Load(icon='geminiw', icontype='bw').image
@@ -266,7 +241,7 @@ popup.overrideredirect(1)
 popup.attributes('-alpha', 0.77)
 popup.configure(bg=colorbg)
 popup.attributes('-topmost', True)
-popupmsg = Message(popup, text='[File] Workspace', bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal"), aspect=500)
+popupmsg = Message(popup, text='', bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal"), aspect=500)
 popupmsg.grid(sticky='NWES')
 popup.hide()
 
@@ -286,21 +261,21 @@ def preview_clipboard():
 		global msg2_2
 		#msg2_2 = msg2_2+root.clipboard_get()
 		msg2_2 = msg2+r'┌─[ Clipboard:xclip ]─[ /dev/clipboard ]'+'\n'
-		temp1 = root.clipboard_get().split('\n')
+		temp1 = sidebar.clipboard_get().split('\n')
 		for i in temp1[:10]:
 			msg2_2 = msg2_2+r'| '+i[:55]+'\n'
 		if len(temp1)<10:
 			for i in range(0, (10-len(temp1))): msg2_2 = msg2_2+r'| '+'\n'
 		msg2_2 = msg2_2+r'└── ‡ limit --head 10'
 		txt2.configure(text=msg2_2)
-		preview_file(File1.fullpath)
+		preview_file(root.File1.fullpath)
 	except: #txt2.configure(text=msg2+'Clipboard failure')
 		msg2_2 = msg2+r'┌─[ Clipboard:xclip ]─[ /dev/clipboard ]'+'\n'
 		msg2_2 = msg2_2+r'| '+'Cliboard failure \n'
 		for i in range(1, 10): msg2_2 = msg2_2+r'| '+'\n'
 		msg2_2 = msg2_2+r'└── ‡ limit --head 10'
 		txt2.configure(text=msg2_2)
-		preview_file(File1.fullpath)
+		preview_file(root.File1.fullpath)
 
 def preview_file(path):
 	try:
@@ -320,44 +295,23 @@ def preview_file(path):
 	except: txt2.configure(text=msg2_2+'Preview failure')
 
 def toggle_sidebar(*event):
-	global hidden, overflow_on, sidebar2_on
+	Workspace.toggle(popupmsg.cget('text'))
 	
-	if (hidden == False):
-		root.hide()
-		taskbar.hide()
-		titlepanel.hide()
-		sidebar.attributes('-alpha', 0.1)
-		sidebarext.hide()
-		#sidebar.geometry("1x690+0+50")
-	else:
-		popup.hide()
-		root.show()
-		taskbar.show()
-		titlepanel.show()
-		sidebar.attributes('-alpha', 1.0)
-		sidebarext.show()
-		#sidebar.geometry("1x740+0+0")
-		preview_clipboard()
-	
-	if overflow_on:
-		overflow.hide()
-		overflow_on = False
-	if sidebar2_on:
-		sidebar2.hide()
-		sidebar2_on = False
+	if sidebarext.on: Zeta.System.WM.toggle(sidebarext)
+	if btnoverflow.on: Zeta.System.WM.toggle(btnoverflow)
 
-	hidden = not hidden
+	preview_clipboard()
 
 def tooltip_show(x, y):
 	#popup.show() if hidden else print(e)
-	if hidden:
+	if Workspace.hidden:
 		if (y<=50 and x==0): (popupmsg.configure(text='Network'),popup.geometry('+10+10'),popup.show())
 		elif x>=1: (popupmsg.configure(text='F'),popup.geometry('+10+10'),popup.show())
 		elif y>=700: (popupmsg.configure(text='Lounge'),popup.geometry('+10-40'),popup.show())
 		else: (popupmsg.configure(text='File'),popup.hide())
 
 def tooltip_hide():
-	popup.hide() if hidden else print('hidden')
+	popup.hide() if Workspace.hidden else print('hidden')
 
 #-------------------------------------------------------------------------------
 
@@ -365,16 +319,30 @@ class Controller():
 	def toggle_sidebar(child): toggle_sidebar()
 	def preview_file(child, path): preview_file(path)
 
-File1 = FileBox(root, home=home, darkmode=True, controller=Controller())
-File2 = FileBox(sidebar2.frame, home=r'D:\ZL-Core\Toolbar\_\[ Sidebar ]', darkmode=True, controller=Controller())
+root = External.File(controller=Controller())
+#root.option_add("*tearOff", False)
+#root.configure(background="#000000")
+#root.configure(highlightbackground="#000000")
+#root.configure(highlightcolor="white")
+Panel['File']['root'] = root
+
+search = External.Search()
+Panel['Network']['root'] = search
+Panel['Lounge']['root'] = root
 
 #-------------------------------------------------------------------------------
 
-sidebar.bind("<Button-1>", toggle_sidebar)
-sidebarext.bind("<Button-1>", toggle_sidebar2)
-
 if tooltip:
 	sidebar.bind("<Enter>", lambda e: tooltip_show(e.x, e.y))
-	sidebar.bind("<Leave>", lambda e: tooltip_hide())
 	sidebar.bind('<Motion>', lambda e: tooltip_show(e.x, e.y))
+	sidebar.bind("<Leave>", lambda e: tooltip_hide())
+	sidebar.bind("<Button-1>", lambda e: tooltip_hide())
+
+sidebar.bind("<Button-1>", toggle_sidebar, add="+")
+Zeta.System.WM.toggle_bind(sidebarext, sidebar2)
+
+#taskbar.bind("<Enter>", lambda e: root.hide())
+#taskbar.bind("<Button-1>", lambda event: (root.hide(), sidebar.geometry("1366x1+0+0"), taskbar.geometry("1366x24+0+1")))
+taskbar.bind("<Button-1>", lambda event: root.hide())
+
 sidebar.mainloop()

@@ -1,4 +1,9 @@
+import Zeta
+
 from Zeta.Panel import *
+import os
+
+ZLCORE = Zeta.System.Path.Core().ZLCORE
 
 class Launch(Window):
 	def __init__(self, *args, **kwargs):

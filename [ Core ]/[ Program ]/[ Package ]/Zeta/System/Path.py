@@ -8,6 +8,9 @@ class Core():
 		self.ZETA = os.path.split(inspect.getfile(Zeta))[0]
 		self.downstream = r'D:\ZL-Core'
 
+		self.Sidebar = r'D:\ZL-Core\Toolbar\_\[ Sidebar ]'
+		self.Planner = r'D:\MEGA\ZL-Core\Commit\_'
+
 class Scraps():
 	def __init__(self):
 		self.path = r'D:\Scraps'
