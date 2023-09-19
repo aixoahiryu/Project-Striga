@@ -126,15 +126,16 @@ Zeta.System.WM.toggle_bind(btnoverflow, overflow)
 Panel['System']['taskbar'] = taskbar
 
 
-wallpaper = Toplevel(sidebar)
+wallpaper = Toplevel()
 wallpaper.attributes('-alpha', 0.77)
 wallpaper.title('ASCII')
-wallpaper.geometry("1366x740+0+25")
+wallpaper.geometry("1366x738+0+0")
 wallpaper.overrideredirect(1)
 wallpaper.configure(bg=colorbg)
-wallpaper.lower()
 Panel['System']['wallpaper'] = wallpaper
-msg1=r''' __________________________________________________________
+msg1=r'''
+
+ __________________________________________________________
 |[] Module                                           |F]|!"|
 |""""""""""""""""""""""""""""""""""""""""""""""""""""""""|"|
 | Left: file, search                                     | |
@@ -146,6 +147,8 @@ msg1=r''' __________________________________________________________
 
 '''
 msg2=r'''
+
+
 |     .-.
 |    /   \         .-.
 |   /     \       /   \       .-.     .-.     _   _
@@ -155,7 +158,9 @@ msg2=r'''
 
 '''
 msg2_2=r''
-msg3=r'''As above, so below. As within, so without.
+msg3=r'''
+
+As above, so below. As within, so without.
 Null and void, endless and finite, two become one.
 If my delusion is so strong it can bend reality, is it really a delusion? I can die to set me free. Ego Sum Aeternae
 
@@ -214,6 +219,7 @@ If my delusion is so strong it can bend reality, is it really a delusion? I can 
 | 
 | 
 | 
+| 
 |                                                             |
 |                                                             |
 |                                                             |
@@ -234,14 +240,14 @@ txt1frame.grid(row=1, column=0, sticky='NW')
 img1=Zeta.Image.Icon.Load(icon='geminiw', icontype='bw').image
 Button(txt1frame, text=' Thaumiel', relief='flat', background=colorbg, foreground='#c9c9c9', image=img1, compound='left').grid(column=0, row=0, sticky='NW')
 
-popup = Toplevel(sidebar)
+popup = Toplevel()
 popup.title('Popup')
 popup.geometry("+10+350")
 popup.overrideredirect(1)
 popup.attributes('-alpha', 0.77)
 popup.configure(bg=colorbg)
 popup.attributes('-topmost', True)
-popupmsg = Message(popup, text='', bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal"), aspect=500)
+popupmsg = Label(popup, text='', bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal"))
 popupmsg.grid(sticky='NWES')
 popup.hide()
 
@@ -343,7 +349,7 @@ Zeta.System.WM.toggle_bind(sidebarext, sidebar2)
 
 #taskbar.bind("<Enter>", lambda e: root.hide())
 #taskbar.bind("<Button-1>", lambda event: (root.hide(), sidebar.geometry("1366x1+0+0"), taskbar.geometry("1366x24+0+1")))
-taskbar.bind("<Button-1>", lambda event: root.hide())
+taskbar.bind("<Button-1>", lambda event: Workspace.hide(Workspace.active))
 
 File2.controller = Controller()
 

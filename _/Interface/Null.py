@@ -5,7 +5,6 @@ import tkinter.ttk as ttk
 
 import webbrowser
 import os
-import subprocess
 
 from natsort import os_sorted
 
@@ -186,9 +185,10 @@ if tooltip:
 
 sidebar.bind("<Button-1>", toggle_sidebar, add="+")
 Zeta.System.WM.toggle_bind(sidebarext, sidebar2)
+# Zeta.System.WM.hover_bind(sidebarext, sidebar2, stay=True)
 
 #taskbar.bind("<Enter>", lambda e: root.hide())
 #taskbar.bind("<Button-1>", lambda event: (root.hide(), sidebar.geometry("1366x1+0+0"), taskbar.geometry("1366x24+0+1")))
-taskbar.bind("<Button-1>", lambda event: root.hide())
+taskbar.bind("<Button-1>", lambda event: Workspace.hide(Workspace.active))
 
 sidebar.mainloop()

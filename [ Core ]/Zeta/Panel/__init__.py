@@ -6,4 +6,4 @@ from tkinter import Label
 from tkinter import Frame
 from tkinter import Message
 
-from .Control.File import FileBox
+from .Control.FileBox import FileBox

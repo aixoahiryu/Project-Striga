@@ -11,6 +11,12 @@ class Core():
 		self.Sidebar = r'D:\ZL-Core\Toolbar\_\[ Sidebar ]'
 		self.Planner = r'D:\MEGA\ZL-Core\Commit\_'
 
+class Browser():
+	def __init__(self):
+		self.main = r'C:\Users\Administrator\AppData\Local\Chromium\Application\chrome.exe' # --disk-cache-size=0 --force-dark-mode --media-cache-size=0 --profile-directory="Default" --process-per-site
+		self.experiment = r'D:\Tools\Vivaldi\Application\vivaldi.exe' # --disk-cache-size=0 --force-dark-mode --media-cache-size=0 --process-per-site
+		self.lite = r'C:\Program Files\Links\links-g.exe'
+
 class Scraps():
 	def __init__(self):
 		self.path = r'D:\Scraps'

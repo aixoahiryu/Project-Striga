@@ -5,7 +5,6 @@ import tkinter.ttk as ttk
 
 import webbrowser
 import os
-import subprocess
 
 from natsort import os_sorted
 
@@ -135,14 +134,14 @@ wallpaper.lower()
 wallpaper.hide()
 Panel['System']['wallpaper'] = wallpaper
 
-popup = Toplevel(sidebar)
+popup = Toplevel()
 popup.title('Popup')
 popup.geometry("+10+350")
 popup.overrideredirect(1)
 popup.attributes('-alpha', 0.77)
 popup.configure(bg=colorbg)
 popup.attributes('-topmost', True)
-popupmsg = Message(popup, text='', bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal"), aspect=500)
+popupmsg = Label(popup, text='', bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal"))
 popupmsg.grid(sticky='NWES')
 popup.hide()
 
@@ -190,6 +189,6 @@ Zeta.System.WM.toggle_bind(sidebarext, sidebar2)
 
 #taskbar.bind("<Enter>", lambda e: root.hide())
 #taskbar.bind("<Button-1>", lambda event: (root.hide(), sidebar.geometry("1366x1+0+0"), taskbar.geometry("1366x24+0+1")))
-taskbar.bind("<Button-1>", lambda event: root.hide())
+taskbar.bind("<Button-1>", lambda event: Workspace.hide(Workspace.active))
 
 sidebar.mainloop()

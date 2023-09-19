@@ -8,6 +8,7 @@ module = {'panel': True}
 module['image'] = True
 module['dragdrop'] = False
 module['hotkey'] = False
+module['raw'] = True
 
 
 class Editor():

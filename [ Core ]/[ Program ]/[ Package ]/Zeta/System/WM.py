@@ -66,7 +66,9 @@ class Workspace():
 			else: self.show(group)
 			self.show('System')
 		else:
-			self.hide()
+			self.hide(self.active)
+			self.hide('System')
+			
 		self.hidden = not self.hidden
 
 	def hide(self, group=''):

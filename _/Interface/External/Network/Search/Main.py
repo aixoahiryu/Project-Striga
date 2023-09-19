@@ -2,6 +2,7 @@ import Zeta
 
 import webbrowser
 import os
+import subprocess
 import pathlib
 from tkinter import *
 import tkinter.ttk as ttk
@@ -48,10 +49,18 @@ class Search(Window):
 		self.searchbox3 = Entry(frame2)
 		self.searchbox3.grid(sticky='NSEW', row=1)
 		self.searchbox3.bind('<Return>', self.search)
-		self.enginebox = ttk.Combobox(frame2)
-		self.enginebox.grid(sticky='NSEW', row=2)
+
+		engineframe = Frame(frame2)
+		engineframe.grid(sticky='NSEW', row=2)
+		self.enginebox = ttk.Combobox(engineframe, state="readonly")
 		self.enginebox.configure(values=['Google','Yandex','Bing'])
 		self.enginebox.set('Google')
+		self.enginebox.pack(side='left', fill='x')
+		self.enginebox2 = ttk.Combobox(engineframe, state="readonly")
+		self.enginebox2.configure(values=['Browser','Lite','[Crawler]'])
+		self.enginebox2.set('Browser')
+		self.enginebox2.pack(side='left', fill='x')
+
 		fileframe = Frame(frame2, bg=colorbg)
 		fileframe.grid(sticky='NSEW', row=3)
 		fileframe.grid_columnconfigure(1, weight=1)
@@ -74,7 +83,7 @@ class Search(Window):
 			self.list1.insert(END, item)
 
 		self.theme(self.frame, bg='#000000', fg='#ffffff')
-		self.bind('<Expose>', lambda e: self.searchbox.focus())
+		self.bind('<Expose>', lambda e: (self.searchbox.focus(), self.searchbox.selection_range(0, END)))
 
 
 	def engine(self, id):
@@ -82,13 +91,17 @@ class Search(Window):
 		search()
 
 	def search(self, *event):
-		engine = {'Google': 'https://www.google.com/search?q=%s&num=100&nfpr=1',\
+		engine = {'Google': 'https://www.google.com/search?q=%s&num=100&nfpr=1&hl=en-US&gl=US&filter=0&safe=off',\
 		'Yandex': 'https://yandex.com/search/?text=%s',\
 		'Bing': 'https://www.bing.com/search?q=%s',\
 		}
+		browser = {'Browser': Zeta.System.Path.Browser().main, 'Lite': Zeta.System.Path.Browser().lite}
 		searchstr = self.searchbox2.get()+' '+self.searchbox.get()+' '+self.searchbox3.get()
-		webbrowser.open(engine[self.enginebox.get()] % searchstr, new=2, autoraise=True)
-		#webbrowser.open(r'https://www.google.com/search?q='+self.searchbox.get()+' '+self.searchbox2.get()+' '+self.searchbox3.get()+r'&num=100&nfpr=1', new=2, autoraise=True)
+		subprocess.Popen([browser[self.enginebox2.get()], engine[self.enginebox.get()] % searchstr], start_new_session=True)
+		# webbrowser.open(engine[self.enginebox.get()] % searchstr, new=2, autoraise=True)
+		# webbrowser.open(r'https://www.google.com/search?q='+self.searchbox.get()+' '+self.searchbox2.get()+' '+self.searchbox3.get()+r'&num=100&nfpr=1', new=2, autoraise=True)
+
+		if Zeta.Setting.module['raw']: Zeta.Raw.Network.Search(f'{self.enginebox2.get()} {self.enginebox.get()}: {searchstr}')
 
 	def change_file(self, *event):
 		self.list2.delete(0, END)
@@ -115,3 +128,5 @@ class Search(Window):
 if __name__ == "__main__":
     app = Search()
     app.mainloop()
+
+# https://developers.google.com/custom-search/docs/xml_results

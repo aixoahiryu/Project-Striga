@@ -2,6 +2,7 @@ import Zeta
 
 from Zeta.Panel import *
 import os
+import subprocess
 
 ZLCORE = Zeta.System.Path.Core().ZLCORE
 
@@ -37,9 +38,12 @@ class Launch(Window):
 		Button(frame2_1, text='Breach', command=exit, bg='black', fg='white').grid(sticky='SW', row=0)
 		frame2_2 = Frame(frame2)
 		frame2_2.grid(sticky='SE', column=1, row=0)
-		Button(frame2_2, text='FastStone', command=lambda: os.startfile(r'D:\Tools\FSCapture97\FSCapture.exe')).grid(sticky='SE', row=0, column=0)
-		Button(frame2_2, text='mpv', command=lambda: os.startfile(r'C:\cygwin64\home\sidebar\mpv.vbs')).grid(sticky='SE', row=1, column=0)
-		Button(frame2_2, text='links2', command=lambda: os.startfile(r'D:\MEGA\ZL-Core\Toolbar\F\Utility\Links.lnk')).grid(sticky='SE', row=2, column=0)
+		self.imgscreen=Zeta.Image.Icon.Load(icon='proxyb', icontype='bw').image
+		Button(frame2_2, text='FastStone ', compound='right', image=self.imgscreen, command=lambda: os.startfile(r'D:\Tools\FSCapture97\FSCapture.exe')).grid(sticky='SE', row=0, column=0)
+		self.imgplay=Zeta.Image.Icon.Load(icon='playb', icontype='bw').image
+		Button(frame2_2, text='mpv ', compound='right', image=self.imgplay, command=lambda: os.startfile(r'C:\cygwin64\home\sidebar\mpv.vbs')).grid(sticky='SE', row=1, column=0)
+		self.imgbrowser=Zeta.Image.Icon.Load(icon='cornerb', icontype='bw').image
+		Button(frame2_2, text='links2 ', compound='right', image=self.imgbrowser, command=lambda: os.startfile(r'D:\MEGA\ZL-Core\Toolbar\F\Utility\Links.lnk')).grid(sticky='SE', row=2, column=0)
 		nullbtn = Button(frame2_2, text='- Null', command=lambda: os.startfile(ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\- Null.py'))
 		nullbtn.grid(sticky='SE', row=3, column=0)
 		nullbtn.bind("<Button-3>", lambda e: subprocess.Popen(["C:\\Program Files\\Notepad++\\notepad++.exe", "-ro", ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\- Null.py'], start_new_session=True))
