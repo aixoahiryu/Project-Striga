@@ -122,7 +122,7 @@ Button(trayframe, text=' Ballad', relief='flat', background=colorbg, foreground=
 imgmenu=Zeta.Image.Icon.Load(icon='menuw', icontype='bw').image
 btnoverflow = Button(trayframe, text='', relief='flat', background=colorbg, foreground='#c9c9c9', image=imgmenu, compound='none')
 btnoverflow.grid(column=6, row=0, sticky='NW')
-Zeta.System.WM.toggle_bind(btnoverflow, overflow)
+Workspace.toggle_bind(btnoverflow, overflow)
 Panel['System']['taskbar'] = taskbar
 
 
@@ -301,10 +301,7 @@ def preview_file(path):
 	except: txt2.configure(text=msg2_2+'Preview failure')
 
 def toggle_sidebar(*event):
-	Workspace.toggle(popupmsg.cget('text'))
-	
-	if sidebarext.on: Zeta.System.WM.toggle(sidebarext)
-	if btnoverflow.on: Zeta.System.WM.toggle(btnoverflow)
+	Workspace.toggle_sidebar(popupmsg.cget('text'))
 
 	preview_clipboard()
 
@@ -345,7 +342,7 @@ if tooltip:
 	sidebar.bind("<Button-1>", lambda e: tooltip_hide())
 
 sidebar.bind("<Button-1>", toggle_sidebar, add="+")
-Zeta.System.WM.toggle_bind(sidebarext, sidebar2)
+Workspace.toggle_bind(sidebarext, sidebar2)
 
 #taskbar.bind("<Enter>", lambda e: root.hide())
 #taskbar.bind("<Button-1>", lambda event: (root.hide(), sidebar.geometry("1366x1+0+0"), taskbar.geometry("1366x24+0+1")))

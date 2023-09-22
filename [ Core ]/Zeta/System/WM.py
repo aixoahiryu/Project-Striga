@@ -60,7 +60,10 @@ class Workspace():
 		self.active = ''
 		self.hidden = False
 
-	def toggle(self, group=''):
+		self.toggle = []
+		self.hover = []
+
+	def toggle_sidebar(self, group=''):
 		if self.hidden:
 			if group=='': self.show(self.active)
 			else: self.show(group)
@@ -68,6 +71,9 @@ class Workspace():
 		else:
 			self.hide(self.active)
 			self.hide('System')
+			for master in self.hover: hover_hide(master)
+			for master in self.toggle:
+				if master.on: toggle(master)
 			
 		self.hidden = not self.hidden
 
@@ -82,3 +88,11 @@ class Workspace():
 		if group=='': group = 'System'
 		for w in self.panel[group].values(): w.show()
 		if group!='System': self.active = group
+
+	def toggle_bind(self, master, child):
+		self.toggle.append(master)
+		toggle_bind(master, child)
+
+	def hover_bind(self, master, child, stay=False):
+		self.hover.append(master)
+		hover_bind(master, child, stay=stay)

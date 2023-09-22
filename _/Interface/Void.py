@@ -240,14 +240,14 @@ txt1frame.grid(row=1, column=0, sticky='NW')
 img1=Zeta.Image.Icon.Load(icon='geminiw', icontype='bw').image
 Button(txt1frame, text=' Thaumiel', relief='flat', background=colorbg, foreground='#c9c9c9', image=img1, compound='left').grid(column=0, row=0, sticky='NW')
 
-popup = Toplevel(sidebar)
+popup = Toplevel()
 popup.title('Popup')
 popup.geometry("+10+350")
 popup.overrideredirect(1)
 popup.attributes('-alpha', 0.77)
 popup.configure(bg=colorbg)
 popup.attributes('-topmost', True)
-popupmsg = Message(popup, text='', bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal"), aspect=500)
+popupmsg = Label(popup, text='', bg=colorbg, fg=colorfg, font=("Lucida Console", 8, "normal"))
 popupmsg.grid(sticky='NWES')
 popup.hide()
 

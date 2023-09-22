@@ -68,20 +68,34 @@ class FileBox(Frame):
 		frame3.grid(sticky='NSEW', column=1, row=0)
 		frame3_1 = Frame(frame3, bg=self.colorbg)
 		frame3_1.grid(sticky='W', row=0, column=0)
-		Button(frame3_1, text='C', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('C:\\')).grid(sticky='W', row=0, column=0)
-		Button(frame3_1, text='D', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\')).grid(sticky='W', row=0, column=1)
-		Label(frame3_1, text='|', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief).grid(sticky='W', row=0, column=2)
-		Button(frame3_1, text='╬', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath(r'D:\MEGA\ZL-Core\Commit\╬')).grid(sticky='W', row=0, column=3)
-		Button(frame3_1, text=' _ ', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\_')).grid(sticky='W', row=0, column=4)
-		Button(frame3_1, text='Data', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\Data')).grid(sticky='W', row=0, column=5)
-		Button(frame3_1, text='Core', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\ZL-Core')).grid(sticky='W', row=0, column=6)
-		Button(frame3_1, text='Scraps', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\Scraps')).grid(sticky='W', row=0, column=7)
+		metapath = os.path.join(self.home, '# META')
+		metapath = os.path.join(metapath, r'Ω[ FileBox ].txt')
+		if not os.path.isfile(metapath): metapath = Zeta.System.Path.Core().ZETA + '/Panel/Control/FileBox.txt'
+		with open(metapath, encoding='utf-8') as f:
+			data = f.read()
+		self.metadata = data.split('-------------')
+		for i in filter(None, self.metadata[0].split('\n')):
+			if i == '---': Label(frame3_1, text='|', bg=self.colorbg, fg=self.buttoncolor).pack(side='left')
+			else:
+				btntemp = Button(frame3_1, text=i.split('|')[0], bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief)
+				btntemp.pack(side='left')
+				btntemp.btnpath = i.split('|')[1]
+				btntemp.bind('<Button-1>', lambda e: self.goPath(e.widget.btnpath))
+				btntemp.bind('<Button-3>', lambda e: self.rightclick_detach(e.widget.btnpath))
+		# Button(frame3_1, text='C', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('C:\\')).grid(sticky='W', row=0, column=0)
+		# Button(frame3_1, text='D', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\')).grid(sticky='W', row=0, column=1)
+		# Label(frame3_1, text='|', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief).grid(sticky='W', row=0, column=2)
+		# Button(frame3_1, text='╬', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath(r'D:\MEGA\ZL-Core\Commit\╬')).grid(sticky='W', row=0, column=3)
+		# Button(frame3_1, text=' _ ', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\_')).grid(sticky='W', row=0, column=4)
+		# Button(frame3_1, text='Data', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\Data')).grid(sticky='W', row=0, column=5)
+		# Button(frame3_1, text='Core', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\ZL-Core')).grid(sticky='W', row=0, column=6)
+		# Button(frame3_1, text='Scraps', bg=self.colorbg, fg=self.buttoncolor, relief=self.buttonrelief, command=lambda: self.goPath('D:\\Scraps')).grid(sticky='W', row=0, column=7)
 		frame3_2 = Frame(frame3, bg=self.colorbg)
 		frame3_2.grid(sticky='E', row=0, column=1)
 		frame3.grid_columnconfigure(1, weight=1)
 		self.combo1 = ttk.Combobox(frame3_2, state="readonly", values=['--------------'], width=10, takefocus=0)
 		self.combo1.grid(sticky='E', row=0, column=0)
-		self.combo1.bind('<Button-3>', lambda e: combo1.configure(state="normal"))
+		self.combo1.bind('<Button-3>', lambda e: self.combo1.configure(state="normal"))
 		self.combo1.bind('<Button-1>', lambda e: self.workspace_select())
 		self.combo1.bind('<<ComboboxSelected>>', lambda e: self.workspace_select())
 
@@ -121,34 +135,14 @@ class FileBox(Frame):
 		menubar.add_separator()
 		menubar.add_command(label="Copy path", command=lambda: (self.window.clipboard_clear(),self.window.clipboard_append(self.fullpath),self.window.update()))
 		menubar.add_command(label="Go to path", command=lambda: self.menu_select(self.window.clipboard_get()))
-		menubar.add_command(label="Terminal", command=lambda: (self.controller.toggle_sidebar(), Zeta.System.OS.terminal(self.fullpath)))
-		menubar.add_command(label="Detach", command=self.menu_detach)
+		self.imgterm = Zeta.Image.Icon.Load('termbw', 'bw').image
+		menubar.add_command(label="Terminal", image=self.imgterm, compound='left', command=lambda: (self.controller.toggle_sidebar(), Zeta.System.OS.terminal(self.fullpath)))
+		self.imgdetach = Zeta.Image.Icon.Load('windowbw', 'bw').image
+		menubar.add_command(label="Detach", image=self.imgdetach, compound='left', command=self.menu_detach)
 		#menubar.add_command(label="Exit", command=menu_clear)
 		#menubar.add_command(label="Exit", command=master.quit)
 		#master.config(menu=menubar)
 		self.tree.bind("<Button-3>", lambda event: menubar.post(event.x_root, event.y_root))
-		# self._color1 = Zeta.Color.Neon(color=color, color2=color2).hex
-		# self._bg1 = Zeta.Color.Neon(color=color, color2=color2).hue
-
-		# Frame.__init__(self, master, background=self._bg1)
-		# top = Frame(self, background=self._bg1)
-		# top.pack(side='top', expand=True, fill="both")
-		# top.grid_columnconfigure(0, weight=1)
-		# #body = Frame(self)
-		
-		# msg = Label(top, wraplength='4i', justify=LEFT, foreground=self._color1, background=self._bg1, font=("Courier New", 10, "normal"))
-		# msg['text'] = title
-		# msg.grid(row=0, column=0, sticky='NW')
-		# btnframe = Frame(top, background=self._bg1)
-		# btnframe.grid(row=0, column=1, sticky='E')
-		# Button(btnframe, text=u'Ζ', relief='flat', foreground='#c9c9c9', background=self._bg1, font=("Tahoma", 8, "normal"), command=self.winfo_toplevel().destroy).pack(side='left')
-		# Button(btnframe, text=u'Α', relief='flat', foreground='#c9c9c9', background=self._bg1, font=("Tahoma", 8, "normal"), command=self.winfo_toplevel().destroy).pack(side='left')
-		# Button(btnframe, text=u'Σ', relief='flat', foreground='#c9c9c9', background=self._bg1, font=("Tahoma", 8, "normal"), command=self.winfo_toplevel().destroy).pack(side='left')
-		# Button(btnframe, text=u'Ω', relief='flat', foreground='#c9c9c9', background=self._bg1, font=("Tahoma", 8, "normal"), command=self.winfo_toplevel().destroy).pack(side='left')
-		# Button(btnframe, text=u'¦', relief='flat', foreground='#c9c9c9', background=self._bg1, font=("Tahoma", 8, "normal"), command=self.winfo_toplevel().destroy).pack(side='left')
-		# Button(btnframe, text='■', relief='flat', foreground=Zeta.Color.Neon(color2='green').hex, background=self._bg1, command=self.winfo_toplevel().destroy).pack(side='left')
-		# Button(btnframe, text='■', relief='flat', foreground=Zeta.Color.Neon(color2='yellow').hex, background=self._bg1, command=self.winfo_toplevel().destroy).pack(side='left')
-		# Button(btnframe, text='■', relief='flat', foreground=Zeta.Color.Neon(color2='red').hex, background=self._bg1, command=self.winfo_toplevel().destroy).pack(side='left')
 
 	def menu_select(self, path=''):
 		node = self.tree.focus()
@@ -164,7 +158,7 @@ class FileBox(Frame):
 		path = self.fullpath if os.path.isdir(self.fullpath) else os.path.split(self.fullpath)[0]
 
 		#detached = Zeta.Panel.Window(border='mono', color2=panelcolor, mode='basic')
-		detached = Zeta.Panel.Window(color2=panelcolor)
+		detached = Zeta.Panel.Window(color2=panelcolor, title=os.path.split(path)[1])
 		detached.attributes('-topmost', True)
 		detached.geometry("+333+25")
 		detached.attributes('-alpha', 0.77)
@@ -172,6 +166,10 @@ class FileBox(Frame):
 		# detached.owner.append(self.window)
 		detached.transient(self.window)
 		Zeta.Panel.FileBox(detached.frame, color2=self.color2, home=path, controller=self.controller, darkmode=self.darkmode, neonmode=self.neonmode)
+
+	def rightclick_detach(self, path):
+		self.fullpath = path
+		self.menu_detach()
 
 	def menu_clear():
 		#os.execv(sys.argv[0], sys.argv)
@@ -320,14 +318,18 @@ class FileBox(Frame):
 
 	def workspace_select(self):
 		self.combo1.configure(state="readonly")
-		file = open(ZLCORE+r'\Toolbar\F\[ Workspace ]\[ Sidebar ]\Internal.txt', mode='r')
-		filecontent = file.read()
-		file.close()
-		filecontent = filecontent.split("\n")
-		self.combo1['values'] = filecontent
 
-		#combo1.configure(width=len(combo1.get())+1)
-		self.fullpath = ZLCORE+'\\Toolbar\\F\\[ Workspace ]\\[ Sidebar ]\\'+self.combo1.get()
+		content = list(filter(None, self.metadata[1].split('\n')))
+		# file = open(ZLCORE+r'\Toolbar\F\[ Workspace ]\[ Sidebar ]\Internal.txt', mode='r')
+		# filecontent = file.read()
+		# file.close()
+		# filecontent = filecontent.split("\n")
+		# self.combo1['values'] = filecontent
+		self.combo1['values'] = content[1:-1]
+
+		# combo1.configure(width=len(combo1.get())+1)
+		# self.fullpath = ZLCORE+'\\Toolbar\\F\\[ Workspace ]\\[ Sidebar ]\\'+self.combo1.get()
+		self.fullpath = content[0]+self.combo1.get()
 		if os.path.isdir(self.fullpath):
 			self.tree.delete(self.tree.get_children(''))
 			self.populate_masters(self.tree)

@@ -43,7 +43,7 @@ Panel['System']['sidebarext'] = sidebarext
 sidebar2 = Window(color2='black', mode='border')
 sidebar2.title('===[ Sidebar: File ]===')
 sidebar2.attributes('-topmost', True)
-sidebar2.geometry("333x740+1+0")
+sidebar2.geometry("333x730+5+5")
 sidebar2.overrideredirect(1)
 sidebar2.hide()
 File1 = FileBox(sidebar2.frame, home=Zeta.System.Path.Core().Planner, darkmode=False)
@@ -87,7 +87,8 @@ appframe.grid_rowconfigure(0, weight=1)
 imgmenu=Zeta.Image.Icon.Load(icon='menu2b', icontype='bw').image
 btnoverflow = Button(appframe, text='', relief='flat', bg=colorbg, fg=colorfg, image=imgmenu, compound='left')
 btnoverflow.grid(column=0, row=0, sticky='NSW')
-Zeta.System.WM.toggle_bind(btnoverflow, overflow)
+# Zeta.System.WM.toggle_bind(btnoverflow, overflow)
+Workspace.toggle_bind(btnoverflow, overflow)
 quickframe = Frame(taskbar, bg=colorbg)
 quickframe.grid(sticky='NSW', column=1, row=0)
 quickframe.grid_rowconfigure(0, weight=1)
@@ -148,10 +149,10 @@ popup.hide()
 ttk.Style().theme_use('alt')
 
 def toggle_sidebar(*event):
-	Workspace.toggle(popupmsg.cget('text'))
+	Workspace.toggle_sidebar(popupmsg.cget('text'))
 	
-	if sidebarext.on: Zeta.System.WM.toggle(sidebarext)
-	if btnoverflow.on: Zeta.System.WM.toggle(btnoverflow)
+	# if sidebarext.on: Zeta.System.WM.toggle(sidebarext)
+	# if btnoverflow.on: Zeta.System.WM.toggle(btnoverflow)
 
 def tooltip_show(x, y):
 	#popup.show() if hidden else print(e)
@@ -184,7 +185,8 @@ if tooltip:
 	sidebar.bind("<Button-1>", lambda e: tooltip_hide())
 
 sidebar.bind("<Button-1>", toggle_sidebar, add="+")
-Zeta.System.WM.toggle_bind(sidebarext, sidebar2)
+Workspace.toggle_bind(sidebarext, sidebar2)
+# Zeta.System.WM.toggle_bind(sidebarext, sidebar2)
 # Zeta.System.WM.hover_bind(sidebarext, sidebar2, stay=True)
 
 #taskbar.bind("<Enter>", lambda e: root.hide())
