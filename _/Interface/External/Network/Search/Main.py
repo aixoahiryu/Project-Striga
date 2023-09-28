@@ -11,7 +11,7 @@ from natsort import os_sorted
 
 hidden = False
 # cwd = os.getcwd()
-cwd = Zeta.System.Path.Core().ZETA + r'/Interface/External/Network/Search'
+cwd = Zeta.System.Path.Core.ZETA + r'/Interface/External/Network/Search'
 
 colorbg = "#000000"
 colorfg = "#ffffff"
@@ -58,7 +58,7 @@ class Search(Window):
 		self.enginebox.pack(side='left', fill='x')
 		self.enginebox2 = ttk.Combobox(engineframe, state="readonly")
 		self.enginebox2.configure(values=['Browser','Lite','[Crawler]'])
-		self.enginebox2.set('Browser')
+		self.enginebox2.set('Lite')
 		self.enginebox2.pack(side='left', fill='x')
 
 		fileframe = Frame(frame2, bg=colorbg)
@@ -123,10 +123,5 @@ class Search(Window):
 		picked = self.list2.get(self.list2.curselection()[0])
 		self.searchbox3.delete(0, END)
 		self.searchbox3.insert(0, picked)
-
-
-if __name__ == "__main__":
-    app = Search()
-    app.mainloop()
 
 # https://developers.google.com/custom-search/docs/xml_results

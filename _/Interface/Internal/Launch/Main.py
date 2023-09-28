@@ -4,14 +4,17 @@ from Zeta.Panel import *
 import os
 import subprocess
 
-ZLCORE = Zeta.System.Path.Core().ZLCORE
+ZLCORE = Zeta.System.Path.Core.ZLCORE
 
 class Launch(Window):
 	def __init__(self, *args, **kwargs):
 		Window.__init__(self, mode='border', color2='black', *args, **kwargs)
 		self.title('===[ Sidebar: File ]===')
 		self.attributes('-topmost', True)
-		self.geometry("443x270-1-30")
+		width = Zeta.System.Size.Window.mpv[0] - 1
+		height = Zeta.System.Size.Window.mpv[1]
+		bottom = Zeta.System.Size.taskbar
+		self.geometry(f"{width}x{height}-1-{bottom}")
 		self.overrideredirect(1)
 		self.frame.grid_columnconfigure(1, weight=1)
 		self.frame.grid_rowconfigure(1, weight=1)
@@ -62,8 +65,5 @@ class Launch(Window):
 		linkbtn.place(relx=0.284, rely=0.369, height=74, width=167)
 		linkbtn.bind("<Button-3>", lambda e: subprocess.Popen(["C:\\Program Files\\Notepad++\\notepad++.exe", "-ro", ZLCORE+r'\Toolbar\_\[ Program ]\[ Source ]\Link.py'], start_new_session=True))
 
+		self.hide()
 		self.theme(self.frame, bg='#ffffff', fg='#000000')
-
-if __name__ == "__main__":
-    app = Launch(mode='basic', color2='black')
-    app.mainloop()

@@ -1,0 +1,2 @@
+https://stackoverflow.com/questions/10824347/does-sqlite3-compress-data
+https://stackoverflow.com/questions/19981387/how-to-compress-sqlite-database

@@ -1,3 +1,4 @@
+import Zeta
 from Zeta.Panel import *
 
 class File(Window):
@@ -6,14 +7,11 @@ class File(Window):
 		home = r'D:\MEGA\ZL-Core\Commit\╬'
 		self.attributes('-topmost', True)
 		self.attributes('-alpha', 0.77)
-		self.geometry("333x715+1+25")
+		height = Zeta.System.Size.Screen.height - 25 -Zeta.System.Size.taskbar
+		self.geometry(f"333x{height}+1+25")
 		self.overrideredirect(1)
 
 		self.File1 = FileBox(self.frame, home=home, darkmode=True, controller=controller)
 
+		self.hide()
 		self.theme(self.frame, bg='#000000', fg='#ffffff')
-
-
-if __name__ == "__main__":
-    app = File(mode='basic', color2='black')
-    app.mainloop()
